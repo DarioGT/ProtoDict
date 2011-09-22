@@ -176,44 +176,11 @@ class systemApp():
         
         return {'state':self.OK, 'message': 'Ecriture effectuee'}
     
-    def writeDatabase(self, user, password, host, port, database): 
-   
-        # We connect to the database
-#        dictLog = self.__logDatabase(user, password, host, port, database)
-#        if (dictLog['state'] != self.OK):
-#            return dictLog
-#        
+    def writeDatabase(self): 
         # We write in the database
         dictWrite = self.__write()
         if (dictWrite['state'] != self.OK):
             return dictWrite
                 
-                
         return {'state':self.OK, 'message': 'Ecriture effectuee base donnee'}
     
-    def getLastInsertedRow(self, user, password, host, port, database):
-        '''
-        Test  
-        '''
-        # We connect the database
-        self.__logDatabase(user, password, host, port, database)
-        
-        # We get the string inserted
-        stringInserted = ""
-#        # We get the id of the objProject
-#        for idproject, nameProject  in self.__session.query(databaseClass.project.idproject, databaseClass.project.name).order_by(desc(databaseClass.project.idproject)).limit(1):
-#            stringInserted += "projet " + str(nameProject) +"\n"
-#            for idmodel, nameModel, idref in self.__session.query(databaseClass.dataModel.idmodel, databaseClass.dataModel.name, databaseClass.dataModel.idref).order_by(asc(databaseClass.dataModel.idmodel)).filter(databaseClass.dataModel.idproject == idproject):
-#                stringInserted += "datamodel "+str(idmodel)+", "+str(nameModel)+", "+str(idref)+"\n"
-#                for idtable, nameTable, alias, physicalName, superTable in self.__session.query(databaseClass.tableu.idtable, databaseClass.tableu.name, databaseClass.tableu.alias, databaseClass.tableu.physicalname, databaseClass.tableu.supertable).filter(databaseClass.tableu.idproject==idproject and databaseClass.tableu.idmodel == idmodel):
-#                    stringInserted += "table "+str(nameTable)+", "+str(alias)+", "+str(physicalName)+", "+str(superTable)+"\n"
-#                    for idcolumn, nameColumn, type, nullAllowed, fullDisplayName, LengthColumn, LengthNbDecimal in self.__session.query(databaseClass.columm.idcolumn, databaseClass.columm.name, databaseClass.columm.type, databaseClass.columm.nullallowed, databaseClass.columm.fulldisplayname, databaseClass.columm.lengthcolumn, databaseClass.columm.lengthnbdecimal).filter(databaseClass.columm.idproject == idproject and databaseClass.columm.idmodel == idmodel and databaseClass.columm.idtable == idtable):
-#                        if (nullAllowed):
-#                            nullAllowedStr = "True"
-#                        else:
-#                            nullAllowedStr = "False"
-#                        stringInserted += "column "+str(nameColumn)+", "+str(type)+", "+str(nullAllowedStr)+", "+str(fullDisplayName)+", "+str(LengthColumn)+", "+str(LengthNbDecimal)+"\n" 
-#         
-        
-        return stringInserted
-                
