@@ -2,6 +2,6 @@
 
 Manejo de Meta para unificar la importacion de Modelibra y OMS,. Se basa en Django para el manejo del ORM
 
-Projecto Django para visualizar el diccionario. 
+Projecto Django para visualizar el diccionario.  
 
  
