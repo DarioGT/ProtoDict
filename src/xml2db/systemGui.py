@@ -53,6 +53,9 @@ class systemGui(QtGui.QMainWindow):
         else:
             QtGui.QMessageBox.critical(self, self.tr('Erreur ecriture base donnee'), dictExecution['message'])
         
+    def __exportXML(self):
+        pass
+        
         
     def __setInitialMenu(self):
         # action quit
@@ -72,12 +75,23 @@ class systemGui(QtGui.QMainWindow):
         convertToDb.setShortcut('Ctrl+C')
         convertToDb.setStatusTip('Mettre le fichier dans la base de donnee')
         self.connect(convertToDb, QtCore.SIGNAL('triggered()'), self.__convertToDb)
-        
+
+        # action exportar 
+        export = QtGui.QAction(QtGui.QIcon(""), self.tr('Export'), self)
+        export.setStatusTip('Export')
+
+        # action exportar XML
+        exportXML = QtGui.QAction(QtGui.QIcon(""), self.tr('E&xportXML'), self)
+        exportXML.setShortcut('Ctrl+E')
+        exportXML.setStatusTip('Export XML')
+        self.connect( exportXML, QtCore.SIGNAL('triggered()'), self.__exportXML)
+
         
         # creation of menu
         menubar = self.menuBar()
         file = menubar.addMenu('&Fichier')
         operation = menubar.addMenu('&Operation')
+        opExport = operation.addMenu('Export')
         
         # menu file 
         file.addAction(load)
@@ -85,3 +99,5 @@ class systemGui(QtGui.QMainWindow):
         
         # menu operation
         operation.addAction(convertToDb)
+        opExport.addAction(exportXML)
+        
