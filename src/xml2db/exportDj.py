@@ -1,3 +1,5 @@
+#Import Qt Modules
+from PyQt4 import QtGui, QtCore
 
 class ExportDjangoModel(object):
 
@@ -6,26 +8,20 @@ class ExportDjangoModel(object):
         Constructor
         '''
 
-    @classmethod
     def ExportDjangoModel(self):
         tmp = ExportDjangoModel()
         tmp.ExportDjangoModel_body()
         return tmp;
 
     def ExportDjangoModel_body(self):
-        Worker.Worker_body()
         self.idModel = 0
 
-    def getJobTitle(self):
-        title = LocaleMgr.misc.getString("ExportMRD")
-        return title;
 
     def runJob(self):
         defaultFolderName = DirectoryOptionGroup.getDefaultWorkingDirectory()
-        PluginServices.multiDbBeginTrans(Db.READ_TRANS, None)
         dbProject = PluginServices.getCurrentProject()
         projectName = dbProject.getName() + ".py"
-        PluginServices.multiDbCommitTrans()
+
         defaultFolder = File.File_unknown(defaultFolderName)
         outputFile = File.File_unknown(defaultFolder, "model_" + projectName)
         fwM = FileWriter.FileWriter_unknown(outputFile)
