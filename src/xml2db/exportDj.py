@@ -1,13 +1,14 @@
 #Import Qt Modules
 from PyQt4 import QtGui, QtCore
 
+
 class ExportDjangoModel(object):
 
     def __init__(self):
         '''
         Constructor
         '''
-
+        
     def ExportDjangoModel(self):
         tmp = ExportDjangoModel()
         tmp.ExportDjangoModel_body()
