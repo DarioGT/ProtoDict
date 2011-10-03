@@ -1,4 +1,4 @@
-# PyDia Code Generation from UML Diagram
+# PyDia Code Generation from UML Diagram  
 # Copyright (c) 2005  Hans Breuer <hans@breuer.org>
 
 #    This program is free software; you can redistribute it and/or modify

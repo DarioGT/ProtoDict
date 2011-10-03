@@ -29,6 +29,10 @@ def DeepCalc (dict, key, seen = None) :
 	return len(seen.keys())
 
 def arrange_connected (data, flags) :
+	
+	diagram = dia.active_display().diagram
+	data = diagram.data 
+	
 	objs = data.get_sorted_selected()
 	if len(objs) == 0 :
 		objs = data.active_layer.objects
@@ -36,9 +40,15 @@ def arrange_connected (data, flags) :
 	bs = {}
 	print "objs", len(objs)
 	edges = {}
+
 	for o in objs :
+		
+		o.properties["fill_colour"] = "lightcyan"
+
 		for c in o.connections: # ConnectionPoint
+
 			for n in c.connected: # connection object
+
 				if not (n.handles[0].connected_to and n.handles[1].connected_to):
 					continue
 				a = n.handles[0].connected_to.object
@@ -63,6 +73,7 @@ def arrange_connected (data, flags) :
 					bs[bk] = use
 				else :
 					bs[bk] = [b, 1, []]
+
 	# sort by number of connections
 	bst = []
 	dx = 0
@@ -111,6 +122,9 @@ def arrange_connected (data, flags) :
 # this module is loaded by some other plug-ins but can also work on it's own
 # if it is loaded first as Dia plug-in and later as Python module everything works
 # fine due to Pythoninitializing the module only once
-dia.register_callback ("Arrange Objects", 
-                       "<Display>/Objects/Arrange", 
+#dia.register_callback ("Arrange Objects", "<Display>/Objects/Arrange", arrange_connected)
+
+
+dia.register_action ("Arrange", "Arrange Objects", 
+                      "/DisplayMenu/Dialogs/DialogsExtensionStart", 
                        arrange_connected)
