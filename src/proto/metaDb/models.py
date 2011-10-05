@@ -1,123 +1,168 @@
 # This is an auto-generated model module by CeRTAE OMS PlugIn
-# for project : "project" >
+# for project : "Modelibra" >
 # You'll have to do the following manually to clean this up:
 #     * Rearrange models' order
 
 from django.db import models
 from django.utils.encoding import force_unicode
 
-
 #datamodel name="Relational Data Model" idmodel="1" idref="0">
-class DomainBase(models.Model):
-    code = models.CharField(verbose_name=u'code',max_length=50)
-    type = models.CharField(verbose_name=u'type',max_length=50, blank = True, null = True)
-    packageCode = models.CharField(verbose_name=u'packageCode',max_length=50, blank = True, null = True)
-    abtraction = models.CharField(verbose_name=u'abtraction',max_length=50, blank = True, null = True)
-    defaultContrunct = models.CharField(verbose_name=u'defaultContrunct',max_length=50, blank = True, null = True)
-    packagePrefix = models.CharField(verbose_name=u'packagePrefix',max_length=50, blank = True, null = True)
-    referenceModel = models.CharField(verbose_name=u'referenceModel',max_length=50, blank = True, null = True)
-    i18n = models.CharField(verbose_name=u'i18n',max_length=50, blank = True, null = True)
-    signin = models.CharField(verbose_name=u'signin',max_length=50, blank = True, null = True)
-    signinConcept = models.CharField(verbose_name=u'signinConcept',max_length=50, blank = True, null = True)
-    shortTextDefaultLength = models.CharField(verbose_name=u'shortTextDefaultLength',max_length=50, blank = True, null = True)
-    pageBlockDefaultSize = models.CharField(verbose_name=u'pageBlockDefaultSize',max_length=50, blank = True, null = True)
-    validateForm = models.CharField(verbose_name=u'validateForm',max_length=50, blank = True, null = True)
-    confirmRemove = models.CharField(verbose_name=u'confirmRemove',max_length=50, blank = True, null = True)
-    def __unicode__(self):
-        return self.code
 
-class DomainModel(models.Model):
-    code = models.CharField(verbose_name=u'code',max_length=50)
-    abstraction = models.CharField(verbose_name=u'abstraction',max_length=50, blank = True, null = True)
-    extension = models.CharField(verbose_name=u'extension',max_length=50, blank = True, null = True)
-    ExtensionDomain = models.CharField(verbose_name=u' extensionDomain',max_length=50, blank = True, null = True)
-    extensionDomainType = models.CharField(verbose_name=u'extensionDomainType',max_length=50, blank = True, null = True)
-    extensionModel = models.CharField(verbose_name=u'extensionModel',max_length=50, blank = True, null = True)
-    author = models.CharField(verbose_name=u'author',max_length=50, blank = True, null = True)
-    packageCode = models.CharField(verbose_name=u'packageCode',max_length=50, blank = True, null = True)
-    persistent = models.CharField(verbose_name=u'persistent',max_length=50, blank = True, null = True)
-    presistenceType = models.CharField(verbose_name=u'presistenceType',max_length=50, blank = True, null = True)
-    presistenceRelativePath = models.CharField(verbose_name=u'presistenceRelativePath',max_length=50, blank = True, null = True)
-    persistenceConfig = models.CharField(verbose_name=u'persistenceConfig',max_length=50, blank = True, null = True)
-    defaultLoadSave = models.CharField(verbose_name=u'defaultLoadSave',max_length=50, blank = True, null = True)
-    datePattern = models.CharField(verbose_name=u'datePattern',max_length=50, blank = True, null = True)
-    session = models.CharField(verbose_name=u'session',max_length=50, blank = True, null = True)
-    DomainBase = models.ForeignKey('DomainBase')
-    def __unicode__(self):
-        return self.code
+CH_OBJTYPE  = (
+    ('Domain', 'Domain'),
+    ('Model', 'Model'),
+    ('Concept', 'Concept'),
+    ('Property', 'Porperty'),
+    ('?', 'Unknown'),
+)
 
-class Concept(models.Model):
-    code = models.CharField(verbose_name=u'code',max_length=50)
-    abstraction = models.CharField(verbose_name=u'abstraction',max_length=50, blank = True, null = True)
-    extension = models.CharField(verbose_name=u'extension',max_length=50, blank = True, null = True)
-    extensionDomain = models.CharField(verbose_name=u'extensionDomain',max_length=50, blank = True, null = True)
-    extensionDomainType = models.CharField(verbose_name=u'extensionDomainType',max_length=50, blank = True, null = True)
-    extensionModel = models.CharField(verbose_name=u'extensionModel',max_length=50, blank = True, null = True)
-    extensionConcept = models.CharField(verbose_name=u'extensionConcept',max_length=50, blank = True, null = True)
-    extensionWithNeighbors = models.CharField(verbose_name=u'extensionWithNeighbors',max_length=50, blank = True, null = True)
-    entitiesCode = models.CharField(verbose_name=u'entitiesCode',max_length=50, blank = True, null = True)
-    packageCode = models.CharField(verbose_name=u'packageCode',max_length=50, blank = True, null = True)
-    min = models.CharField(verbose_name=u'min',max_length=50, blank = True, null = True)
-    max = models.CharField(verbose_name=u'max',max_length=50, blank = True, null = True)
-    entry = models.CharField(verbose_name=u'entry',max_length=50, blank = True, null = True)
-    fileName = models.CharField(verbose_name=u'fileName',max_length=50, blank = True, null = True)
-    index = models.CharField(verbose_name=u'index',max_length=50, blank = True, null = True)
-    display = models.CharField(verbose_name=u'display',max_length=50, blank = True, null = True)
-    displayType = models.CharField(verbose_name=u'displayType',max_length=50, blank = True, null = True)
-    add = models.CharField(verbose_name=u'add',max_length=50, blank = True, null = True)
-    remove = models.CharField(verbose_name=u'remove',max_length=50, blank = True, null = True)
-    update = models.CharField(verbose_name=u'update',max_length=50, blank = True, null = True)
-    DomainModel = models.ForeignKey('DomainModel')
+class MetaObj(models.Model):
+    code = models.CharField(verbose_name=u'code', blank = True, null = True, max_length=50 )
+    objType = models.CharField(verbose_name=u'objType',  max_length=50, choices=CH_OBJTYPE )
+    description = models.CharField(verbose_name=u'description', blank = True, null = True, max_length=50)
     def __unicode__(self):
-        return self.code
+        return self.code 
 
-class Neighbor(models.Model):
-    code = models.CharField(verbose_name=u'code',max_length=50)
-    extension = models.CharField(verbose_name=u'extension',max_length=50, blank = True, null = True)
-    extensionNeighbor = models.CharField(verbose_name=u'extensionNeighbor',max_length=50, blank = True, null = True)
-    destinationConcept = models.CharField(verbose_name=u'destinationConcept',max_length=50, blank = True, null = True)
-    inverseNeighbor = models.CharField(verbose_name=u'inverseNeighbor',max_length=50, blank = True, null = True)
-    internal = models.CharField(verbose_name=u'internal',max_length=50, blank = True, null = True)
-    partOfM2M = models.CharField(verbose_name=u'partOfM2M',max_length=50, blank = True, null = True)
-    type = models.CharField(verbose_name=u'type',max_length=50, blank = True, null = True)
-    min = models.CharField(verbose_name=u'min',max_length=50, blank = True, null = True)
-    max = models.CharField(verbose_name=u'max',max_length=50, blank = True, null = True)
-    unique = models.CharField(verbose_name=u'unique',max_length=50, blank = True, null = True)
-    index = models.CharField(verbose_name=u'index',max_length=50, blank = True, null = True)
-    addRule = models.CharField(verbose_name=u'addRule',max_length=50, blank = True, null = True)
-    removeRule = models.CharField(verbose_name=u'removeRule',max_length=50, blank = True, null = True)
-    UpdateRule = models.CharField(verbose_name=u'UpdateRule',max_length=50, blank = True, null = True)
-    display = models.CharField(verbose_name=u'display',max_length=50, blank = True, null = True)
-    update = models.CharField(verbose_name=u'update',max_length=50, blank = True, null = True)
-    absorb = models.CharField(verbose_name=u'absorb',max_length=50, blank = True, null = True)
-    Concept = models.ForeignKey('Concept')
+   
+class Domain(MetaObj):
+    CH_DOMAINTYPE  = (
+    ('Analyses', (
+            ('MCD', 'Modele conceptual de donnes'),
+            ('MLD', 'Model logique'),
+            ('MPD', 'Model phisique'),
+        )
+    ),
+    ('Interface', (
+            ('MSI', 'Modele de specificacion d''interface'),
+            ('MSR', 'Modele de specificacion de rapports'),
+        )
+    ),
+    ('unknown', 'Unknown'),
+        )
+
+    domainType = models.CharField(verbose_name=u'domainType', choices= CH_DOMAINTYPE, max_length=50)
+    origin = models.CharField(verbose_name=u'origin', blank = True, null = True, max_length=50)
+    superDomain = models.ForeignKey('Domain', blank = True, null = True)
+    
+    def save(self, *args, **kwargs ):
+        self.objType = "Domain"
+        super(Domain, self).save(*args, **kwargs) # Call the "real" save() method.
+    
     def __unicode__(self):
-        return self.code
+        return self.code 
 
-class PropertyField(models.Model):
-    code = models.CharField(verbose_name=u'code',max_length=50)
-    extension = models.CharField(verbose_name=u'extension',max_length=50, blank = True, null = True)
-    extensionProperty = models.CharField(verbose_name=u'extensionProperty',max_length=50, blank = True, null = True)
-    propertyClass = models.CharField(verbose_name=u'propertyClass',max_length=50, blank = True, null = True)
-    derived = models.CharField(verbose_name=u'derived',max_length=50, blank = True, null = True)
-    validateType = models.CharField(verbose_name=u'validateType',max_length=50, blank = True, null = True)
-    maxLength = models.CharField(verbose_name=u'maxLength',max_length=50, blank = True, null = True)
-    required = models.CharField(verbose_name=u'required',max_length=50, blank = True, null = True)
-    sensitive = models.CharField(verbose_name=u'sensitive',max_length=50, blank = True, null = True)
-    defaultValue = models.CharField(verbose_name=u'defaultValue',max_length=50, blank = True, null = True)
-    autoincrement = models.CharField(verbose_name=u'autoincrement',max_length=50, blank = True, null = True)
-    unique = models.CharField(verbose_name=u'unique',max_length=50, blank = True, null = True)
-    index = models.CharField(verbose_name=u'index',max_length=50, blank = True, null = True)
-    reference = models.CharField(verbose_name=u'reference',max_length=50, blank = True, null = True)
-    referenceNeighbor = models.CharField(verbose_name=u'referenceNeighbor',max_length=50, blank = True, null = True)
-    display = models.CharField(verbose_name=u'display',max_length=50, blank = True, null = True)
-    update = models.CharField(verbose_name=u'update',max_length=50, blank = True, null = True)
-    displayLength = models.CharField(verbose_name=u'displayLength',max_length=50, blank = True, null = True)
-    essential = models.CharField(verbose_name=u'essential',max_length=50, blank = True, null = True)
-    scramble = models.CharField(verbose_name=u'scramble',max_length=50, blank = True, null = True)
-    whiteSpaceAllowed = models.CharField(verbose_name=u'whiteSpaceAllowed',max_length=50, blank = True, null = True)
-    Concept = models.ForeignKey('Concept')
+
+class Model(MetaObj):
+    modelType = models.CharField(verbose_name=u'modelType', blank = True, null = True, max_length=50)
+    modelPrefix = models.CharField(verbose_name=u'modelPrefix', blank = True, null = True, max_length=50)
+    modelIx = models.CharField(verbose_name=u'Ix', blank = True, null = True, max_length=50)
+    modelRef = models.CharField(verbose_name=u'IxRef', blank = True, null = True, max_length=50)
+    domain = models.ForeignKey('Domain')
+    superModel = models.ForeignKey('Model', blank = True, null = True)
     def __unicode__(self):
-        return self.code
+        return self.code 
 
+class Concept(MetaObj):
+    conceptType = models.CharField(verbose_name=u'conceptType', blank = True, null = True, max_length=50)
+    Model = models.ForeignKey('Model')
+    superConcept = models.ForeignKey('Concept', blank = True, null = True)
+    def __unicode__(self):
+        return self.code 
+
+class Property(MetaObj):
+    propertyType = models.CharField(verbose_name=u'propertyType', blank = True, null = True, max_length=50)
+    classType = models.CharField(verbose_name=u'classType', blank = True, null = True, max_length=50)
+    length = models.CharField(verbose_name=u'length', blank = True, null = True, max_length=50)
+    decLength = models.CharField(verbose_name=u'decLength', blank = True, null = True, max_length=50)
+    nullable = models.CharField(verbose_name=u'nullable', blank = True, null = True, max_length=50)
+    required = models.CharField(verbose_name=u'required', blank = True, null = True, max_length=50)
+    defaultValue = models.CharField(verbose_name=u'defaultValue', blank = True, null = True, max_length=50)
+    sensitive = models.CharField(verbose_name=u'sensitive', blank = True, null = True, max_length=50)
+    essential = models.CharField(verbose_name=u'essential', blank = True, null = True, max_length=50)
+    unique = models.CharField(verbose_name=u'unique', blank = True, null = True, max_length=50)
+    propertyIndex = models.CharField(verbose_name=u'propertyIndex', blank = True, null = True, max_length=50)
+    foreign = models.CharField(verbose_name=u'foreign', blank = True, null = True, max_length=50)
+    foreignConcept = models.CharField(verbose_name=u'foreignConcept', blank = True, null = True, max_length=50)
+    foreignProperty = models.CharField(verbose_name=u'foreignProperty', blank = True, null = True, max_length=50)
+    validationRule = models.CharField(verbose_name=u'validationRule', blank = True, null = True, max_length=50)
+    derivationType = models.CharField(verbose_name=u'derivationType', blank = True, null = True, max_length=50)
+    derivationRule = models.CharField(verbose_name=u'derivationRule', blank = True, null = True, max_length=50)
+    derivationConcept = models.CharField(verbose_name=u'derivationConcept', blank = True, null = True, max_length=50)
+    derivationProperty = models.CharField(verbose_name=u'derivationProperty', blank = True, null = True, max_length=50)
+    concept = models.ForeignKey('Concept')
+    superProperty = models.ForeignKey('Property', blank = True, null = True)
+    def __unicode__(self):
+        return self.code 
+
+class Relationship(Property):
+    relationType = models.CharField(verbose_name=u'relationType', blank = True, null = True, max_length=50)
+    baseMin = models.CharField(verbose_name=u'baseMin', blank = True, null = True, max_length=50)
+    baseMax = models.CharField(verbose_name=u'baseMax', blank = True, null = True, max_length=50)
+    refMin = models.CharField(verbose_name=u'refMin', blank = True, null = True, max_length=50)
+    refMax = models.CharField(verbose_name=u'refMax', blank = True, null = True, max_length=50)
+    conceptBase = models.ForeignKey('Concept', related_name='base')
+    conceptRef = models.ForeignKey('Concept', related_name='ref')
+    def __unicode__(self):
+        return self.code 
+
+class UserDefinedProperty(models.Model):
+    udpCode = models.CharField(verbose_name=u'udpCode', blank = True, null = True, max_length=50)
+    udpTarget = models.CharField(verbose_name=u'udpTarget', blank = True, null = True, max_length=50)
+    udpType = models.CharField(verbose_name=u'udpType', blank = True, null = True, max_length=50)
+    udpValue = models.CharField(verbose_name=u'udpValue', blank = True, null = True, max_length=50)
+    udpRule = models.CharField(verbose_name=u'udpRule', blank = True, null = True, max_length=50)
+    metaObj = models.ForeignKey('MetaObj')
+    def __unicode__(self):
+        return self.udpCode 
+
+class MetaLink(models.Model):
+    metaLinkType = models.CharField(verbose_name=u'synonymType', blank = True, null = True, max_length=50)
+    metaLinkDescription = models.CharField(verbose_name=u'synonymDescription', blank = True, null = True, max_length=50)
+    metaObjBase = models.ForeignKey('MetaObj')
+    metaObjRef = models.ForeignKey('MetaObj', related_name='+')
+    def __unicode__(self):
+        return self.metaLinkDescription 
+
+class NavigationLink(models.Model):
+    navigationType = models.CharField(verbose_name=u'navigationType', blank = True, null = True, max_length=50)
+    navigationRule = models.CharField(verbose_name=u'navigationRule', blank = True, null = True, max_length=50)
+    caption = models.CharField(verbose_name=u'caption', blank = True, null = True, max_length=50)
+    toolTip = models.CharField(verbose_name=u'toolTip', blank = True, null = True, max_length=50)
+    tag = models.CharField(verbose_name=u'tag', blank = True, null = True, max_length=50)
+    conceptBase = models.ForeignKey('Concept')
+    conceptRef = models.ForeignKey('Concept', related_name='+')
+    def __unicode__(self):
+        return self.caption 
+
+class EntryPoints(models.Model):
+    caption = models.CharField(verbose_name=u'caption', blank = True, null = True, max_length=50)
+    titre = models.CharField(verbose_name=u'titre', blank = True, null = True, max_length=50)
+    typeEntryPoint = models.CharField(verbose_name=u'typeEntryPoint', blank = True, null = True, max_length=50)
+    rule = models.CharField(verbose_name=u'rule', blank = True, null = True, max_length=50)
+    concept = models.ForeignKey('Concept', blank=True, null=True)
+    domain = models.ForeignKey('Domain')
+    def __unicode__(self):
+        return self.caption
+
+class Menu(models.Model):
+    menuCode = models.CharField(verbose_name=u'menuCode', blank = True, null = True, max_length=50)
+    menuBase = models.CharField(verbose_name=u'menuBase', blank = True, null = True, max_length=50)
+    menuIndex = models.CharField(verbose_name=u'menuIndex', blank = True, null = True, max_length=50)
+    entryPoints = models.ForeignKey('EntryPoints')
+    def __unicode__(self):
+        return self.menuCode
+
+class ModelGraphic(models.Model):
+    modelName = models.CharField(verbose_name=u'modelName', blank = True, null = True, max_length=50)
+    model = models.ForeignKey('Model')
+    def __unicode__(self):
+        return self.modelName
+
+class Traduction(models.Model):
+    languageCode = models.CharField(verbose_name=u'languageCode', blank = True, null = True, max_length=50)
+    caption = models.CharField(verbose_name=u'caption', blank = True, null = True, max_length=50)
+    description = models.CharField(verbose_name=u'description', blank = True, null = True, max_length=50)
+    MetaObj = models.ForeignKey('MetaObj')
+    def __unicode__(self):
+        return self.languageCode
 

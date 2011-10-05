@@ -2,6 +2,12 @@
 import os.path
 PPATH = os.path.dirname(__file__).replace('\\','/')
 
+# PAra encontrar los globales 
+import sys
+PPATHBASE = os.path.abspath(os.path.join( PPATH, os.pardir ))
+sys.path.append(PPATHBASE )
+
+
 # Si esta en source es dos niveles mas abajo 
 PPATHBASE = os.path.abspath(os.path.join( PPATH, os.pardir ))
 PPATHBASE = os.path.abspath(os.path.join( PPATHBASE, os.pardir ))
@@ -19,8 +25,6 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-#        'NAME': 'D:/data/PyDjango/modelibra/db/sqlite.db',                      # Or path to database file if using sqlite3.
-#        'NAME': '/home/dario/data/PyDjango/modelibra/db/sqlite.db',                      # Or path to database file if using sqlite3.
         'NAME': PPATHBASE + '/db/protoMeta.db',
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
@@ -101,12 +105,20 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = ("globale.auth.context_processors.auth",
+                               "django.core.context_processors.debug",
+                               "django.core.context_processors.i18n",
+                               "django.core.context_processors.media",
+                               "django.core.context_processors.static",
+                               "django.core.context_processors.request",
+                               "django.contrib.messages.context_processors.messages")
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'globale.auth.middleware.AuthenticationMiddleware',
 )
 
 ROOT_URLCONF = 'proto.urls'
@@ -118,13 +130,13 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
 #   'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
+    'globale.auth',
+    'globale.admin',
     'proto.metaDb'
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
