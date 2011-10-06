@@ -90,12 +90,14 @@ STATIC_URL = '/static/'
 # DGT: Al cambiar esto deja de funcionar (alguna relacion con STATIC_URL? )
 ADMIN_MEDIA_PREFIX = '/static/'
 #ADMIN_MEDIA_PREFIX = '/static/admin/'
-#ADMIN_MEDIA_PREFIX = '/media/admin/'
+#ADMIN_MEDIA_PREFIX = '/globale/admin/media/'
 
 DAJAXICE_MEDIA_PREFIX="dajaxice"
 
 # Additional locations of static files
+PPATHSTATIC = os.path.abspath(os.path.join( PPATHBASE, os.pardir ))
 STATICFILES_DIRS = (
+    PPATHSTATIC + '/globale/admin/media', 
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -106,7 +108,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -146,12 +148,12 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-#   'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dajaxice',
     'dajax',
-#   'globale.auth',
+
+    'globale.auth',
     'globale.admin',
     'proto.metaDb'
     # Uncomment the next line to enable admin documentation:

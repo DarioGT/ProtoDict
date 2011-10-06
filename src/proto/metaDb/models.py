@@ -8,24 +8,24 @@ from django.utils.encoding import force_unicode
 
 #datamodel name="Relational Data Model" idmodel="1" idref="0">
 
-CH_OBJTYPE  = (
-    ('Domain', 'Domain'),
-    ('Model', 'Model'),
-    ('Concept', 'Concept'),
-    ('Property', 'Porperty'),
-    ('?', 'Unknown'),
-)
 
 class MetaObj(models.Model):
+    OBJTYPE  = (
+        ('Domain', 'Domain'),
+        ('Model', 'Model'),
+        ('Concept', 'Concept'),
+        ('Property', 'Porperty'),
+        ('?', 'Unknown'),
+    )
     code = models.CharField(verbose_name=u'code', blank = True, null = True, max_length=50 )
-    objType = models.CharField(verbose_name=u'objType',  max_length=50, choices=CH_OBJTYPE )
+    objType = models.CharField(verbose_name=u'objType',  max_length=50, choices=OBJTYPE )
     description = models.CharField(verbose_name=u'description', blank = True, null = True, max_length=50)
     def __unicode__(self):
         return self.code 
 
    
 class Domain(MetaObj):
-    CH_DOMAINTYPE  = (
+    DOMAINTYPE  = (
     ('Analyses', (
             ('MCD', 'Modele conceptual de donnes'),
             ('MLD', 'Model logique'),
@@ -40,7 +40,7 @@ class Domain(MetaObj):
     ('unknown', 'Unknown'),
         )
 
-    domainType = models.CharField(verbose_name=u'domainType', choices= CH_DOMAINTYPE, max_length=50)
+    domainType = models.CharField(verbose_name=u'domainType', choices= DOMAINTYPE, max_length=50)
     origin = models.CharField(verbose_name=u'origin', blank = True, null = True, max_length=50)
     superDomain = models.ForeignKey('Domain', blank = True, null = True)
     
@@ -52,13 +52,34 @@ class Domain(MetaObj):
         return self.code 
 
 
+#DGT: Como manejar la seleccion de opciones dependiendo del padre, implementar el manejo de discretas 
 class Model(MetaObj):
-    modelType = models.CharField(verbose_name=u'modelType', blank = True, null = True, max_length=50)
+    MODELTYPE  = (
+    ('Analyses', (
+            ('MCD', 'Modele conceptual de donnes'),
+            ('MLD', 'Model logique'),
+            ('MPD', 'Model phisique'),
+        )
+    ),
+    ('Interface', (
+            ('MSI', 'Modele de specificacion d''interface'),
+            ('MSR', 'Modele de specificacion de rapports'),
+        )
+    ),
+    ('unknown', 'Unknown'),
+        )
+
+    modelType = models.CharField(verbose_name=u'modelType', choices= MODELTYPE , max_length=50)
     modelPrefix = models.CharField(verbose_name=u'modelPrefix', blank = True, null = True, max_length=50)
     modelIx = models.CharField(verbose_name=u'Ix', blank = True, null = True, max_length=50)
     modelRef = models.CharField(verbose_name=u'IxRef', blank = True, null = True, max_length=50)
     domain = models.ForeignKey('Domain')
     superModel = models.ForeignKey('Model', blank = True, null = True)
+
+    def save(self, *args, **kwargs ):
+        self.objType = "Model"
+        super(Domain, self).save(*args, **kwargs) # Call the "real" save() method.
+    
     def __unicode__(self):
         return self.code 
 
