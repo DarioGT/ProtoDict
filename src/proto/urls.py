@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # url(r'^modelibra/', include('modelibra.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # url(r'^admin/doc/', include('globale.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(globale.admin.site.urls)) ,

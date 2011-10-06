@@ -1,6 +1,6 @@
 from models import *
 
-import globale.admin         
+import globale.admin          
  
 class ModelInline(globale.admin.TabularInline):
     model = Model

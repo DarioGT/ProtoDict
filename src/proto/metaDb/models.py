@@ -115,11 +115,11 @@ class UserDefinedProperty(models.Model):
     def __unicode__(self):
         return self.udpCode 
 
-class MetaLink(models.Model):
+class MetaLink(MetaObj):
     metaLinkType = models.CharField(verbose_name=u'synonymType', blank = True, null = True, max_length=50)
     metaLinkDescription = models.CharField(verbose_name=u'synonymDescription', blank = True, null = True, max_length=50)
-    metaObjBase = models.ForeignKey('MetaObj')
-    metaObjRef = models.ForeignKey('MetaObj', related_name='+')
+    metaObjBase = models.ForeignKey('MetaObj', related_name='metaObjBase')
+    metaObjRef = models.ForeignKey('MetaObj', related_name='metaObjRef')
     def __unicode__(self):
         return self.metaLinkDescription 
 

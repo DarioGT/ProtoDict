@@ -56,6 +56,12 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
+#DGT: Formateo de numeros 
+USE_THOUSAND_SEPARATOR = True 
+NUMBER_GROUPING = 1
+#DECIMAL_SEPARATOR = '.'
+#THOUSAND_SEPARATOR = ','
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = ''
@@ -69,6 +75,8 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
+
+#STATIC_ROOT = os.path.join( PPATH , 'static' )
 STATIC_ROOT = ''
 
 # URL prefix for static files.
@@ -78,7 +86,13 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+
+# DGT: Al cambiar esto deja de funcionar (alguna relacion con STATIC_URL? )
+ADMIN_MEDIA_PREFIX = '/static/'
+#ADMIN_MEDIA_PREFIX = '/static/admin/'
+#ADMIN_MEDIA_PREFIX = '/media/admin/'
+
+DAJAXICE_MEDIA_PREFIX="dajaxice"
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -102,7 +116,7 @@ SECRET_KEY = 'z7jc&(scfm-c5lt-h#(m*epqis54tc)lxm=g+&5+ud$3w783dx'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = ("globale.auth.context_processors.auth",
@@ -135,11 +149,13 @@ INSTALLED_APPS = (
 #   'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'globale.auth',
+    'dajaxice',
+    'dajax',
+#   'globale.auth',
     'globale.admin',
     'proto.metaDb'
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    # 'globale.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -11,8 +11,10 @@
 <value>proto.settings</value>
 </pydev_variables_property>
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
-<path>/modelibra/src</path>
 <path>/modelibra</path>
 </pydev_pathproperty>
 
+<pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
+<path>D:\data\PyDjango</path>
+</pydev_pathproperty>
 </pydev_project>

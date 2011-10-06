@@ -79,7 +79,7 @@ class ExportDjangoModel(object):
         msg = StringWrapper.StringWrapper_unknown(MessageFormat.format(pattern, projectName))
         self.iwA.println(msg)
         self.iwA.println("")
-        self.iwA.println("from django.contrib import admin")
+        self.iwA.println("import globale.admin")
         self.iwA.println("from models import *")
         self.iwA.println("")
 
