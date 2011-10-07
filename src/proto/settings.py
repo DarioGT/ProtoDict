@@ -93,6 +93,7 @@ ADMIN_MEDIA_PREFIX = '/static/'
 #ADMIN_MEDIA_PREFIX = '/globale/admin/media/'
 
 DAJAXICE_MEDIA_PREFIX="dajaxice"
+USE_DJANGO_JQUERY = True
 
 # Additional locations of static files
 PPATHSTATIC = os.path.abspath(os.path.join( PPATHBASE, os.pardir ))
