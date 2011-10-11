@@ -10,6 +10,7 @@ class ModelInline(globale.admin.TabularInline):
 
 
 class DomainAdmin(globale.admin.ModelAdmin):
+    app_name = 'Proto'
     list_display =( 'code', 'description', 'domainType'  )
     fieldsets = (
         (None, {
@@ -17,7 +18,8 @@ class DomainAdmin(globale.admin.ModelAdmin):
         }),
         ('Specifiques', {
             'fields': [('domainType', 'origin'), 
-                       ('superDomain')]
+                       ('superDomain')],
+            'classes': ['collapse']
         }),
     )
     inlines = [

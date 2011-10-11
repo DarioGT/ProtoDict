@@ -10,40 +10,21 @@ from django.utils.encoding import force_unicode
 
 
 class MetaObj(models.Model):
-    OBJTYPE  = (
-        ('Domain', 'Domain'),
-        ('Model', 'Model'),
-        ('Concept', 'Concept'),
-        ('Property', 'Porperty'),
-        ('?', 'Unknown'),
-    )
+    #OBJTYPE  = (('Domain', 'Domain'),('Model', 'Model'),('Concept', 'Concept'),('Property', 'Porperty'),('?', 'Unknown'),)
     code = models.CharField(verbose_name=u'code', blank = True, null = True, max_length=50 )
-    objType = models.CharField(verbose_name=u'objType',  max_length=50, choices=OBJTYPE )
+    objType = models.CharField(verbose_name=u'objType',  max_length=50)
     description = models.CharField(verbose_name=u'description', blank = True, null = True, max_length=50)
+
     def __unicode__(self):
         return self.code 
 
    
 class Domain(MetaObj):
-    DOMAINTYPE  = (
-    ('Analyses', (
-            ('MCD', 'Modele conceptual de donnes'),
-            ('MLD', 'Model logique'),
-            ('MPD', 'Model phisique'),
-        )
-    ),
-    ('Interface', (
-            ('MSI', 'Modele de specificacion d''interface'),
-            ('MSR', 'Modele de specificacion de rapports'),
-        )
-    ),
-    ('unknown', 'Unknown'),
-        )
-
-    domainType = models.CharField(verbose_name=u'domainType', choices= DOMAINTYPE, max_length=50)
+    #DOMAINTYPE=(('Analyses',(('MCD','Modeleconceptualdedonnes'),('MLD','Modellogique'),('MPD','Modelphisique'),)),('Interface',(('MSI','Modeledespecificaciond''interface'),('MSR','Modeledespecificacionderapports'),)),('unknown','Unknown'),)
+    domainType = models.CharField(verbose_name=u'domainType', max_length=50)
     origin = models.CharField(verbose_name=u'origin', blank = True, null = True, max_length=50)
     superDomain = models.ForeignKey('Domain', blank = True, null = True)
-    
+
     def save(self, *args, **kwargs ):
         self.objType = "Domain"
         super(Domain, self).save(*args, **kwargs) # Call the "real" save() method.
@@ -54,22 +35,8 @@ class Domain(MetaObj):
 
 #DGT: Como manejar la seleccion de opciones dependiendo del padre, implementar el manejo de discretas 
 class Model(MetaObj):
-    MODELTYPE  = (
-    ('Analyses', (
-            ('MCD', 'Modele conceptual de donnes'),
-            ('MLD', 'Model logique'),
-            ('MPD', 'Model phisique'),
-        )
-    ),
-    ('Interface', (
-            ('MSI', 'Modele de specificacion d''interface'),
-            ('MSR', 'Modele de specificacion de rapports'),
-        )
-    ),
-    ('unknown', 'Unknown'),
-        )
-
-    modelType = models.CharField(verbose_name=u'modelType', choices= MODELTYPE , max_length=50)
+    #MODELTYPE=(('Analyses',(('MCD','Modeleconceptualdedonnes'),('MLD','Modellogique'),('MPD','Modelphisique'),)),('Interface',(('MSI','Modeledespecificaciond''interface'),('MSR','Modeledespecificacionderapports'),)),('unknown','Unknown'),)
+    modelType = models.CharField(verbose_name=u'modelType', max_length=50)
     modelPrefix = models.CharField(verbose_name=u'modelPrefix', blank = True, null = True, max_length=50)
     modelIx = models.CharField(verbose_name=u'Ix', blank = True, null = True, max_length=50)
     modelRef = models.CharField(verbose_name=u'IxRef', blank = True, null = True, max_length=50)
@@ -78,17 +45,22 @@ class Model(MetaObj):
 
     def save(self, *args, **kwargs ):
         self.objType = "Model"
-        super(Domain, self).save(*args, **kwargs) # Call the "real" save() method.
+        super(Model, self).save(*args, **kwargs) # Call the "real" save() method.
     
     def __unicode__(self):
         return self.code 
 
 class Concept(MetaObj):
     conceptType = models.CharField(verbose_name=u'conceptType', blank = True, null = True, max_length=50)
-    Model = models.ForeignKey('Model')
+    model = models.ForeignKey('Model')
     superConcept = models.ForeignKey('Concept', blank = True, null = True)
     def __unicode__(self):
         return self.code 
+
+    def save(self, *args, **kwargs ):
+        self.objType = "Concept"
+        super(Concept, self).save(*args, **kwargs) # Call the "real" save() method.
+
 
 class Property(MetaObj):
     propertyType = models.CharField(verbose_name=u'propertyType', blank = True, null = True, max_length=50)
@@ -102,18 +74,33 @@ class Property(MetaObj):
     essential = models.CharField(verbose_name=u'essential', blank = True, null = True, max_length=50)
     unique = models.CharField(verbose_name=u'unique', blank = True, null = True, max_length=50)
     propertyIndex = models.CharField(verbose_name=u'propertyIndex', blank = True, null = True, max_length=50)
-    foreign = models.CharField(verbose_name=u'foreign', blank = True, null = True, max_length=50)
-    foreignConcept = models.CharField(verbose_name=u'foreignConcept', blank = True, null = True, max_length=50)
-    foreignProperty = models.CharField(verbose_name=u'foreignProperty', blank = True, null = True, max_length=50)
-    validationRule = models.CharField(verbose_name=u'validationRule', blank = True, null = True, max_length=50)
-    derivationType = models.CharField(verbose_name=u'derivationType', blank = True, null = True, max_length=50)
-    derivationRule = models.CharField(verbose_name=u'derivationRule', blank = True, null = True, max_length=50)
-    derivationConcept = models.CharField(verbose_name=u'derivationConcept', blank = True, null = True, max_length=50)
-    derivationProperty = models.CharField(verbose_name=u'derivationProperty', blank = True, null = True, max_length=50)
+#    foreign = models.CharField(verbose_name=u'foreign', blank = True, null = True, max_length=50)
+#    foreignConcept = models.CharField(verbose_name=u'foreignConcept', blank = True, null = True, max_length=50)
+#    foreignProperty = models.CharField(verbose_name=u'foreignProperty', blank = True, null = True, max_length=50)
+#    validationRule = models.CharField(verbose_name=u'validationRule', blank = True, null = True, max_length=50)
+#    derivationType = models.CharField(verbose_name=u'derivationType', blank = True, null = True, max_length=50)
+#    derivationRule = models.CharField(verbose_name=u'derivationRule', blank = True, null = True, max_length=50)
+#    derivationConcept = models.CharField(verbose_name=u'derivationConcept', blank = True, null = True, max_length=50)
+#    derivationProperty = models.CharField(verbose_name=u'derivationProperty', blank = True, null = True, max_length=50)
     concept = models.ForeignKey('Concept')
     superProperty = models.ForeignKey('Property', blank = True, null = True)
+
     def __unicode__(self):
-        return self.code 
+        return (self.concept + '.' + self.code)  
+
+    def save(self, *args, **kwargs ):
+        self.objType = "Property"
+        super(Property, self).save(*args, **kwargs) # Call the "real" save() method.
+
+
+class PropertyChoice(models.Model):
+    code = models.CharField(verbose_name=u'code', max_length=50 )
+    value = models.CharField(verbose_name=u'value', blank = True, null = True, max_length=50)
+    filtre = models.CharField(verbose_name=u'filtre', blank = True, null = True, max_length=50)
+    tag = models.CharField(verbose_name=u'tag', blank = True, null = True, max_length=50)
+    propertyField = models.ForeignKey('Property')
+    def __unicode__(self):
+        return (self.propertyField + '.' + self.code )  
 
 class Relationship(Property):
     relationType = models.CharField(verbose_name=u'relationType', blank = True, null = True, max_length=50)
@@ -124,7 +111,7 @@ class Relationship(Property):
     conceptBase = models.ForeignKey('Concept', related_name='base')
     conceptRef = models.ForeignKey('Concept', related_name='ref')
     def __unicode__(self):
-        return self.code 
+        return self.conceptBase + '.' + self.conceptRef
 
 class UserDefinedProperty(models.Model):
     udpCode = models.CharField(verbose_name=u'udpCode', blank = True, null = True, max_length=50)

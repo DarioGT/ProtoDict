@@ -96,7 +96,7 @@ USE_DJANGO_JQUERY = True
 # Additional locations of static files
 PPATHSTATIC = os.path.abspath(os.path.join( PPATHBASE, os.pardir ))
 STATICFILES_DIRS = (
-    PPATHSTATIC + '/globale/admin/media', 
+    PPATHSTATIC + '/ProtoLib/globale/admin/media', 
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

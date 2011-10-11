@@ -11,10 +11,10 @@
 <value>proto.settings</value>
 </pydev_variables_property>
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
-<path>/modelibra</path>
+<path>/ProtoDict</path>
 </pydev_pathproperty>
 
 <pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
-<path>D:\data\PyDjango</path>
+<path>D:\data\PyDjango\ProtoLib</path>
 </pydev_pathproperty>
 </pydev_project>
