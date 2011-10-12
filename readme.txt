@@ -5,6 +5,9 @@ Projecto Django para visualizar el diccionario.
 
 ** Pendiente 
 	
+	Manejo de columnas excluidas, 
+	y correspondencia de nombres XML Db 
+	
 	Carga completa y manejo de UDP 
 	
 	Cambiar el InLine por una tabla simple con 
