@@ -10,7 +10,7 @@ class PropertyInline(globale.admin.TabularInline):
 
 class RelationshipInline(globale.admin.TabularInline):
     model = Relationship 
-    fk_name = 'conceptBase'
+    fk_name = 'concept'
     extra = 1
     fields = ('code', 'description', 'classType', 'conceptRef')
 

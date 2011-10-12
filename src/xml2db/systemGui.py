@@ -24,7 +24,7 @@ class systemGui(QtGui.QMainWindow):
         self.__setInitialMenu()
         
     def __load(self):
-        filename = QtGui.QFileDialog.getOpenFileName(self, "Choisir un fichier XML", self.__systemCore.getFilename(), "Xml(*.xml)")
+        filename = QtGui.QFileDialog.getOpenFileName(self, "Choisir un fichier XML", self.__systemCore.getFilename(), "exp(*.exp)")
         if (filename != self.__CHAINE_VIDE):
             status = self.__systemCore.loadFile(str(filename))
             

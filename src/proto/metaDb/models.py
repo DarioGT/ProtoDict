@@ -9,6 +9,11 @@ from django.utils.encoding import force_unicode
 #datamodel name="Relational Data Model" idmodel="1" idref="0">
 
 
+def strNotNull(  sValue ):
+    if (sValue is None): 
+        return "_"
+    else: return sValue 
+
 class MetaObj(models.Model):
     #OBJTYPE  = (('Domain', 'Domain'),('Model', 'Model'),('Concept', 'Concept'),('Property', 'Porperty'),('?', 'Unknown'),)
     code = models.CharField(verbose_name=u'code', blank = True, null = True, max_length=50 )
@@ -74,33 +79,28 @@ class Property(MetaObj):
     essential = models.CharField(verbose_name=u'essential', blank = True, null = True, max_length=50)
     unique = models.CharField(verbose_name=u'unique', blank = True, null = True, max_length=50)
     propertyIndex = models.CharField(verbose_name=u'propertyIndex', blank = True, null = True, max_length=50)
-#    foreign = models.CharField(verbose_name=u'foreign', blank = True, null = True, max_length=50)
-#    foreignConcept = models.CharField(verbose_name=u'foreignConcept', blank = True, null = True, max_length=50)
-#    foreignProperty = models.CharField(verbose_name=u'foreignProperty', blank = True, null = True, max_length=50)
-#    validationRule = models.CharField(verbose_name=u'validationRule', blank = True, null = True, max_length=50)
-#    derivationType = models.CharField(verbose_name=u'derivationType', blank = True, null = True, max_length=50)
-#    derivationRule = models.CharField(verbose_name=u'derivationRule', blank = True, null = True, max_length=50)
-#    derivationConcept = models.CharField(verbose_name=u'derivationConcept', blank = True, null = True, max_length=50)
-#    derivationProperty = models.CharField(verbose_name=u'derivationProperty', blank = True, null = True, max_length=50)
+
+    #DGT: La derivacion deberia ser una referencia pero en la carga no es posible hacer la referencia se requiere un campo texto 
+    # pero el mantenimiento deberia ser con la referencia, podria guardarse en discretas y un procedimiento posterior 
+    # agregaria las referencias reales 
+    derivationType = models.CharField(verbose_name=u'derivationType', blank = True, null = True, max_length=50)
+    derivationRule = models.CharField(verbose_name=u'derivationRule', blank = True, null = True, max_length=50)
+    derivationConcept = models.CharField(max_length=50,verbose_name=u'derivationConcept',  blank = True, null = True)
+    derivationProperty = models.CharField(max_length=50,verbose_name=u'derivationProperty',  blank = True, null = True)
+
     concept = models.ForeignKey('Concept')
     superProperty = models.ForeignKey('Property', blank = True, null = True)
 
-    def __unicode__(self):
-        return (self.concept + '.' + self.code)  
-
     def save(self, *args, **kwargs ):
-        self.objType = "Property"
+        if self.objType <> "Relationship":
+            self.objType = "Property"
         super(Property, self).save(*args, **kwargs) # Call the "real" save() method.
 
-
-class PropertyChoice(models.Model):
-    code = models.CharField(verbose_name=u'code', max_length=50 )
-    value = models.CharField(verbose_name=u'value', blank = True, null = True, max_length=50)
-    filtre = models.CharField(verbose_name=u'filtre', blank = True, null = True, max_length=50)
-    tag = models.CharField(verbose_name=u'tag', blank = True, null = True, max_length=50)
-    propertyField = models.ForeignKey('Property')
     def __unicode__(self):
-        return (self.propertyField + '.' + self.code )  
+        sConcept = strNotNull(self.concept.code)
+        sProperty = strNotNull(self.code)
+        return sConcept + '.' + sProperty    
+
 
 class Relationship(Property):
     relationType = models.CharField(verbose_name=u'relationType', blank = True, null = True, max_length=50)
@@ -108,10 +108,16 @@ class Relationship(Property):
     baseMax = models.CharField(verbose_name=u'baseMax', blank = True, null = True, max_length=50)
     refMin = models.CharField(verbose_name=u'refMin', blank = True, null = True, max_length=50)
     refMax = models.CharField(verbose_name=u'refMax', blank = True, null = True, max_length=50)
-    conceptBase = models.ForeignKey('Concept', related_name='base')
-    conceptRef = models.ForeignKey('Concept', related_name='ref')
+    
+    #DGT: Igual caso q las derivaciones de conceptos
+    conceptRef = models.CharField(max_length=50, blank = True, null = True,)
+
+    def save(self, *args, **kwargs ):
+        self.objType = "Relationship"
+        super(Relationship, self).save(*args, **kwargs) # Call the "real" save() method.
+
     def __unicode__(self):
-        return self.conceptBase + '.' + self.conceptRef
+        return (strNotNull(self.concept.code) + '.' + strNotNull(self.conceptRef))
 
 class UserDefinedProperty(models.Model):
     udpCode = models.CharField(verbose_name=u'udpCode', blank = True, null = True, max_length=50)
@@ -123,11 +129,12 @@ class UserDefinedProperty(models.Model):
     def __unicode__(self):
         return self.udpCode 
 
-class MetaLink(MetaObj):
+class MetaLink(models.Model):
     metaLinkType = models.CharField(verbose_name=u'synonymType', blank = True, null = True, max_length=50)
     metaLinkDescription = models.CharField(verbose_name=u'synonymDescription', blank = True, null = True, max_length=50)
     metaObjBase = models.ForeignKey('MetaObj', related_name='metaObjBase')
     metaObjRef = models.ForeignKey('MetaObj', related_name='metaObjRef')
+
     def __unicode__(self):
         return self.metaLinkDescription 
 
@@ -174,3 +181,11 @@ class Traduction(models.Model):
     def __unicode__(self):
         return self.languageCode
 
+class PropertyChoice(models.Model):
+    code = models.CharField(verbose_name=u'code', max_length=50 )
+    value = models.CharField(verbose_name=u'value', blank = True, null = True, max_length=50)
+    filtre = models.CharField(verbose_name=u'filtre', blank = True, null = True, max_length=50)
+    tag = models.CharField(verbose_name=u'tag', blank = True, null = True, max_length=50)
+    propertyField = models.ForeignKey('Property')
+    def __unicode__(self):
+        return (self.propertyField.code + '.' + self.code )  

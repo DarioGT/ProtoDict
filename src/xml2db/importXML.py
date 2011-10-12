@@ -101,12 +101,17 @@ class importXML():
 
         #Listas 
         fdsDomain = [field.name for field in Domain._meta.fields]
+        
         fdsModel= [field.name for field in Model._meta.fields]
+        fdcModel = [("idModel", "modelIx"),("idref","modelRef") ]
+        
         fdsConcept= [field.name for field in Concept._meta.fields]
         fdsProperty= [field.name for field in Property._meta.fields]
         fdsNeighbor= [field.name for field in Relationship._meta.fields]
 
-
+        #Temp var 
+        field = None
+        
         # We populate the database
 #       try: 
         if (self.__tree != None):  # A file has been loaded
@@ -118,6 +123,9 @@ class importXML():
                 for child in xDomain:
                     if child.tag in fdsDomain:
                         setattr( lDomain, child.tag, child.text ) 
+                    else: 
+                        pass 
+                        
                 lDomain.save()
                 self.__logger.info("Domain..."  + lDomain.code)
 
@@ -125,7 +133,8 @@ class importXML():
                 xModels = xDomain.getiterator("model")
                 for xModel in xModels:
                     dModel = Model()
-                    dModel.DomainBase  = lDomain
+                    dModel.domain = lDomain
+
                     for child in xModel:
                         if child.tag in fdsModel:
                             setattr( dModel, child.tag, child.text ) 
@@ -135,7 +144,8 @@ class importXML():
                     xConcepts = xModel.getiterator("concept")
                     for xConcept in xConcepts:
                         concept = Concept()
-                        concept.DomainModel = dModel 
+                        concept.model = dModel
+                        
                         for child in xConcept:
                             if child.tag in fdsConcept:
                                 setattr( concept, child.tag, child.text ) 
@@ -145,20 +155,22 @@ class importXML():
                         xPropertys = xConcept.getiterator("property")
                         for xProperty in xPropertys:
                             lProperty = Property()
-                            lProperty.Concept = concept
+                            lProperty.concept = concept
+
                             for child in xProperty:
                                 if child.tag in fdsProperty:
                                     setattr( lProperty, child.tag, child.text )
                             lProperty.save()
 
-                        xNeighbors = xConcept.getiterator("neighbor")
+                        xNeighbors = xConcept.getiterator("foreign")
                         for xNeighbor in xNeighbors:
-                            neighbor = Relationship()
-                            neighbor.Concept = concept
+                            foreign = Relationship()
+                            foreign.concept = concept
+                            
                             for child in xNeighbor:
                                 if child.tag in fdsNeighbor:
-                                    setattr( neighbor, child.tag, child.text )
-                            neighbor.save()
+                                    setattr( foreign, child.tag, child.text )
+                            foreign.save()
 
 
 #        except KeyError, e:
