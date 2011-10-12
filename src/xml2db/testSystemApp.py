@@ -2,7 +2,7 @@
 import unittest
 
 #The module to be tested
-import systemApp
+import importXML
 
 """
 Yo must test individually the testfunctions!
@@ -51,7 +51,7 @@ class testSystemApp(unittest.TestCase):
     
 
     def setUp(self):
-        self.__systemCore = systemApp.systemApp()
+        self.__systemCore = importXML.importXML()
     
     def testLoadFilenameFichierValide(self):
         filename1 = "/home/dario/Documents/FichierXml/Exemple de raccordement2.xml"

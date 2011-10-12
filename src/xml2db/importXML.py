@@ -10,7 +10,7 @@ import os
 os.environ['DJANGO_SETTINGS_MODULE'] = 'proto.settings'
 
 from django.core import management
-import proto.settings as settings
+import proto.settings as settings 
 management.setup_environ(settings)
 
 
@@ -20,7 +20,7 @@ import logging
 #Import Database class
 from proto.metaDb.models import *  
 
-class systemApp():
+class importXML():
     def __init__(self):
         self.__filename = ""
         self.__tree = None
@@ -100,21 +100,21 @@ class systemApp():
         self.__logger.info("Ecriture dans la base de donnee...")
 
         #Listas 
-        fdsDomain = [field.name for field in DomainBase._meta.fields]
-        fdsModel= [field.name for field in DomainModel._meta.fields]
+        fdsDomain = [field.name for field in Domain._meta.fields]
+        fdsModel= [field.name for field in Model._meta.fields]
         fdsConcept= [field.name for field in Concept._meta.fields]
-        fdsProperty= [field.name for field in PropertyField._meta.fields]
-        fdsNeighbor= [field.name for field in Neighbor._meta.fields]
+        fdsProperty= [field.name for field in Property._meta.fields]
+        fdsNeighbor= [field.name for field in Relationship._meta.fields]
 
 
         # We populate the database
-#        try: 
+#       try: 
         if (self.__tree != None):  # A file has been loaded
         
             xDomains = self.__tree.getiterator("domain")
             
             for xDomain in xDomains:
-                lDomain = DomainBase()
+                lDomain = Domain()
                 for child in xDomain:
                     if child.tag in fdsDomain:
                         setattr( lDomain, child.tag, child.text ) 
@@ -124,7 +124,7 @@ class systemApp():
                 
                 xModels = xDomain.getiterator("model")
                 for xModel in xModels:
-                    dModel = DomainModel()
+                    dModel = Model()
                     dModel.DomainBase  = lDomain
                     for child in xModel:
                         if child.tag in fdsModel:
@@ -144,7 +144,7 @@ class systemApp():
 
                         xPropertys = xConcept.getiterator("property")
                         for xProperty in xPropertys:
-                            lProperty = PropertyField()
+                            lProperty = Property()
                             lProperty.Concept = concept
                             for child in xProperty:
                                 if child.tag in fdsProperty:
@@ -153,7 +153,7 @@ class systemApp():
 
                         xNeighbors = xConcept.getiterator("neighbor")
                         for xNeighbor in xNeighbors:
-                            neighbor = Neighbor()
+                            neighbor = Relationship()
                             neighbor.Concept = concept
                             for child in xNeighbor:
                                 if child.tag in fdsNeighbor:
