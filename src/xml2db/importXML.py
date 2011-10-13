@@ -124,24 +124,28 @@ class importXML():
 #        fdsProperty= [field.name for field in Property._meta.fields]
 #        fdsForeign= [field.name for field in Relationship._meta.fields]
 
-        fdsLinkModel= [field.name for field in MetaLinkModel._meta.fields]
-        fdsLink = [field.name for field in MetaLink._meta.fields]
-        fdsUdpDefinition = [field.name for field in UdpDefinition._meta.fields]
-        field = None
+#        fdsLinkModel= [field.name for field in MetaLinkModel._meta.fields]
+#        fdsLink = [field.name for field in MetaLink._meta.fields]
+#        fdsUdpDefinition = [field.name for field in UdpDefinition._meta.fields]
+#        field = None
 
         # Los elementos superXXX son referencias de tipo caracter,
-        fdsDomain = ( 'code', 'category', 'description',  'origin', 'superDomain' )
+        fdsDomain = ( 'code', 'category', 'description',  'origin', 'superDomain', 'alias', 'physicalName' )
 
-        fdsModel= ( 'code', 'category', 'description',  'modelPrefix', 'superModel' )
+        fdsModel= ( 'code', 'category', 'description',  'modelPrefix', 'superModel', 'alias', 'physicalName' )
         intModel= ( 'idModel', 'idRef' )
         
-        fdsConcept= ( 'code', 'category', 'description',  'superConcept')
+        fdsConcept= ( 'code', 'category', 'description',  'superConcept', 'alias', 'physicalName')
         
-        fdsProperty = ( 'code', 'category', 'description',  'baseType', 'defaultValue', 'superProperty')
+        fdsProperty = ( 'code', 'category', 'description',  'baseType', 'defaultValue', 'superProperty', 'alias', 'physicalName')
         booProperty = ( 'isNullable', 'isRequired', 'isSensitive', 'isEssential', 'isUnique', 'isForeign')
         intProperty = ( 'length', 'decLength', 'conceptPosition', )
         
-        fdsForeign= ( 'code', 'category', 'description', 'baseMin', 'baseMax', 'refMin', 'refMax', 'superProperty', 'baseConcept')
+        fdsForeign= ( 'code', 'category', 'description', 'baseMin', 'baseMax', 'refMin', 'refMax', 'superProperty', 'baseConcept', 'alias', 'physicalName')
+
+        fdsLinkModel= ['code', 'source', 'destination']
+        fdsLink = ['code', 'alias', 'destinationText', 'sourceCol', 'destinationCol']
+        fdsUdpDefinition = ['code', 'baseType', 'alias', 'description']
         
         # We populate the database
 #       try: 
@@ -226,9 +230,10 @@ class importXML():
                                 elif child.tag in booProperty:
                                     bValue = toBoolean(child.text )
                                     setattr( lProperty, child.tag, bValue )
+                                    
                                 elif child.tag == 'udps':
                                     for xUdp in child:
-                                        udps.append( (xUdp.tag, xUdp.text) )
+                                        udps.append( (xUdp.tag, xUdp.get('text') ) )
                                 else:
                                     udps.append( (child.tag, child.text) )
                                         
@@ -244,7 +249,7 @@ class importXML():
                                     dUdp.save()
 
 
-                        xForeigns = xConcept.getiterator("dForeign")
+                        xForeigns = xConcept.getiterator("foreign")
                         for xForeign in xForeigns:
                             dForeign = Relationship()
                             dForeign.concept = concept
@@ -269,8 +274,9 @@ class importXML():
                             setattr( dLinkModel, child.tag, child.text ) 
                             
                     dLinkModel.save()
+                    self.__logger.info("LinkModel..."  + dLinkModel.code)
 
-                    xLinks = xLinkModel.getiterator("dForeign")
+                    xLinks = xLinkModel.getiterator("link")
                     for xLink in xLinks:
                         dLink = MetaLink()
                         dLink.metaLinkModel = dLinkModel

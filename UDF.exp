@@ -1,0 +1,1493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domains>
+<domain>
+<code>UDF</code>
+<origin>OpenModelSphere 3.2</origin>
+<udpDefinitions>
+<udpDefinition>
+<code>FORMAT</code>
+<baseType>Multiline Text</baseType>
+<alias>FORMAT</alias>
+</udpDefinition>
+<udpDefinition>
+<code>GABARIT</code>
+<baseType>Multiline Text</baseType>
+<alias>GABARIT</alias>
+</udpDefinition>
+<udpDefinition>
+<code>DÉFINITION</code>
+<baseType>Multiline Text</baseType>
+<alias>DEFINITION</alias>
+</udpDefinition>
+<udpDefinition>
+<code>DESCRIPTION CN</code>
+<baseType>Multiline Text</baseType>
+<alias>DESCRIPTIONCN</alias>
+</udpDefinition>
+<udpDefinition>
+<code>PRÉCISIONS</code>
+<baseType>Multiline Text</baseType>
+<alias>PRECISIONS</alias>
+</udpDefinition>
+<udpDefinition>
+<code>VALIDATIONS SUR ÉLÉMENT</code>
+<baseType>Multiline Text</baseType>
+<alias>VALIDATIONSSURELEMENT</alias>
+</udpDefinition>
+<udpDefinition>
+<code>REQUIS PAR</code>
+<baseType>Multiline Text</baseType>
+<alias>REQUISPAR</alias>
+</udpDefinition>
+<udpDefinition>
+<code>SOURCE DE DONNÉES EXTERNES</code>
+<baseType>Multiline Text</baseType>
+<alias>SOURCEDEDONNEESEXTERNES</alias>
+</udpDefinition>
+<udpDefinition>
+<code>TRANSMISSION</code>
+<baseType>Multiline Text</baseType>
+<alias>TRANSMISSION</alias>
+</udpDefinition>
+<udpDefinition>
+<code>VALIDATIONS INTER-ÉLÉMENTS</code>
+<baseType>Multiline Text</baseType>
+<alias>VALIDATIONSINTERELEMENTS</alias>
+</udpDefinition>
+<udpDefinition>
+<code>DOMAINE DE VALEURS</code>
+<baseType>Multiline Text</baseType>
+<alias>DOMAINEDEVALEURS</alias>
+</udpDefinition>
+<udpDefinition>
+<code>Prueba</code>
+<baseType>String</baseType>
+<alias>Prueba</alias>
+</udpDefinition>
+</udpDefinitions>
+<models>
+<model>
+<idModel>1</idModel>
+<idRef>0</idRef>
+<code>SL - SIGSPU</code>
+<concepts>
+<concept>
+<code>PRISE APPEL </code>
+<properties>
+<property>
+<code>Date/heure de l'entrée de l'appel téléphonique au CCS</code>
+<alias>101</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure   Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles le CCS reçoit l’appel. &#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’étapes ultérieures.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent à l’acceptation de l’appel par le système téléphonique.&#10;&#10;Les appels sont ceux pouvant générer une demande de services. Sont exclus notamment les appels internes de gestion, ainsi que ceux faits par les techniciens ambulanciers paramédics pour obtenir plus d’information.&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#10;L’élément 101 est &lt; = que l’élément 102.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10;SOURCES DE DONNÉES EXTERNES Système téléphonique des CCS.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure   Longueur : 14   "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles le CCS reçoit l’appel. &#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’étapes ultérieures.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent à l’acceptation de l’appel par le système téléphonique.&#10;&#10;Les appels sont ceux pouvant générer une demande de services. Sont exclus notamment les appels internes de gestion, ainsi que ceux faits par les techniciens ambulanciers paramédics pour obtenir plus d’information.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Système téléphonique des CCS.&#10;&#9; &#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#10;L’élément 101 est &lt; = que l’élément 102.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/heure de la réponse de l'appel téléphonique au CCS</code>
+<alias>102</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles le RMU du CCS débute l’examen de l’appel. &#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure coïncident avec la création de la carte d’appel, sauf pour les CCS multiservices où l’appel est traité par le 911, pour lesquels ces date et heure correspondent à l’ouverture du logiciel ProQa. &#10;&#10; VALIDATIONS &#9;&#10;Valdation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#9;&#10;L’élément 102 &gt; = que l’élément 101&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14   "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles le RMU du CCS débute l’examen de l’appel. &#10;&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire."/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure coïncident avec la création de la carte d’appel, sauf pour les CCS multiservices où l’appel est traité par le 911, pour lesquels ces date et heure correspondent à l’ouverture du logiciel ProQa. &#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#9;&#10;L’élément 102 &gt; = que l’élément 101&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/heure de l'avis au répartiteur</code>
+<alias>104</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles le RMU envoie la demande de répartition au répartiteur.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#9;&#10;L’élément 104 est &gt; que l’élément 103.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES&#9;Carte d’appel des RAO.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14   "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles le RMU envoie la demande de répartition au répartiteur.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9; &#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#9;&#10;L’élément 104 est &gt; que l’élément 103.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/heure de la fin de l'appel du RMU</code>
+<alias>110</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles le RMU termine son intervention auprès du demandeur de service.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10; VALIDATION &#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#9;&#10;L’élément 110 est &gt; que l’élément 102.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10;SOURCES DE DONNÉES EXTERNES Système téléphonique des CCS.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text=" FORMAT Date / heure  Longueur : 14  "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles le RMU termine son intervention auprès du demandeur de service.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Système téléphonique des CCS.&#10;&#9; &#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#9;&#10;L’élément 110 est &gt; que l’élément 102.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Raison de la fin de l'appel téléphonique</code>
+<alias>215</alias>
+<length>2</length>
+<description text=" FORMAT Alphanumérique Longueur: 2&#10;&#10; DÉFINITION Champ permettant d’inscrire la raison pour laquelle l’appel téléphonique est terminé.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire. &#10;&#10; PRÉCISION&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;&#10;Liste des valeurs permises :&#10;&#10;10&#9;Fermeture régulière de l’appel téléphonique&#10;20&#9;Appel annulé à la prise d'appel sans affectation de la ressource préhospitalière&#10;30&#9;Appel transféré à un autre CCS, à un centre antipoison ou à Info Santé&#10;40&#9;Appel pour une demande de services autre que préhospitalière : police, pompier, autre&#10;50&#9;Demande d'information diverse"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur: 2&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’inscrire la raison pour laquelle l’appel téléphonique est terminé.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire. &#10;&#10;&#9;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;&#10;10&#9;Fermeture régulière de l’appel téléphonique&#10;20&#9;Appel annulé à la prise d'appel sans affectation de la ressource préhospitalière&#10;30&#9;Appel transféré à un autre CCS, à un centre antipoison ou à Info Santé&#10;40&#9;Appel pour une demande de services autre que préhospitalière : police, pompier, autre&#10;50&#9;Demande d'information diverse"/>
+</udps>
+</property>
+<property>
+<code>Identification de l'organisme transmetteur de l'appel</code>
+<alias>405</alias>
+<length>3</length>
+<description text=" FORMAT Numérique Longueur : 3&#10;&#10; DÉFINITION  Champ permettant d’identifier l'organisme ayant transmis l'appel au CCS.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION&#9;&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES&#9;Carte d’appel des RAO.&#10;&#9; &#10;&#10;TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;Liste des valeurs permises :&#10;&#10;10&#9;Appel au centre 911 sans précision du centre 911 (valeur par défaut);&#10;11&#9;Identification du centre 911 ayant transmis l’appel au &#9;CCS(valeur non opérationnelle);&#10;20&#9;Appel d’un centre 911 sans transfert de l'appelant;&#10;30&#9;Sûreté du Québec;&#10;40&#9;Service de police municipale;&#10;50&#9;Service d’incendie;&#10;60&#9;Téléphoniste&#9;(filaire ou cellulaire);&#10;70&#9;Compagnie d’alarme;&#10;80&#9;Établissement du réseau de santé du Québec;&#10;90 &#9;TA / paramedics;&#10;100&#9;Info Santé;&#10;110     Autre.&#10;"/>
+<udps>
+<FORMAT text="Numérique Longueur : 3&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’identifier l'organisme ayant transmis l'appel au CCS.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9; &#10;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;&#10;10&#9;Appel au centre 911 sans précision du centre 911 (valeur par défaut);&#10;11&#9;Identification du centre 911 ayant transmis l’appel au &#9;CCS(valeur non opérationnelle);&#10;20&#9;Appel d’un centre 911 sans transfert de l'appelant;&#10;30&#9;Sûreté du Québec;&#10;40&#9;Service de police municipale;&#10;50&#9;Service d’incendie;&#10;60&#9;Téléphoniste&#9;(filaire ou cellulaire);&#10;70&#9;Compagnie d’alarme;&#10;80&#9;Établissement du réseau de santé du Québec;&#10;90 &#9;TA / paramedics;&#10;100&#9;Info Santé;&#10;110     Autre.&#10;"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)-PRISE APPEL </code>
+<baseConcept>CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)</baseConcept>
+<baseMin>1</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>CCS-PRISE APPEL </code>
+<baseConcept>CCS</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>(PRISE EN CHARGE)</code>
+<properties>
+<property>
+<code>Date/heure de la mise en route vers le lieu de prise en charge de l'usager</code>
+<alias>108</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière se met en route vers le lieu de prise en charge de l’usager.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire dans la mesure où il n’y pas annulation de l’affectation.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent au moment où la ressource ambulancière signale que le véhicule d’intervention est en mouvement vers le lieu de prise en charge de l’usager.&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Correspondance relationnelle&#9;&#10;L’élément 108 est &gt; que l’élément 104.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14   "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière se met en route vers le lieu de prise en charge de l’usager.&#10;&#10; "/>
+<DESCRIPTIONCN text="Cette information est obligatoire dans la mesure où il n’y pas annulation de l’affectation.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent au moment où la ressource ambulancière signale que le véhicule d’intervention est en mouvement vers le lieu de prise en charge de l’usager.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#9;&#10;L’élément 108 est &gt; que l’élément 104."/>
+</udps>
+</property>
+<property>
+<code>Date/heure de la ressource ambulancière auprés de l'usager</code>
+<alias>114</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure   Longueur : 14  Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure de l’arrivée de la ressource ambulancière auprès de l’usager.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultive lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#10;L’élément 114 est &gt; ou = à l’élément 106.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure   Longueur : 14  "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure de l’arrivée de la ressource ambulancière auprès de l’usager.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultive lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9; &#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#10;L’élément 114 est &gt; ou = à l’élément 106.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/heure de l'arrivée de la ressource ambulancière sur le lieu de prise en charge de l'usager</code>
+<alias>115</alias>
+<length>14</length>
+<isNullable>False</isNullable>
+<description text=" FORMAT Date / heure   Longueur : 14  Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure de l’arrivée de la ressource ambulancière sur le lieu de prise en charge de l’usager.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#10;L’élément 115 est &gt; ou = à l’élément 106.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure   Longueur : 14 "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure de l’arrivée de la ressource ambulancière sur le lieu de prise en charge de l’usager.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9; &#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#10;L’élément 115 est &gt; ou = à l’élément 106.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/heure du départ du lieu de prise en charge de l'usager</code>
+<alias>116</alias>
+<length>14</length>
+<isNullable>False</isNullable>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière quitte le lieu de prise en charge de l’usager.&#10;&#10;ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent au moment où la ressource ambulancière signale que le véhicule est en mouvement vers le lieu de destination.&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#9;&#10;L’élément 116 est &gt; que l’élément 115.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14   &#10;&#10;"/>
+<GABARIT text="AAAAMMJJHHMMSS"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière quitte le lieu de prise en charge de l’usager.&#10;&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent au moment où la ressource ambulancière signale que le véhicule est en mouvement vers le lieu de destination.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9; &#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#9;&#10;L’élément 116 est &gt; que l’élément 115.&#10;&#10;"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>MUNICIPALITÉ-(PRISE EN CHARGE)</code>
+<baseConcept>MUNICIPALITÉ</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>LIEU-(PRISE EN CHARGE)</code>
+<baseConcept>LIEU</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>1</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>LIEU</code>
+<properties>
+<property>
+<code>Code du lieu </code>
+<alias>401, 402</alias>
+<length>8</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text="ÉLÉMENT 401 CODE DU LIEU DE DESTINATION&#10;&#10; FORMAT Alphanumérique Longueur : 8&#10;&#10; DÉFINITION Champ permettant d’indiquer le code de l’installation sociosanitaire, de l’établissement carcéral, de l’aéroport ou du lieu hors Québec / hors Canada identifié comme lieu de destination.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION &#9;Cette information est obligatoire.&#10;&#10; PRÉCISION&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Doit correspondre au code de lieu de destination.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10; &#10; SOURCES DE DONNÉES EXTERNES Référentiel ministériel M34, RODIS, liste d’institutions carcérales, liste des aéroports.&#10;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#9;&#10;Liste des valeurs permises :&#10;Cette information est chargée dans les RAO des CCS.&#10;&#10;&#10;&#10;ÉLÉMENT 402 CODE DU LIEU DE PRISE EN CHARGE DE L'USAGER&#10;&#10; FORMAT Alphanumérique Longueur : 8&#10;&#10; DÉFINITION Champ permettant d’indiquer le code de l’installation sociosanitaire, de l’établissement carcéral, de l’aéroport, ou du lieu hors Québec identifié comme lieu de prise en charge de l’usager.&#10;&#10; ÉTAPE&#9;Première étape &#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Référentiel ministériel M34, RODIS, liste d’institutions carcérales, liste des aéroports.&#10;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#9;&#10;Liste des valeurs permises :&#10;&#10;Cette information est chargée dans les RAO des CCS.&#10;&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 8&#10;&#10;"/>
+<DEFINITION text="ÉLÉMENT 401 CODE DU LIEU DE DESTINATION&#10;&#10;Champ permettant d’indiquer le code de l’installation sociosanitaire, de l’établissement carcéral, de l’aéroport ou du lieu hors Québec / hors Canada identifié comme lieu de destination.&#10;&#10;ÉLÉMENT 402 CODE DU LIEU DE PRISE EN CHARGE DE L'USAGER&#10;&#10;Champ permettant d’indiquer le code de l’installation sociosanitaire, de l’établissement carcéral, de l’aéroport, ou du lieu hors Québec identifié comme lieu de prise en charge de l’usager.&#10;"/>
+<DESCRIPTIONCN text="ÉLÉMENT 401 CODE DU LIEU DE DESTINATION&#10;&#10;Cette information est obligatoire.&#10;&#10;ÉLÉMENT 402 CODE DU LIEU DE PRISE EN CHARGE DE L'USAGER&#10;&#10;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10; &#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Référentiel ministériel M34, RODIS, liste d’institutions carcérales, liste des aéroports.&#10;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<VALIDATIONSINTERELEMENTS text="ÉLÉMENT 401 CODE DU LIEU DE DESTINATION&#10;&#10;Validation interéléments&#10;Doit correspondre au code de lieu de destination.&#10;&#10;&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;Cette information est chargée dans les RAO des CCS."/>
+</udps>
+</property>
+<property>
+<code>Type de lieu </code>
+<alias>216, 217</alias>
+<length>3</length>
+<isNullable>False</isNullable>
+<description text="ÉLÉMENT 216 TYPE DE LIEU DE DESTINATION&#10;&#10; FORMAT Alphanumérique Longueur : 3&#10;&#10; DÉFINITION Code identifiant le type de lieu où l’usager est transporté, soit un établissement sociosanitaire, un établissement carcéral, un aéroport, ou une résidence privée.&#10;&#10; ÉTAPE Première étape &#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION &#9;&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation inter éléments&#10;Validation du type de lieu de destination en fonction du code du lieu de destination.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR&#9;&#10;&#10; SOURCES DE DONNÉES EXTERNES &#9;Référentiel RODIS, liste des établissements carcéraux et liste des aéroports.&#10;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;&#10;Liste des valeurs permises &#10;25&#9;Établissement carcéral&#10;50&#9;Lieu d’un transfert aérien&#10;100&#9;Établissement sociosanitaire&#10;110&#9;Autre&#10;&#10;&#10;ÉLÉMENT 217 TYPE DE LIEU DE PRISE EN CHARGE DE L'USAGER&#10;&#10; FORMAT Alphanumérique Longueur : 3&#10;&#10; DÉFINITION Code identifiant le type d’endroit où l’usager est pris en charge, soit un établissement sociosanitaire, un établissement carcéral, un aéroport, une résidence privée, un cabinet privé de médecin, un lieu public, le lieu d’un accident de la route ou le lieu d’un accident de travail.&#10;&#10; ÉTAPE Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire. &#10;&#10; PRÉCISION &#9;&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation inter éléments&#10;Validation du type de lieu de destination en fonction du code du lieu de prise en charge.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR&#9;&#10;&#10; SOURCES DE DONNÉES EXTERNES&#9;Référentiel RODIS, liste des établissements carcéraux et liste des aéroports.&#10;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;Liste des valeurs permises &#10;&#10;25&#9;Établissement carcéral&#10;50&#9;Lieu d’un transfert aérien&#10;100&#9;Établissement sociosanitaire&#10;110&#9;Autre&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 3&#10;&#10;"/>
+<DEFINITION text="ÉLÉMENT 216 TYPE DE LIEU DE DESTINATION&#10;&#10;Code identifiant le type de lieu où l’usager est transporté, soit un établissement sociosanitaire, un établissement carcéral, un aéroport, ou une résidence privée.&#10;&#10;ÉLÉMENT 217 TYPE DE LIEU DE PRISE EN CHARGE DE L'USAGER&#10;&#10;Code identifiant le type d’endroit où l’usager est pris en charge, soit un établissement sociosanitaire, un établissement carcéral, un aéroport, une résidence privée, un cabinet privé de médecin, un lieu public, le lieu d’un accident de la route ou le lieu d’un accident de travail."/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;&#9;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Référentiel RODIS, liste des établissements carcéraux et liste des aéroports.&#10;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<VALIDATIONSINTERELEMENTS text="ÉLÉMENT 216 TYPE DE LIEU DE DESTINATION&#10;&#10;Validation inter éléments&#10;Validation du type de lieu de destination en fonction du code du lieu de destination.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;ÉLÉMENT 217 TYPE DE LIEU DE PRISE EN CHARGE DE L'USAGER&#10;&#10;Validation du type de lieu de destination en fonction du code du lieu de prise en charge.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises &#10;25&#9;Établissement carcéral&#10;50&#9;Lieu d’un transfert aérien&#10;100&#9;Établissement sociosanitaire&#10;110&#9;Autre"/>
+</udps>
+</property>
+<property>
+<code>Géoréférentiel latitude </code>
+<alias>201, 202</alias>
+<length>9</length>
+<description text="ÉLÉMENT 201 GÉORÉFÉRENTIEL LATITUDE DE DESTINATION&#10;&#10; FORMAT Alphanumérique Longueur : 9&#10;&#10; DÉFINITION Champ permettant d’identifier la latitude des points géoréférencés du lieu de destination de l’usager.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#9;&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10; REQUIS PAR&#9;&#10;&#10; SOURCES DE DONNÉES EXTERNES&#9;&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;&#10;&#10;ÉLÉMENT 202 GÉORÉFÉRENTIEL LATITUDE DE PRISE EN CHARGE DE L'USAGER&#10;&#10; FORMAT Alphanumérique&#9; Longueur : 9&#10;&#10; DÉFINITION Champ permettant d’identifier la latitude des points géoréférencés du lieu de prise en charge de l’usager.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#9;&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10; REQUIS PAR&#9;&#10;&#10; SOURCES DE DONNÉES EXTERNES &#10;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 9&#10;&#10;"/>
+<DEFINITION text="ÉLÉMENT 201 GÉORÉFÉRENTIEL LATITUDE DE DESTINATION&#10;&#10;Champ permettant d’identifier la latitude des points géoréférencés du lieu de destination de l’usager.&#10;&#10;&#10;&#10;ÉLÉMENT 202 GÉORÉFÉRENTIEL LATITUDE DE PRISE EN CHARGE DE L'USAGER&#10;&#10;Champ permettant d’identifier la latitude des points géoréférencés du lieu de prise en charge de l’usager.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;&#9; &#10;&#10;&#10;&#9;"/>
+<DOMAINEDEVALEURS text="Cette information est transmise à la banque commune de données."/>
+</udps>
+</property>
+<property>
+<code>Géoréférentiel longitude </code>
+<alias>203, 204</alias>
+<length>9</length>
+<description text="ÉLÉMENT 203 GÉORÉFÉRENTIEL LONGITUDE DE DESTINATION&#10;&#10; FORMAT Alphanumérique Longueur : 9&#10;&#10; DÉFINITION Champ permettant d’identifier la longitude des points géoréférencés du lieu de destination de l’usager.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#9;&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10; REQUIS PAR&#9;&#10;&#10; SOURCES DE DONNÉES EXTERNES&#9;&#10;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;&#10;&#10;ÉLÉMENT 204 GÉORÉFÉRENTIEL LONGITUDE DE PRISE EN CHARGE DE L'USAGER&#10;&#10; FORMAT Alphanumérique Longueur : 9&#10;&#10; DÉFINITION Champ permettant d’identifier la longitude des points géoréférencés du lieu de prise en charge de l’usager.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#9;&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10; REQUIS PAR&#9;&#10;&#10; SOURCES DE DONNÉES EXTERNES &#10;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 9&#10;&#10;"/>
+<DEFINITION text="ÉLÉMENT 203 GÉORÉFÉRENTIEL LONGITUDE DE DESTINATION&#10;&#10;Champ permettant d’identifier la longitude des points géoréférencés du lieu de destination de l’usager.&#10;&#10;&#10;ÉLÉMENT 204 GÉORÉFÉRENTIEL LONGITUDE DE PRISE EN CHARGE DE L'USAGER&#10;&#10;Champ permettant d’identifier la longitude des points géoréférencés du lieu de prise en charge de l’usager.&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;&#9;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données."/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>INSTALLATION-LIEU</code>
+<baseConcept>INSTALLATION</baseConcept>
+<baseMin>1</baseMin>
+<baseMax>N</baseMax>
+<refMin>0</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>AUTRES ORGANISMES-LIEU</code>
+<baseConcept>AUTRES ORGANISMES</baseConcept>
+<baseMin>1</baseMin>
+<baseMax>N</baseMax>
+<refMin>0</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>CCS</code>
+<properties>
+<property>
+<code>Numéro CCS</code>
+<alias>314</alias>
+<length>2</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur : 2&#10;&#10; DÉFINITION Champ permettant d’indiquer le numéro d’identification du centre de communication santé ayant traité l’appel.&#10;&#10; DESCRIPTION &#9;Cette information est obligatoire.&#10;&#10; PRÉCISION La valeur de cet élément est générée par le mécanisme d'extraction du CCS pour toutes les lignes d'enregistrement transmises à SIGSPU.&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES&#9;Carte d’appel des RAO.&#10;&#9;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de &#9;données.&#10;&#10; VALEURS PERMISES&#9;&#10;&#10;00&#9;Urgences-santé&#10;01&#9;Centre d’appel d’urgence des régions de l’Est du Québec (CAUREQ)&#10;02&#9;Centre de communication santé Chaudière-Appalaches (division CAUCA)&#10;03&#9;Centre de communication santé des Capitales&#10;04&#9;Centre de communication santé de la Mauricie et du Centre-du-Québec&#10;05&#9;Centre de communication santé de l’Estrie&#10;06&#9;Groupe Alerte Santé inc.&#10;07&#9;Centre de communication santé de l’Outaouais&#10;08&#9;Centre de communication santé de l’Abitibi-Témiscamingue&#10;09&#9;Centre de communication santé Laurentides – Lanaudière&#10;&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 2&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le numéro d’identification du centre de communication santé ayant traité l’appel.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="La valeur de cet élément est générée par le mécanisme d'extraction du CCS pour toutes les lignes d'enregistrement transmises à SIGSPU.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de &#9;données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="00&#9;Urgences-santé&#10;01&#9;Centre d’appel d’urgence des régions de l’Est du Québec (CAUREQ)&#10;02&#9;Centre de communication santé Chaudière-Appalaches (division CAUCA)&#10;03&#9;Centre de communication santé des Capitales&#10;04&#9;Centre de communication santé de la Mauricie et du Centre-du-Québec&#10;05&#9;Centre de communication santé de l’Estrie&#10;06&#9;Groupe Alerte Santé inc.&#10;07&#9;Centre de communication santé de l’Outaouais&#10;08&#9;Centre de communication santé de l’Abitibi-Témiscamingue&#10;09&#9;Centre de communication santé Laurentides – Lanaudière&#10;"/>
+</udps>
+</property>
+<property>
+<code>Indicateur CCS en mode production ou en relève</code>
+<alias>205</alias>
+<length>1</length>
+<description text=" FORMAT Alphanumérique Longueur : 1&#10;&#10; DÉFINITION Champ permettant de préciser si les données transmises à la banque de données commune de SIGSPU proviennent d’un CCS en production normale ou d’un CCS de relève.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Ce champ est facultatif lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#9;&#10; PRÉCISION Cet élément précise s’il s’agit d’un CCS de relève ou d’un CCS en production normale.&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;&#10;P&#9;Site en production normale&#10;R&#9;Site en relève&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 1&#10;&#10;"/>
+<DEFINITION text="Champ permettant de préciser si les données transmises à la banque de données commune de SIGSPU proviennent d’un CCS en production normale ou d’un CCS de relève.&#10;&#10;"/>
+<DESCRIPTIONCN text="Ce champ est facultatif lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#9;&#10;"/>
+<PRECISIONS text="Cet élément précise s’il s’agit d’un CCS de relève ou d’un CCS en production normale.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9; &#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;&#10;&#10;"/>
+<VALIDATIONSINTERELEMENTS text="L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="P&#9;Site en production normale&#10;R&#9;Site en relève"/>
+</udps>
+</property>
+<property>
+<code>Type CCS???</code>
+</property>
+</properties>
+<foreigns/>
+</concept>
+<concept>
+<code>MUNICIPALITÉ</code>
+<properties>
+<property>
+<code>Code municipalité </code>
+<alias>206, 207</alias>
+<length>5</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text="ÉLÉMENT 206 MUNICIPALITÉ DE DESTINATION&#10;&#10; FORMAT Alphanumérique Longueur : 5&#10;&#10; DÉFINITION Champ permettant d’identifier le code de la ville ou de la municipalité de destination de l’usager.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Le CCS transmet les codes correspondant à ceux du référentiel territorial M34 du MSSS. Ce référentiel comprend également les régions hors Québec et hors Canada.&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation inter éléments&#10;L’élément 206 doit correspondre à l’élément 218.&#10;&#10;Validation sur la valeur&#10;Le code de la municipalité doit correspondre à celui du référentiel M34.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Référentiel territorial M34.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;&#10;&#10;ÉLÉMENT 207 MUNICIPALITÉ DE PRISE EN CHARGE DE L'USAGER&#10;&#10; FORMAT Numérique Longueur : 5&#10;&#10; DÉFINITION Champ permettant d’identifier le code de la ville ou de la municipalité de prise en charge de l’usager.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Le CCS transmet les codes correspondant à ceux du référentiel territorial M34 du MSSS. Ce référentiel comprend également les régions hors Québec et hors Canada.&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation inter éléments&#10;L’élément 207 doit correspondre à l’élément 219.&#10;&#10;Validation de valeur&#10;Le code de la municipalité doit correspondre à celui du référentiel M34.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Référentiel territorial M34.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 5&#10;&#10;"/>
+<DEFINITION text="ÉLÉMENT 206 MUNICIPALITÉ DE DESTINATION&#10;&#10;Champ permettant d’identifier le code de la ville ou de la municipalité de destination de l’usager.&#10;&#10;ÉLÉMENT 207 MUNICIPALITÉ DE PRISE EN CHARGE DE L'USAGER&#10;&#10;Champ permettant d’identifier le code de la ville ou de la municipalité de prise en charge de l’usager."/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="Le CCS transmet les codes correspondant à ceux du référentiel territorial M34 du MSSS. Ce référentiel comprend également les régions hors Québec et hors Canada.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Référentiel territorial M34.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Validation inter éléments&#10;L’élément 206 doit correspondre à l’élément 218.&#10;&#10;Validation sur la valeur&#10;Le code de la municipalité doit correspondre à celui du référentiel M34.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Nom municipalité</code>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>ZONE AMBULANCIÈRE -MUNICIPALITÉ</code>
+<baseConcept>ZONE AMBULANCIÈRE </baseConcept>
+<baseMin>1</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)</code>
+<properties>
+<property>
+<code>Numéro de carte d'appel</code>
+<alias>208</alias>
+<length>14</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur : 14&#10;Gabarit&#9;CSAAAAMMJJXXXX&#10;&#10; DÉFINITION Champ permettant d’identifier le numéro de la carte d’appel du CCS. &#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Ce champ permet de relier les données relatives aux appels, aux affectations avec ou sans transport ainsi qu’aux ressources préhospitalières (services ambulanciers et premiers répondants). Le numéro de la carte d’appel se compose :&#10;&#10;• du numéro du CCS où se produit l’événement (2 positions)&#10;• de l’année de l’événement (4 positions)&#10;• du mois de l’événement (2 positions)&#10;• du jour de l’événement (2 positions)&#10;• d’un numéro séquentiel quotidien (4 positions).&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données. &#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 14&#10;"/>
+<GABARIT text="CSAAAAMMJJXXXX&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’identifier le numéro de la carte d’appel du CCS. &#10;&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="Ce champ permet de relier les données relatives aux appels, aux affectations avec ou sans transport ainsi qu’aux ressources préhospitalières (services ambulanciers et premiers répondants). Le numéro de la carte d’appel se compose :&#10;&#10;• du numéro du CCS où se produit l’événement (2 positions)&#10;• de l’année de l’événement (4 positions)&#10;• du mois de l’événement (2 positions)&#10;• du jour de l’événement (2 positions)&#10;• d’un numéro séquentiel quotidien (4 positions).&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#9; &#10;&#10;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données. "/>
+</udps>
+</property>
+<property>
+<code>Numéro de carte mère - événement avec création de cartes d'appel multiples</code>
+<alias>209</alias>
+<length>14</length>
+<description text=" FORMAT Alphanumérique Longueur : 14&#10;Gabarit&#9;CSNAAAAMMJJXXXX&#10;&#10; DÉFINITION Champ permettant de déterminer un numéro de carte d’appel identifiant un événement avec création de cartes d’appel multiples.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION L’événement se définit comme étant l’ensemble des activités entourant la gestion des ressources préhospitalières en réponse à une ou plusieurs demandes de services en lien avec le même incident. &#10;&#10;L’objectif est de rattacher l’événement nécessitant plusieurs appels ou affectations à une seule et même carte d’appel.&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel RAO.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 14&#10;"/>
+<GABARIT text="CSNAAAAMMJJXXXX&#10;&#10;"/>
+<DEFINITION text="Champ permettant de déterminer un numéro de carte d’appel identifiant un événement avec création de cartes d’appel multiples.&#10;&#10; &#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="L’événement se définit comme étant l’ensemble des activités entourant la gestion des ressources préhospitalières en réponse à une ou plusieurs demandes de services en lien avec le même incident. &#10;&#10;L’objectif est de rattacher l’événement nécessitant plusieurs appels ou affectations à une seule et même carte d’appel.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel RAO.&#10;&#9; &#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/heure de l'identification de la nature de l'appel téléphonique </code>
+<alias>103</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure   Longueur : 14  Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles le RMU définit la nature de la demande de services.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;Ces date et heure correspondent aux enregistrements de la nature de l’appel à la carte d’appel du CCS.&#10;L’expression « nature de l’appel » correspond à l’identification du déterminant de l’appel et de la priorité d’affectation.&#10;&#10; VALIDATION &#10;Validation sur la présence&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#9;&#10;L’élément 103 est &gt; que l’élément 102.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES"/>
+<udps>
+<FORMAT text="Date / heure   Longueur : 14 "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles le RMU définit la nature de la demande de services.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;Ces date et heure correspondent aux enregistrements de la nature de l’appel à la carte d’appel du CCS.&#10;L’expression « nature de l’appel » correspond à l’identification du déterminant de l’appel et de la priorité d’affectation.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9; &#10;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données."/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#9;&#10;L’élément 103 est &gt; que l’élément 102.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Déterminant ou nature de la demande</code>
+<alias>200</alias>
+<length>8</length>
+<isNullable>False</isNullable>
+<description text=" FORMAT Alphanumérique Longueur : 8&#10;&#10; DÉFINITION Champ permettant d’indiquer le déterminant ou la nature de la demande.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;&#10;Liste des valeurs permises :&#10;&#10;Les codes à utiliser sont ceux de la 1ère colonne du tableau suivant, auxquels sont rattachées les valeurs permises correspondantes.&#10; &#10;1&#9;Douleurs abdominales / Problèmes abdominaux&#10;01D01&#9;Non alerte&#10;01C01&#9;Évanouissement ou quasi-évanouissement &gt;= 50&#10;01C02&#9;Femme avec évanouissement ou quasi-évanouissement 12-50&#10;01C03&#9;Homme avec douleur au-dessus du nombril &gt;= 35&#10;01C04&#9;Femme avec douleur au-dessus du nombril &gt;= 45&#10;01A01&#9;Douleur abdominale&#10;2&#9;Allergies (Réactions) / Empoisonnements (Piqûres, Morsures)&#10;02E01&#9;Respiration inefficace *(sélectionné uniquement lors du Protocole d'entrée)&#10;02D01&#9;Détresse respiratoire grave&#10;02D02&#9;Non alerte&#10;02D03&#9;Aggravation de l'état&#10;02D04&#9;Attaque d'essaim (abeille, guêpe, frelon)&#10;02D05&#9;Morsure de serpent&#10;02C01&#9;Médicaments spécifiques ou injections utilisés&#10;02C02&#9;Difficulté à respirer ou à avaler&#10;02B01&#9;État inconnu (appelant tierce personne)&#10;02A01&#9;Pas de difficulté à respirer ou à avaler (éruption cutanée, urticaire ou démangeaison peuvent être présents)&#10;02A02&#9;Morsures d'araignée (antécédent de réaction)&#10;3&#9;Morsure / Attaque d'animaux&#10;03D01&#9;Inconscience ou arrêt&#10;03D02&#9;Non alerte&#10;03D03&#9;Région du corps dangereuse&#10;03D04&#9;Gros animal&#10;03D05&#9;Animal exotique&#10;03D06&#9;Attaque ou animaux multiples&#10;03B01&#9;Région du corps possiblement dangereuse&#10;03B02&#9;Hémorragie grave&#10;03B03&#9;État inconnu (appelant tierce personne)&#10;03A01&#9;Région du corps non dangereuse&#10;03A02&#9;Blessures non récentes (&gt;= 6 hres)&#10;03A03&#9;Morsures superficielles&#10;4&#9;Agression / Agression sexuelle&#10;04D01&#9;Inconscience ou arrêt&#10;04D02&#9;Non alerte&#10;04D03&#9;Respiration anormale&#10;04D04&#9;Région du corps dangereuse&#10;04D05&#9;Victimes multiples&#10;04B01&#9;Région du corps possiblement dangereuse&#10;04B02&#9;Hémorragie grave&#10;04B03&#9;État inconnu (appelant tierce personne)&#10;04A01&#9;Région du corps non dangereuse&#10;04A02&#9;Blessures non récentes (&gt;= 6 hres)&#10;4&#9;Agression / Agression sexuelle&#10;04D01&#9;Inconscience ou arrêt&#10;04D02&#9;Non alerte&#10;04D03&#9;Respiration anormale&#10;04D04&#9;Région du corps dangereuse&#10;04D05&#9;Victimes multiples&#10;04B01&#9;Région du corps possiblement dangereuse&#10;04B02&#9;Hémorragie grave&#10;04B03&#9;État inconnu (appelant tierce personne)&#10;04A01&#9;Région du corps non dangereuse&#10;04A02&#9;Blessures non récentes (&gt;= 6 hres)&#10;5&#9;Douleur au dos (non traumatique ou trauma non récent)&#10;05D01&#9;Non alerte&#10;05C01&#9;Évanouissement ou quasi-évanouissement &gt;= 50 &#10;05A01&#9;Mal de dos non traumatique&#10;05A02&#9;Mal de dos traumatique non récent (&gt;= 6hres)&#10;6&#9;Problèmes respiratoires&#10;06E01&#9;Respiration inefficace *(sélectionné uniquement lors du Protocole d'entrée)&#10;06D01&#9;Détresse respiratoire grave&#10;06D02&#9;Non alerte&#10;06D03&#9;Peau moite&#10;06C01&#9;Respiration anormale&#10;06C02&#9;Antécédents cardiaques&#10;7&#9;Brûlures / Explosion&#10;07D01&#9;Victimes multiples&#10;07D02&#9;Inconscience ou arrêt&#10;07D03&#9;Détresse respiratoire grave&#10;07D04&#9;Non alerte&#10;07C01&#9;Feu de bâtiment avec indication de personnes à l'intérieur&#10;07C02&#9;Respiration difficile&#10;07C03&#9;Brûlures &gt;= 18% région du corps&#10;07B01&#9;État inconnu (appelant tierce personne)&#10;07A01&#9;Brûlures &lt; 18% région du corps&#10;07A02&#9;Alarme d'incendie (situation inconnue)&#10;07A03&#9;Coup de soleil ou brûlures mineures (&lt;= grandeur de la main)&#10;8&#9;Monoxyde de carbone / Inhalation / Produits dangereux&#10;08D01&#9;Inconscience ou arrêt&#10;08D02&#9;Détresse respiratoire grave&#10;08D03&#9;Produits dangereux&#10;08D04&#9;Non alerte&#10;08D05&#9;Victimes multiples&#10;08D06&#9;État inconnu (appelant tierce personne)&#10;08C01&#9;Alerte avec difficulté à respirer&#10;08B01&#9;Alerte sans difficulté à respirer&#10;08A01&#9;Alarme de détecteur de monoxyde de carbone (sans symptôme prioritaire)&#10;9&#9;Arrêt cardiaque ou respiratoire / Décès&#10;09E01&#9;Ne respire pas du tout&#10;09E02&#9;Respiration incertaine (agonale)&#10;09E03&#9;Pendaison&#10;09E04&#9;Strangulation&#10;09E05&#9;Suffocation&#10;09E06&#9;Sous l'eau&#10;09D01&#9;Respiration inefficace (trouvé lors des questions clé uniquement) *(sélectionné uniquement lorsque référé par un autre protocole)&#10;09B01&#9;Mort évidente (hors de tout doute)&#10;09O01&#9;Mort attendue (hors de tout doute)&#10;10&#9;Douleur thoracique&#10;10D01&#9;Détresse respiratoire grave&#10;10D02&#9;Non alerte&#10;10D03&#9;Peau moite&#10;10C01&#9;Respiration anormale&#10;10C02&#9;Antécédents cardiaques&#10;10C03&#9;Cocaïne&#10;10C04&#9;Respiration normale &gt;= 35 &#10;10A01&#9;Respiration normale &lt; 35 ans&#10;11&#9;Étouffement&#10;11E01&#9;Étouffement vérifié/respiration inefficace * (sélectionné uniquement lors du protocole d'entrée)&#10;11D01&#9;Non alerte&#10;11D02&#9;Respiration anormale (obstruction partielle)&#10;11A01&#9;N'est pas étouffé maintenant (peut parler ou pleurer, est alerte et respire normalement)&#10;12&#9;Convulsions&#10;12D01&#9;Ne respire pas (après l'interrogation clé)&#10;12D02&#9;Convulsions continues ou multiples&#10;12D03&#9;Respiration irrégulière&#10;12D04&#9;Respire régulièrement non vérifié &gt;= 35 ans&#10;12C01&#9;Grossesse&#10;12C02&#9;Diabète&#10;12C03&#9;Antécédents cardiaques&#10;12B01&#9;Respire régulièrement non vérifié &lt; 35 ans&#10;12A01&#9;Ne convulse pas maintenant et respire régulièrement (vérifié)&#10;13&#9;Problèmes diabétiques&#10;13D01&#9;Inconscient&#10;13C01&#9;Non alerte&#10;13C02&#9;Comportement anormal&#10;13C03&#9;Respiration anormale&#10;13A01&#9;Alerte&#10;14&#9;Noyade (Quasi) / Accident de plongeon / Plongée sous-marine (Scuba)&#10;14D01&#9;Inconscient&#10;14D02&#9;Non alerte&#10;14D03&#9;Plongeon ou blessure au cou soupçonnée&#10;14D04&#9;Accident de plongée sous-marine (SCUBA)&#10;14C01&#9;Alerte mais respiration anormale&#10;14B01&#9;Alerte et respiration normale (blessures ou dans l'eau)&#10;14B02&#9;État inconnu (appelant tierce personne)&#10;14A01&#9;Alerte et respiration normale (sans blessure et hors de l'eau)&#10;15&#9;Électrisation / Foudre&#10;15E01&#9;NE RESPIRE PAS / RESPIRATION INEFFICACE *(Sélectionné uniquement lors du Protocole d'entrée)&#10;15D01&#9;Inconscient&#10;15D02&#9;Non isolé(e) de la source de courant&#10;15D03&#9;Courant non coupé ou danger présent&#10;15D04&#9;CHUTE de HAUT (&gt;= 6 pi/2m)&#10;15D05&#9;Non alerte&#10;15D06&#9;Respiration anormale&#10;15D07&#9;État inconnu (appelant tierce personne)&#10;15C01&#9;Alerte et respiration normale&#10;16&#9;Problèmes / Blessures aux yeux&#10;16D01&#9;Non alerte&#10;16B01&#9;Blessures SÉVÈRES aux yeux&#10;16A01&#9;Blessures MODÉRÉES aux yeux&#10;16A02&#9;Blessures MINEURES aux yeux&#10;16A03&#9;Problèmes MÉDICAUX aux yeux&#10;17&#9;Chutes &#10;17D01&#9;Région du corps DANGEREUSE&#10;17D02&#9;CHUTE de HAUT (&gt;= 6 pi/2m)&#10;17D03&#9;Inconscience ou Non alerte&#10;17D04&#9;Respiration anormale&#10;17B01&#9;Région du corps POSSIBLEMENT DANGEREUSE&#10;17B02&#9;Hémorragie GRAVE&#10;17B03&#9;État inconnu (appelant tierce personne)&#10;17A01&#9;Région du corps NON DANGEREUSE&#10;17A02&#9;Blessures non récentes (&gt;= 6 hres) (sans symptôme prioritaire)&#10;17O01&#9;ASSISTANCE PUBLIQUE (sans blessure et sans symptôme prioritaire)&#10;18&#9;Mal de tête&#10;18C01&#9;Non alerte&#10;18C02&#9;Respiration anormale&#10;18C03&#9;Problèmes d'élocution&#10;18C04&#9;Début soudain d'une douleur intense &#10;18C05&#9;Engourdissement&#10;18C06&#9;Paralysie&#10;18C07&#9;Changement de comportement (&lt;= 3 hres)&#10;18B01&#9;État inconnu (appelant tierce personne)&#10;18A01&#9;Respiration normale&#10;19&#9;Problèmes cardiaques / D.C.A.I.&#10;19D01&#9;DÉTRESSE RESPIRATOIRE GRAVE&#10;19D02&#9;Non alerte&#10;19D03&#9;Peau moite&#10;19C01&#9;Déclenchement du D.C.A.I.&#10;19C02&#9;Respiration anormale&#10;19C03&#9;Douleur thoracique &gt;=35&#10;19C04&#9;Antécédents cardiaques&#10;19C05&#9;Cocaïne&#10;19C06&#9;Rythme cardiaque &lt; 50 bpm ou &gt;= 130 bpm (sans symptôme prioritaire)&#10;19B01&#9;État inconnu (appelant tierce personne)&#10;19A01&#9;Rythme cardiaque &gt;= 50 bpm ou &lt; 130 bpm (sans symptôme prioritaire)&#10;19A02&#9;Douleur thoracique &lt; 35 (sans symptôme prioritaire)&#10;20&#9;Exposition à la chaleur / Au froid&#10;20D01&#9;Non alerte&#10;20D02&#9;Victimes multiples (avec symptômes prioritaires)&#10;20C01&#9;Antécédents cardiaques&#10;20B01&#9;Changement de couleur de la peau&#10;20B02&#9;État inconnu (appelant tierce personne)&#10;20A01&#9;Alerte et se comportant normalement&#10;21&#9;Hémorragie / Lacérations&#10;21D01&#9;Hémorragie DANGEREUSE&#10;21D02&#9;Non alerte&#10;21D03&#9;Respiration anormale&#10;21C01&#9;Hémorragie par tubes&#10;21B01&#9;Hémorragie POSSIBLEMENT DANGEREUSE&#10;21B02&#9;Hémorragie GRAVE&#10;21B03&#9;Problème de coagulation ou anticoagulants&#10;21A01&#9;Hémorragie NON DANGEREUSE &#10;21A02&#9;Hémorragie MINEURE&#10;22&#9;Incident Inaccessible / Personne coincée (Non Véhiculaire)&#10;22D01&#9;Personne coincée dans machinerie&#10;22D02&#9;Effondrement de fossé&#10;22D03&#9;Effondrement de structure&#10;22D04&#9;PERSONNE COINCÉE dans espace clos&#10;22D05&#9;Situation de terrain inaccessible&#10;22D06&#9;Glissement de terrain / Avalanche&#10;22B01&#9;N'est plus coincée (blessure inconnue)&#10;22B02&#9;Seulement partie PÉRIPHÉRIQUE COINCÉE&#10;22B03&#9;État inconnu (investigation)&#10;22A01&#9;N'est plus coincée (pas de blessure)&#10;23&#9;Overdose / Empoisonnement (Ingestion)&#10;23D01&#9;Inconscience&#10;23D02&#9;DÉTRESSE RESPIRATOIRE GRAVE&#10;23C01&#9;Violence &#10;23C02&#9;Non alerte&#10;23C03&#9;Respiration anormale&#10;23C04&#9;Antidépresseurs (tricycliques)&#10;23C05&#9;Cocaïne (ou dérivé)&#10;23C06&#9;Narcotiques (héroïne)&#10;23C07&#9;Acide ou alcali (base)&#10;23C08&#9;État inconnu (appelant tierce personne)&#10;23C09&#9;Demande d'assistance du Centre Antipoison&#10;23B01&#9;OVERDOSE (sans symptôme prioritaire)&#10;23O01&#9;EMPOISONNEMENT (sans symptôme prioritaire)&#10;24&#9;Grossesse / Accouchement / Fausse-couche&#10;24D01&#9;SIÈGE ou CORDON&#10;24D02&#9;Tête visible/sortie&#10;24D03&#9;Accouchement IMMINENT (&gt;= 5 mois/20 semaines)&#10;24D04&#9;Hémorragie du 3ième TRIMESTRE&#10;24D05&#9;Grossesse à RISQUE ÉLEVÉ&#10;24D06&#9;Bébé né&#10;24C01&#9;Hémorragie du 2ième TRIMESTRE ou FAUSSE-COUCHE&#10;24C02&#9;Hémorragie GRAVE 1er TRIMESTRE&#10;24B01&#9;Travail (accouchement non imminent, &gt;= 5 mois/20 semaines)&#10;24B02&#9;État inconnu (appelant tierce personne)&#10;24A01&#9;Hémorragie du 1er TRIMESTRE ou FAUSSE-COUCHE &#10;24O01&#9;Eaux crevées (pas de contraction)&#10;25&#9;Problème psychiatrique / De comportement / Tentative de suicide&#10;25D01&#9;Non alerte&#10;25D02&#9;Hémorragie DANGEREUSE&#10;25B01&#9;Hémorragie GRAVE&#10;25B02&#9;Hémorragie non GRAVE ou MINEURE&#10;25B03&#9;MENACE DE SUICIDE&#10;25B04&#9;Menace de sauter&#10;25B05&#9;Quasi-pendaison, strangulation ou suffocation (alerte)&#10;25B06&#9;État inconnu (appelant tierce personne)&#10;25A01&#9;Non suicidaire et alerte&#10;25A02&#9;Suicidaire (non menaçant) et alerte&#10;26&#9;Personne Malade (Diagnostic spécifique)&#10;26D01&#9;Non alerte&#10;26C01&#9;Antécédents cardiaques (problèmes NON PRIORITAIRES 2-28 non identifiés)&#10;26B01&#9;État inconnu (appelant tierce personne)&#10;26A01&#9;Pas de symptôme prioritaire (problèmes NON PRIORITAIRES 2-28 non identifiés)&#10;26A02-28&#9;Problèmes NON PRIORITAIRES&#10;27&#9;Arme blanche / Arme à feu / Trauma pénétrant&#10;27D01&#9;Inconscience ou arrêt&#10;27D02&#9;Non alerte&#10;27D03&#9;Blessures CENTRALES&#10;27D04&#9;Blessures multiples&#10;27D05&#9;Victimes multiples&#10;27B01&#9;Blessure CENTRALE unique NON RÉCENTE (&gt;=6hres)&#10;27B02&#9;Blessure PÉRIPHÉRIQUE unique connue&#10;27B03&#9;Hémorragie GRAVE&#10;27B04&#9;État inconnu (appelant tierce personne)&#10;27B05&#9;MORT ÉVIDENTE (blessure explosive à la tête par arme à feu)&#10;27A01&#9;Blessures PÉRIPHÉRIQUES NON RÉCENTES (&gt;=6hres)&#10;28&#9;Accident vasculaire cérébral (AVC) / Paralysie&#10;28C01&#9;Non alerte&#10;28C02&#9;Respiration anormale&#10;28C03&#9;Problèmes d'élocution ou de motricité&#10;28C04&#9;Engourdissement ou picotement&#10;28C05&#9;Problème de vision&#10;28C06&#9;Début SOUDAIN de mal de tête intense&#10;28C07&#9;Antécédents d'AVC&#10;28C08&#9;Respiration normale &gt;= 35 &#10;28B01&#9;État inconnu (appelant tierce personne)&#10;28A01&#9;Respiration normale &lt; 35&#10;29&#9;Accidents de la route /Transport&#10;29D01-a&#9;INCIDENT MAJEUR - aéronef&#10;29D01-b&#9;INCIDENT MAJEUR - autobus&#10;29D01-c&#9;INCIDENT MAJEUR - métro&#10;29D01-d&#9;INCIDENT MAJEUR – train&#10;29D01-e&#9;INCIDENT MAJEUR - bateau&#10;29D02-a&#9;IMPACT HAUTE VÉLOCITÉ - véhicule tout terrain&#10;29D02-b&#9;IMPACT HAUTE VÉLOCITÉ - auto-vélo/moto&#10;29D02-c&#9;IMPACT HAUTE VÉLOCITÉ - auto-piéton&#10;29D02-d&#9;IMPACT HAUTE VÉLOCITÉ - éjection&#10;29D02-e&#9;IMPACT HAUTE VÉLOCITÉ - moto marine&#10;29D02-f&#9;IMPACT HAUTE VÉLOCITÉ - capotage&#10;29D02-g&#9;IMPACT HAUTE VÉLOCITÉ - véhicule tombé d'un pont/de haut&#10;29D03&#9;PRODUITS DANGEREUX&#10;29D04&#9;Victime coincée&#10;29D05&#9;Non alerte&#10;29B01&#9;Blessures&#10;29B02&#9;Victimes multiples (une unité d'intervention)&#10;29B03&#9;Victimes multiples (unité d'intervention supplémentaire)&#10;29B04&#9;Hémorragie GRAVE&#10;29B05&#9;Autres dangers&#10;29B06&#9;État inconnu (appelant tierce personne)&#10;29A01&#9;Appelant/patient avec blessure région du corps NON DANGEREUSE&#10;29O01&#9;Pas de blessure&#10;30&#9;Blessures traumatiques (spécifiques)&#10;30D01&#9;Région du corps DANGEREUSE&#10;30D02&#9;Inconscience ou Non alerte&#10;30D03&#9;Respiration anormale&#10;30B01&#9;Région du corps POSSIBLEMENT DANGEREUSE&#10;30B02&#9;Hémorragie GRAVE&#10;30A01&#9;Région du corps NON DANGEREUSE&#10;30A02&#9;Blessures NON RÉCENTES (&gt;= 6 hres)&#10;31&#9;Inconscience / Évanouissement (Quasi)&#10;31E01&#9;RESPIRATION INEFFICACE *(sélectionné uniquement lors du protocole d'entrée)&#10;31D01&#9;Inconscience (à la fin de l'interrogation)&#10;31D02&#9;DÉTRESSE RESPIRATOIRE GRAVE&#10;31D03&#9;Non alerte&#10;31C01&#9;Alerte mais respiration anormale&#10;31C02&#9;Antécédents cardiaques&#10;31C03&#9;Épisodes d'évanouissement multiples&#10;31C04&#9;Épisodes d'évanouissement (ou quasi) unique et alerte &gt;= 35 &#10;31C05&#9;Femme 12-50 avec douleur abdominales&#10;31A01&#9;Épisode d'évanouissement (ou quasi) unique et alerte &lt; 35&#10;32&#9;Problème inconnu (Personne gisante)&#10;32D01&#9;SURVIE INCERTAINE&#10;32B01&#9;Debout, assis(e), bougeant ou parlant&#10;32B02&#9;Renseignements de système d'alarme&#10;32B03&#9;État inconnu (appelant tierce personne)&#10;33&#9;Transfert / Interétablissements / Soins palliatifs&#10;33D01&#9;Arrêt cardiaque ou respiratoire soupçonné&#10;33C01&#9;Non alerte (changement soudain)&#10;33C02&#9;Respiration anormale (apparition soudaine)&#10;33C03&#9;Hémorragie ou choc important&#10;33C04&#9;Problèmes cardiaques aigus ou infarctus possibles&#10;33C05&#9;Douleur soudaine sévère&#10;33C06&#9;Intervention d'urgence demandée&#10;33A01&#9;TYPE I (sans symptôme prioritaire)&#10;33A02&#9;TYPE II (sans symptôme prioritaire)&#10;33A03&#9;TYPE III (sans symptôme prioritaire)&#10;TIEins&#9;TIE instable IAMEST&#10;TIEins&#9;TIE instable &#10;TIEstab&#9;TIE patient stable transfert rapide&#10;TIEstab&#9;TIE patient stable patient avec rendez-vous&#10;TIEprivé&#9;TIE patient privé stable attendu&#10;TIENU&#9;TIE patient stable non urgent&#10;340&#9;Disponibilité spéciale (incendie)&#10;341&#9;CBRN&#10;342&#9;Support&#10;350 &#9;Disponibilité spéciale (police)&#10;351&#9;REHAB (monitoring des signes vitaux)&#10;352&#9;Appel à la bombe&#10;353 &#9;Homme barricadé&#10;354&#9;Prise d’otage&#10;355&#9;GIMT (groupe d’intervention médicale tactique)&#10;360&#9;Événement spécial planifié&#10;370&#9;Autre&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 8&#10;&#10;&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le déterminant ou la nature de la demande.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;&#10;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données."/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;&#10;Les codes à utiliser sont ceux de la 1ère colonne du tableau suivant, auxquels sont rattachées les valeurs permises correspondantes.&#10; &#10;1&#9;Douleurs abdominales / Problèmes abdominaux&#10;01D01&#9;Non alerte&#10;01C01&#9;Évanouissement ou quasi-évanouissement &gt;= 50&#10;01C02&#9;Femme avec évanouissement ou quasi-évanouissement 12-50&#10;01C03&#9;Homme avec douleur au-dessus du nombril &gt;= 35&#10;01C04&#9;Femme avec douleur au-dessus du nombril &gt;= 45&#10;01A01&#9;Douleur abdominale&#10;2&#9;Allergies (Réactions) / Empoisonnements (Piqûres, Morsures)&#10;02E01&#9;Respiration inefficace *(sélectionné uniquement lors du Protocole d'entrée)&#10;02D01&#9;Détresse respiratoire grave&#10;02D02&#9;Non alerte&#10;02D03&#9;Aggravation de l'état&#10;02D04&#9;Attaque d'essaim (abeille, guêpe, frelon)&#10;02D05&#9;Morsure de serpent&#10;02C01&#9;Médicaments spécifiques ou injections utilisés&#10;02C02&#9;Difficulté à respirer ou à avaler&#10;02B01&#9;État inconnu (appelant tierce personne)&#10;02A01&#9;Pas de difficulté à respirer ou à avaler (éruption cutanée, urticaire ou démangeaison peuvent être présents)&#10;02A02&#9;Morsures d'araignée (antécédent de réaction)&#10;3&#9;Morsure / Attaque d'animaux&#10;03D01&#9;Inconscience ou arrêt&#10;03D02&#9;Non alerte&#10;03D03&#9;Région du corps dangereuse&#10;03D04&#9;Gros animal&#10;03D05&#9;Animal exotique&#10;03D06&#9;Attaque ou animaux multiples&#10;03B01&#9;Région du corps possiblement dangereuse&#10;03B02&#9;Hémorragie grave&#10;03B03&#9;État inconnu (appelant tierce personne)&#10;03A01&#9;Région du corps non dangereuse&#10;03A02&#9;Blessures non récentes (&gt;= 6 hres)&#10;03A03&#9;Morsures superficielles&#10;4&#9;Agression / Agression sexuelle&#10;04D01&#9;Inconscience ou arrêt&#10;04D02&#9;Non alerte&#10;04D03&#9;Respiration anormale&#10;04D04&#9;Région du corps dangereuse&#10;04D05&#9;Victimes multiples&#10;04B01&#9;Région du corps possiblement dangereuse&#10;04B02&#9;Hémorragie grave&#10;04B03&#9;État inconnu (appelant tierce personne)&#10;04A01&#9;Région du corps non dangereuse&#10;04A02&#9;Blessures non récentes (&gt;= 6 hres)&#10;4&#9;Agression / Agression sexuelle&#10;04D01&#9;Inconscience ou arrêt&#10;04D02&#9;Non alerte&#10;04D03&#9;Respiration anormale&#10;04D04&#9;Région du corps dangereuse&#10;04D05&#9;Victimes multiples&#10;04B01&#9;Région du corps possiblement dangereuse&#10;04B02&#9;Hémorragie grave&#10;04B03&#9;État inconnu (appelant tierce personne)&#10;04A01&#9;Région du corps non dangereuse&#10;04A02&#9;Blessures non récentes (&gt;= 6 hres)&#10;5&#9;Douleur au dos (non traumatique ou trauma non récent)&#10;05D01&#9;Non alerte&#10;05C01&#9;Évanouissement ou quasi-évanouissement &gt;= 50 &#10;05A01&#9;Mal de dos non traumatique&#10;05A02&#9;Mal de dos traumatique non récent (&gt;= 6hres)&#10;6&#9;Problèmes respiratoires&#10;06E01&#9;Respiration inefficace *(sélectionné uniquement lors du Protocole d'entrée)&#10;06D01&#9;Détresse respiratoire grave&#10;06D02&#9;Non alerte&#10;06D03&#9;Peau moite&#10;06C01&#9;Respiration anormale&#10;06C02&#9;Antécédents cardiaques&#10;7&#9;Brûlures / Explosion&#10;07D01&#9;Victimes multiples&#10;07D02&#9;Inconscience ou arrêt&#10;07D03&#9;Détresse respiratoire grave&#10;07D04&#9;Non alerte&#10;07C01&#9;Feu de bâtiment avec indication de personnes à l'intérieur&#10;07C02&#9;Respiration difficile&#10;07C03&#9;Brûlures &gt;= 18% région du corps&#10;07B01&#9;État inconnu (appelant tierce personne)&#10;07A01&#9;Brûlures &lt; 18% région du corps&#10;07A02&#9;Alarme d'incendie (situation inconnue)&#10;07A03&#9;Coup de soleil ou brûlures mineures (&lt;= grandeur de la main)&#10;8&#9;Monoxyde de carbone / Inhalation / Produits dangereux&#10;08D01&#9;Inconscience ou arrêt&#10;08D02&#9;Détresse respiratoire grave&#10;08D03&#9;Produits dangereux&#10;08D04&#9;Non alerte&#10;08D05&#9;Victimes multiples&#10;08D06&#9;État inconnu (appelant tierce personne)&#10;08C01&#9;Alerte avec difficulté à respirer&#10;08B01&#9;Alerte sans difficulté à respirer&#10;08A01&#9;Alarme de détecteur de monoxyde de carbone (sans symptôme prioritaire)&#10;9&#9;Arrêt cardiaque ou respiratoire / Décès&#10;09E01&#9;Ne respire pas du tout&#10;09E02&#9;Respiration incertaine (agonale)&#10;09E03&#9;Pendaison&#10;09E04&#9;Strangulation&#10;09E05&#9;Suffocation&#10;09E06&#9;Sous l'eau&#10;09D01&#9;Respiration inefficace (trouvé lors des questions clé uniquement) *(sélectionné uniquement lorsque référé par un autre protocole)&#10;09B01&#9;Mort évidente (hors de tout doute)&#10;09O01&#9;Mort attendue (hors de tout doute)&#10;10&#9;Douleur thoracique&#10;10D01&#9;Détresse respiratoire grave&#10;10D02&#9;Non alerte&#10;10D03&#9;Peau moite&#10;10C01&#9;Respiration anormale&#10;10C02&#9;Antécédents cardiaques&#10;10C03&#9;Cocaïne&#10;10C04&#9;Respiration normale &gt;= 35 &#10;10A01&#9;Respiration normale &lt; 35 ans&#10;11&#9;Étouffement&#10;11E01&#9;Étouffement vérifié/respiration inefficace * (sélectionné uniquement lors du protocole d'entrée)&#10;11D01&#9;Non alerte&#10;11D02&#9;Respiration anormale (obstruction partielle)&#10;11A01&#9;N'est pas étouffé maintenant (peut parler ou pleurer, est alerte et respire normalement)&#10;12&#9;Convulsions&#10;12D01&#9;Ne respire pas (après l'interrogation clé)&#10;12D02&#9;Convulsions continues ou multiples&#10;12D03&#9;Respiration irrégulière&#10;12D04&#9;Respire régulièrement non vérifié &gt;= 35 ans&#10;12C01&#9;Grossesse&#10;12C02&#9;Diabète&#10;12C03&#9;Antécédents cardiaques&#10;12B01&#9;Respire régulièrement non vérifié &lt; 35 ans&#10;12A01&#9;Ne convulse pas maintenant et respire régulièrement (vérifié)&#10;13&#9;Problèmes diabétiques&#10;13D01&#9;Inconscient&#10;13C01&#9;Non alerte&#10;13C02&#9;Comportement anormal&#10;13C03&#9;Respiration anormale&#10;13A01&#9;Alerte&#10;14&#9;Noyade (Quasi) / Accident de plongeon / Plongée sous-marine (Scuba)&#10;14D01&#9;Inconscient&#10;14D02&#9;Non alerte&#10;14D03&#9;Plongeon ou blessure au cou soupçonnée&#10;14D04&#9;Accident de plongée sous-marine (SCUBA)&#10;14C01&#9;Alerte mais respiration anormale&#10;14B01&#9;Alerte et respiration normale (blessures ou dans l'eau)&#10;14B02&#9;État inconnu (appelant tierce personne)&#10;14A01&#9;Alerte et respiration normale (sans blessure et hors de l'eau)&#10;15&#9;Électrisation / Foudre&#10;15E01&#9;NE RESPIRE PAS / RESPIRATION INEFFICACE *(Sélectionné uniquement lors du Protocole d'entrée)&#10;15D01&#9;Inconscient&#10;15D02&#9;Non isolé(e) de la source de courant&#10;15D03&#9;Courant non coupé ou danger présent&#10;15D04&#9;CHUTE de HAUT (&gt;= 6 pi/2m)&#10;15D05&#9;Non alerte&#10;15D06&#9;Respiration anormale&#10;15D07&#9;État inconnu (appelant tierce personne)&#10;15C01&#9;Alerte et respiration normale&#10;16&#9;Problèmes / Blessures aux yeux&#10;16D01&#9;Non alerte&#10;16B01&#9;Blessures SÉVÈRES aux yeux&#10;16A01&#9;Blessures MODÉRÉES aux yeux&#10;16A02&#9;Blessures MINEURES aux yeux&#10;16A03&#9;Problèmes MÉDICAUX aux yeux&#10;17&#9;Chutes &#10;17D01&#9;Région du corps DANGEREUSE&#10;17D02&#9;CHUTE de HAUT (&gt;= 6 pi/2m)&#10;17D03&#9;Inconscience ou Non alerte&#10;17D04&#9;Respiration anormale&#10;17B01&#9;Région du corps POSSIBLEMENT DANGEREUSE&#10;17B02&#9;Hémorragie GRAVE&#10;17B03&#9;État inconnu (appelant tierce personne)&#10;17A01&#9;Région du corps NON DANGEREUSE&#10;17A02&#9;Blessures non récentes (&gt;= 6 hres) (sans symptôme prioritaire)&#10;17O01&#9;ASSISTANCE PUBLIQUE (sans blessure et sans symptôme prioritaire)&#10;18&#9;Mal de tête&#10;18C01&#9;Non alerte&#10;18C02&#9;Respiration anormale&#10;18C03&#9;Problèmes d'élocution&#10;18C04&#9;Début soudain d'une douleur intense &#10;18C05&#9;Engourdissement&#10;18C06&#9;Paralysie&#10;18C07&#9;Changement de comportement (&lt;= 3 hres)&#10;18B01&#9;État inconnu (appelant tierce personne)&#10;18A01&#9;Respiration normale&#10;19&#9;Problèmes cardiaques / D.C.A.I.&#10;19D01&#9;DÉTRESSE RESPIRATOIRE GRAVE&#10;19D02&#9;Non alerte&#10;19D03&#9;Peau moite&#10;19C01&#9;Déclenchement du D.C.A.I.&#10;19C02&#9;Respiration anormale&#10;19C03&#9;Douleur thoracique &gt;=35&#10;19C04&#9;Antécédents cardiaques&#10;19C05&#9;Cocaïne&#10;19C06&#9;Rythme cardiaque &lt; 50 bpm ou &gt;= 130 bpm (sans symptôme prioritaire)&#10;19B01&#9;État inconnu (appelant tierce personne)&#10;19A01&#9;Rythme cardiaque &gt;= 50 bpm ou &lt; 130 bpm (sans symptôme prioritaire)&#10;19A02&#9;Douleur thoracique &lt; 35 (sans symptôme prioritaire)&#10;20&#9;Exposition à la chaleur / Au froid&#10;20D01&#9;Non alerte&#10;20D02&#9;Victimes multiples (avec symptômes prioritaires)&#10;20C01&#9;Antécédents cardiaques&#10;20B01&#9;Changement de couleur de la peau&#10;20B02&#9;État inconnu (appelant tierce personne)&#10;20A01&#9;Alerte et se comportant normalement&#10;21&#9;Hémorragie / Lacérations&#10;21D01&#9;Hémorragie DANGEREUSE&#10;21D02&#9;Non alerte&#10;21D03&#9;Respiration anormale&#10;21C01&#9;Hémorragie par tubes&#10;21B01&#9;Hémorragie POSSIBLEMENT DANGEREUSE&#10;21B02&#9;Hémorragie GRAVE&#10;21B03&#9;Problème de coagulation ou anticoagulants&#10;21A01&#9;Hémorragie NON DANGEREUSE &#10;21A02&#9;Hémorragie MINEURE&#10;22&#9;Incident Inaccessible / Personne coincée (Non Véhiculaire)&#10;22D01&#9;Personne coincée dans machinerie&#10;22D02&#9;Effondrement de fossé&#10;22D03&#9;Effondrement de structure&#10;22D04&#9;PERSONNE COINCÉE dans espace clos&#10;22D05&#9;Situation de terrain inaccessible&#10;22D06&#9;Glissement de terrain / Avalanche&#10;22B01&#9;N'est plus coincée (blessure inconnue)&#10;22B02&#9;Seulement partie PÉRIPHÉRIQUE COINCÉE&#10;22B03&#9;État inconnu (investigation)&#10;22A01&#9;N'est plus coincée (pas de blessure)&#10;23&#9;Overdose / Empoisonnement (Ingestion)&#10;23D01&#9;Inconscience&#10;23D02&#9;DÉTRESSE RESPIRATOIRE GRAVE&#10;23C01&#9;Violence &#10;23C02&#9;Non alerte&#10;23C03&#9;Respiration anormale&#10;23C04&#9;Antidépresseurs (tricycliques)&#10;23C05&#9;Cocaïne (ou dérivé)&#10;23C06&#9;Narcotiques (héroïne)&#10;23C07&#9;Acide ou alcali (base)&#10;23C08&#9;État inconnu (appelant tierce personne)&#10;23C09&#9;Demande d'assistance du Centre Antipoison&#10;23B01&#9;OVERDOSE (sans symptôme prioritaire)&#10;23O01&#9;EMPOISONNEMENT (sans symptôme prioritaire)&#10;24&#9;Grossesse / Accouchement / Fausse-couche&#10;24D01&#9;SIÈGE ou CORDON&#10;24D02&#9;Tête visible/sortie&#10;24D03&#9;Accouchement IMMINENT (&gt;= 5 mois/20 semaines)&#10;24D04&#9;Hémorragie du 3ième TRIMESTRE&#10;24D05&#9;Grossesse à RISQUE ÉLEVÉ&#10;24D06&#9;Bébé né&#10;24C01&#9;Hémorragie du 2ième TRIMESTRE ou FAUSSE-COUCHE&#10;24C02&#9;Hémorragie GRAVE 1er TRIMESTRE&#10;24B01&#9;Travail (accouchement non imminent, &gt;= 5 mois/20 semaines)&#10;24B02&#9;État inconnu (appelant tierce personne)&#10;24A01&#9;Hémorragie du 1er TRIMESTRE ou FAUSSE-COUCHE &#10;24O01&#9;Eaux crevées (pas de contraction)&#10;25&#9;Problème psychiatrique / De comportement / Tentative de suicide&#10;25D01&#9;Non alerte&#10;25D02&#9;Hémorragie DANGEREUSE&#10;25B01&#9;Hémorragie GRAVE&#10;25B02&#9;Hémorragie non GRAVE ou MINEURE&#10;25B03&#9;MENACE DE SUICIDE&#10;25B04&#9;Menace de sauter&#10;25B05&#9;Quasi-pendaison, strangulation ou suffocation (alerte)&#10;25B06&#9;État inconnu (appelant tierce personne)&#10;25A01&#9;Non suicidaire et alerte&#10;25A02&#9;Suicidaire (non menaçant) et alerte&#10;26&#9;Personne Malade (Diagnostic spécifique)&#10;26D01&#9;Non alerte&#10;26C01&#9;Antécédents cardiaques (problèmes NON PRIORITAIRES 2-28 non identifiés)&#10;26B01&#9;État inconnu (appelant tierce personne)&#10;26A01&#9;Pas de symptôme prioritaire (problèmes NON PRIORITAIRES 2-28 non identifiés)&#10;26A02-28&#9;Problèmes NON PRIORITAIRES&#10;27&#9;Arme blanche / Arme à feu / Trauma pénétrant&#10;27D01&#9;Inconscience ou arrêt&#10;27D02&#9;Non alerte&#10;27D03&#9;Blessures CENTRALES&#10;27D04&#9;Blessures multiples&#10;27D05&#9;Victimes multiples&#10;27B01&#9;Blessure CENTRALE unique NON RÉCENTE (&gt;=6hres)&#10;27B02&#9;Blessure PÉRIPHÉRIQUE unique connue&#10;27B03&#9;Hémorragie GRAVE&#10;27B04&#9;État inconnu (appelant tierce personne)&#10;27B05&#9;MORT ÉVIDENTE (blessure explosive à la tête par arme à feu)&#10;27A01&#9;Blessures PÉRIPHÉRIQUES NON RÉCENTES (&gt;=6hres)&#10;28&#9;Accident vasculaire cérébral (AVC) / Paralysie&#10;28C01&#9;Non alerte&#10;28C02&#9;Respiration anormale&#10;28C03&#9;Problèmes d'élocution ou de motricité&#10;28C04&#9;Engourdissement ou picotement&#10;28C05&#9;Problème de vision&#10;28C06&#9;Début SOUDAIN de mal de tête intense&#10;28C07&#9;Antécédents d'AVC&#10;28C08&#9;Respiration normale &gt;= 35 &#10;28B01&#9;État inconnu (appelant tierce personne)&#10;28A01&#9;Respiration normale &lt; 35&#10;29&#9;Accidents de la route /Transport&#10;29D01-a&#9;INCIDENT MAJEUR - aéronef&#10;29D01-b&#9;INCIDENT MAJEUR - autobus&#10;29D01-c&#9;INCIDENT MAJEUR - métro&#10;29D01-d&#9;INCIDENT MAJEUR – train&#10;29D01-e&#9;INCIDENT MAJEUR - bateau&#10;29D02-a&#9;IMPACT HAUTE VÉLOCITÉ - véhicule tout terrain&#10;29D02-b&#9;IMPACT HAUTE VÉLOCITÉ - auto-vélo/moto&#10;29D02-c&#9;IMPACT HAUTE VÉLOCITÉ - auto-piéton&#10;29D02-d&#9;IMPACT HAUTE VÉLOCITÉ - éjection&#10;29D02-e&#9;IMPACT HAUTE VÉLOCITÉ - moto marine&#10;29D02-f&#9;IMPACT HAUTE VÉLOCITÉ - capotage&#10;29D02-g&#9;IMPACT HAUTE VÉLOCITÉ - véhicule tombé d'un pont/de haut&#10;29D03&#9;PRODUITS DANGEREUX&#10;29D04&#9;Victime coincée&#10;29D05&#9;Non alerte&#10;29B01&#9;Blessures&#10;29B02&#9;Victimes multiples (une unité d'intervention)&#10;29B03&#9;Victimes multiples (unité d'intervention supplémentaire)&#10;29B04&#9;Hémorragie GRAVE&#10;29B05&#9;Autres dangers&#10;29B06&#9;État inconnu (appelant tierce personne)&#10;29A01&#9;Appelant/patient avec blessure région du corps NON DANGEREUSE&#10;29O01&#9;Pas de blessure&#10;30&#9;Blessures traumatiques (spécifiques)&#10;30D01&#9;Région du corps DANGEREUSE&#10;30D02&#9;Inconscience ou Non alerte&#10;30D03&#9;Respiration anormale&#10;30B01&#9;Région du corps POSSIBLEMENT DANGEREUSE&#10;30B02&#9;Hémorragie GRAVE&#10;30A01&#9;Région du corps NON DANGEREUSE&#10;30A02&#9;Blessures NON RÉCENTES (&gt;= 6 hres)&#10;31&#9;Inconscience / Évanouissement (Quasi)&#10;31E01&#9;RESPIRATION INEFFICACE *(sélectionné uniquement lors du protocole d'entrée)&#10;31D01&#9;Inconscience (à la fin de l'interrogation)&#10;31D02&#9;DÉTRESSE RESPIRATOIRE GRAVE&#10;31D03&#9;Non alerte&#10;31C01&#9;Alerte mais respiration anormale&#10;31C02&#9;Antécédents cardiaques&#10;31C03&#9;Épisodes d'évanouissement multiples&#10;31C04&#9;Épisodes d'évanouissement (ou quasi) unique et alerte &gt;= 35 &#10;31C05&#9;Femme 12-50 avec douleur abdominales&#10;31A01&#9;Épisode d'évanouissement (ou quasi) unique et alerte &lt; 35&#10;32&#9;Problème inconnu (Personne gisante)&#10;32D01&#9;SURVIE INCERTAINE&#10;32B01&#9;Debout, assis(e), bougeant ou parlant&#10;32B02&#9;Renseignements de système d'alarme&#10;32B03&#9;État inconnu (appelant tierce personne)&#10;33&#9;Transfert / Interétablissements / Soins palliatifs&#10;33D01&#9;Arrêt cardiaque ou respiratoire soupçonné&#10;33C01&#9;Non alerte (changement soudain)&#10;33C02&#9;Respiration anormale (apparition soudaine)&#10;33C03&#9;Hémorragie ou choc important&#10;33C04&#9;Problèmes cardiaques aigus ou infarctus possibles&#10;33C05&#9;Douleur soudaine sévère&#10;33C06&#9;Intervention d'urgence demandée&#10;33A01&#9;TYPE I (sans symptôme prioritaire)&#10;33A02&#9;TYPE II (sans symptôme prioritaire)&#10;33A03&#9;TYPE III (sans symptôme prioritaire)&#10;TIEins&#9;TIE instable IAMEST&#10;TIEins&#9;TIE instable &#10;TIEstab&#9;TIE patient stable transfert rapide&#10;TIEstab&#9;TIE patient stable patient avec rendez-vous&#10;TIEprivé&#9;TIE patient privé stable attendu&#10;TIENU&#9;TIE patient stable non urgent&#10;340&#9;Disponibilité spéciale (incendie)&#10;341&#9;CBRN&#10;342&#9;Support&#10;350 &#9;Disponibilité spéciale (police)&#10;351&#9;REHAB (monitoring des signes vitaux)&#10;352&#9;Appel à la bombe&#10;353 &#9;Homme barricadé&#10;354&#9;Prise d’otage&#10;355&#9;GIMT (groupe d’intervention médicale tactique)&#10;360&#9;Événement spécial planifié&#10;370&#9;Autre&#10;"/>
+</udps>
+</property>
+<property>
+<code>Origine de la demande</code>
+<alias>212</alias>
+<length>1</length>
+<isNullable>False</isNullable>
+<description text=" FORMAT Alphanumérique Longueur : 1&#10;&#10; DÉFINITION Champ permettant d’identifier l’origine de la demande de services préhospitaliers.&#10;&#10;Demande de la population :&#10;Correspond aux demandes de services provenant de la population.&#10;&#10;Demande d’un établissement du réseau :&#10;Correspond aux demandes provenant d’un établissement du réseau de la santé et des services sociaux.&#10;&#10;Demande d’un service public d’urgence :&#10;Comprend les demandes de services non programmées des services de police et d’incendie nécessitant une disponibilité spéciale des ressources ambulancières.&#10;&#10;Demande autre :&#10;Comprend les demandes de services programmées à l’avance en vue d’événements spéciaux qui requièrent de façon exceptionnelle la présence de ressources ambulancières (ex. : événement à grand rassemblement, spectacle extérieur) Seules les demandes pour lesquelles l’ajout de ressources a été autorisé par l’agence doivent être considérées. &#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION L’origine de la demande est déterminée par des lignes téléphoniques dédiées où sont acheminés les appels : 911, réseau de la santé et des services sociaux et services publics d’urgence.&#10;Dans le cas d’une demande de service transmise électroniquement, le CCS détermine l’origine de la demande selon sa provenance.&#10;Dans certains cas, l’origine de la demande peut être inscrite manuellement par le RMU dans la RAO.&#10; &#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#9;&#10;&#10;Liste des valeurs permises :&#10;&#10;1&#9;Demande de la population&#10;2&#9;Demande d’un établissement du réseau&#10;3&#9;Demande d’un service public d’urgence&#10;4&#9;Autre demande&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 1&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’identifier l’origine de la demande de services préhospitaliers.&#10;&#10;Demande de la population :&#10;Correspond aux demandes de services provenant de la population.&#10;&#10;Demande d’un établissement du réseau :&#10;Correspond aux demandes provenant d’un établissement du réseau de la santé et des services sociaux.&#10;&#10;Demande d’un service public d’urgence :&#10;Comprend les demandes de services non programmées des services de police et d’incendie nécessitant une disponibilité spéciale des ressources ambulancières.&#10;&#10;Demande autre :&#10;Comprend les demandes de services programmées à l’avance en vue d’événements spéciaux qui requièrent de façon exceptionnelle la présence de ressources ambulancières (ex. : événement à grand rassemblement, spectacle extérieur) Seules les demandes pour lesquelles l’ajout de ressources a été autorisé par l’agence doivent être considérées. &#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="L’origine de la demande est déterminée par des lignes téléphoniques dédiées où sont acheminés les appels : 911, réseau de la santé et des services sociaux et services publics d’urgence.&#10;Dans le cas d’une demande de service transmise électroniquement, le CCS détermine l’origine de la demande selon sa provenance.&#10;Dans certains cas, l’origine de la demande peut être inscrite manuellement par le RMU dans la RAO.&#10; &#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;&#10;1&#9;Demande de la population&#10;2&#9;Demande d’un établissement du réseau&#10;3&#9;Demande d’un service public d’urgence&#10;4&#9;Autre demande"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>CCS-CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)</code>
+<baseConcept>CCS</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>VÉHICULE</code>
+<properties>
+<property>
+<code>Numéro de véhicule</code>
+<alias>210</alias>
+<length>4</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur : 4&#10;&#10; DÉFINITION Champ permettant d’indiquer le numéro de véhicule.&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; PRÉCISION Le numéro de véhicule se compose comme suit : Le 1er chiffre correspond au numéro du CCS (entre 0 et 9) et est suivi de trois (3) autres chiffres.&#10;&#10;Le champ vise également les numéros des véhicules de remplacement (mulets).&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES &#10;Liste des valeurs permises :&#10;Cette information est à obtenir des CCS.&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 4&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le numéro de véhicule.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="Le numéro de véhicule se compose comme suit : Le 1er chiffre correspond au numéro du CCS (entre 0 et 9) et est suivi de trois (3) autres chiffres.&#10;&#10;Le champ vise également les numéros des véhicules de remplacement (mulets).&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;Cette information est à obtenir des CCS."/>
+</udps>
+</property>
+</properties>
+<foreigns/>
+</concept>
+<concept>
+<code>STATUT RESSOURCE PRÉHOSPITALIÈRE</code>
+<properties>
+<property>
+<code>Statut et activité de la ressource ambulancière</code>
+<alias>316</alias>
+<length>9</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur: 9&#10;&#10; DÉFINITION Champ permettant d’indiquer le code du statut de la ressource ambulancière et de l’activité qui lui est liée.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10;DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;Ce champ s’applique aux horaires à l’heure ainsi qu’aux horaires de faction.&#10;&#10; PRÉCISION Statut = en affectation (A), disponible (D), non disponible (N)&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel et feuille de route des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES Liste des valeurs permises :&#10;&#10;A (activités où la ressource est réputée en affectation)&#10;A(10-3)&#9;        Affectation / Message annulé&#10;A(10-0-8)&#9;Interception immédiate et imprévue&#10;A(10-16)&#9;En direction sans feux d’urgence ni sirène&#10;A(10-17)&#9;Arrivée sur les lieux&#10;A(10-26)&#9;Pré-alerte ou affectation anticipée&#10;A(10-30)&#9;En direction avec feux d’urgence et, au besoin, sirène&#10;A(10-31)&#9;Changement d’établissement&#10;A(10-41)&#9;Scène non sécurisée&#10;A(10-63)&#9;Approche finale sans feux d’urgence ni sirène&#10;D(activités où la ressource est réputée disponible pour répondre à un appel)&#10;D(10-5)&#9;        Disponible&#10;D(10-84)&#9;Ronde avant départ (inspection) et inventaire du véhicule&#10;D(10-85)&#9;Ravitaillement en carburant&#10;D(10-86)&#9;Début de disponibilité aux appels&#10;D(10-87)&#9;Rapprochement vers le point de service&#10;D(10-88)&#9;Nettoyage / réapprovisionnement du véhicule en fin de quart&#10;D(10-90)&#9;Disponibilité spéciale&#10;D(10-0-9)&#9;Période de repas et disponible&#10;D(10-12)&#9;Poste d’attente / Arrivée sur le poste d’attente ou point de service&#10;D(10-25)&#9;Disponibilité partielle&#10;D(10-27)&#9;Disponible à l’établissement / en rédaction&#10;D(4)&#9;        Réapprovisionnement de fournitures&#10;D(1)&#9;        Déplacement vers le territoire du CCS&#10;D(2)&#9;        Déplacement vers la zone d’opération&#10;D(5)&#9;        Escorte&#10;N(activité où la ressource n’est pas disponible pour répondre à un appel) &#10;N(10-0-6)&#9;Non disponible&#10;N(10-89)&#9;Fin de disponibilité aux appels&#10;N(10-0-9)&#9;Période de repas et non disponible&#10;N(10-14)&#9;Collision impliquant un véhicule d’intervention&#10;N(10-23)&#9;Affectation de nature administrative&#10;N(1)&#9;        Retard&#10;N(2)&#9;        Formation&#10;N(3)&#9;        Bris mécanique&#10;N(4)&#9;        Réapprovisionnement de fournitures&#10;N(6)&#9;        Problème mécanique&#10;N(7)&#9;        Problème radio&#10;N(8)&#9;        Personnel blessé, malade, raison personnelle&#10;N(9)&#9;        Autre&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur: 9&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le code du statut de la ressource ambulancière et de l’activité qui lui est liée.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;Ce champ s’applique aux horaires à l’heure ainsi qu’aux horaires de faction.&#10;&#10;"/>
+<PRECISIONS text="Statut = en affectation (A), disponible (D), non disponible (N)&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel et feuille de route des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données."/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;&#10;A (activités où la ressource est réputée en affectation)&#10;A(10-3)&#9;        Affectation / Message annulé&#10;A(10-0-8)&#9;Interception immédiate et imprévue&#10;A(10-16)&#9;En direction sans feux d’urgence ni sirène&#10;A(10-17)&#9;Arrivée sur les lieux&#10;A(10-26)&#9;Pré-alerte ou affectation anticipée&#10;A(10-30)&#9;En direction avec feux d’urgence et, au besoin, sirène&#10;A(10-31)&#9;Changement d’établissement&#10;A(10-41)&#9;Scène non sécurisée&#10;A(10-63)&#9;Approche finale sans feux d’urgence ni sirène&#10;D(activités où la ressource est réputée disponible pour répondre à un appel)&#10;D(10-5)&#9;        Disponible&#10;D(10-84)&#9;Ronde avant départ (inspection) et inventaire du véhicule&#10;D(10-85)&#9;Ravitaillement en carburant&#10;D(10-86)&#9;Début de disponibilité aux appels&#10;D(10-87)&#9;Rapprochement vers le point de service&#10;D(10-88)&#9;Nettoyage / réapprovisionnement du véhicule en fin de quart&#10;D(10-90)&#9;Disponibilité spéciale&#10;D(10-0-9)&#9;Période de repas et disponible&#10;D(10-12)&#9;Poste d’attente / Arrivée sur le poste d’attente ou point de service&#10;D(10-25)&#9;Disponibilité partielle&#10;D(10-27)&#9;Disponible à l’établissement / en rédaction&#10;D(4)&#9;        Réapprovisionnement de fournitures&#10;D(1)&#9;        Déplacement vers le territoire du CCS&#10;D(2)&#9;        Déplacement vers la zone d’opération&#10;D(5)&#9;        Escorte&#10;N(activité où la ressource n’est pas disponible pour répondre à un appel) &#10;N(10-0-6)&#9;Non disponible&#10;N(10-89)&#9;Fin de disponibilité aux appels&#10;N(10-0-9)&#9;Période de repas et non disponible&#10;N(10-14)&#9;Collision impliquant un véhicule d’intervention&#10;N(10-23)&#9;Affectation de nature administrative&#10;N(1)&#9;        Retard&#10;N(2)&#9;        Formation&#10;N(3)&#9;        Bris mécanique&#10;N(4)&#9;        Réapprovisionnement de fournitures&#10;N(6)&#9;        Problème mécanique&#10;N(7)&#9;        Problème radio&#10;N(8)&#9;        Personnel blessé, malade, raison personnelle&#10;N(9)&#9;        Autre&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/Heure du statut de la ressource ambulancière</code>
+<alias>306</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure  Longueur : 14  Gabarit :&#9;AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure où débute le statut de la ressource ambulancière ainsi que l’activité qui lui est liée.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10;DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION Les CCS sont responsables de fournir une feuille de route complète sans aucune rupture dans la chronométrie des statuts et activités.&#10;&#10;Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10; VALIDATION&#9;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10;SOURCES DE DONNÉES EXTERNES Carte d’appel et feuille de route des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14  &#10;"/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure où débute le statut de la ressource ambulancière ainsi que l’activité qui lui est liée.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<PRECISIONS text="Les CCS sont responsables de fournir une feuille de route complète sans aucune rupture dans la chronométrie des statuts et activités.&#10;&#10;Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel et feuille de route des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>RESSOURCE PRÉHOSPITALIÈRE-STATUT RESSOURCE PRÉHOSPITALIÈRE</code>
+<baseConcept>RESSOURCE PRÉHOSPITALIÈRE</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>AFFECTATION RESSOURCE</code>
+<properties>
+<property>
+<code>Numéro séquentiel d'affectation de la ressource</code>
+<alias>211</alias>
+<length>2</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur : 2&#10;&#10; DÉFINITION Champ permettant d’identifier le numéro séquentiel de chacune des affectations d’une même carte d’appel.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Ce champ comprend les affectations des premiers répondants et des ressources ambulancières.&#10;&#10;Le terme « ressources ambulancières » réfère à un véhicule ambulancier et une équipe composée de deux TAP.&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES Numéro séquentiel débutant à 1 et incrémental de 1 pour chaque valeur.&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 2&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’identifier le numéro séquentiel de chacune des affectations d’une même carte d’appel.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="Ce champ comprend les affectations des premiers répondants et des ressources ambulancières.&#10;&#10;Le terme « ressources ambulancières » réfère à un véhicule ambulancier et une équipe composée de deux TAP.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Numéro séquentiel débutant à 1 et incrémental de 1 pour chaque valeur."/>
+</udps>
+</property>
+<property>
+<code>Priorité d'affectation</code>
+<alias>213</alias>
+<length>2</length>
+<isNullable>False</isNullable>
+<description text=" FORMAT Numérique Longueur : 2&#10;&#10; DÉFINITION Champ permettant d’indiquer la priorité d’affectation de la ressource préhospitalière attribuée, en lien avec la nature de la demande de services.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION &#9;&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES&#9;Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;&#10;Liste des valeurs permises :&#10;1&#9;Risque immédiat de mortalité&#10;2&#9;Patient instable&#10;3&#9;Risque potentiel de détérioration clinique (risque de morbidité)&#10;4&#9;Risque de détérioration clinique au cours des heures suivantes&#10;5&#9;Patient stable pour transfert rapide&#10;6&#9;Patient stable avec rendez-vous&#10;7&#9;Situation clinique stable, sans risque identifié, comportant peu de risques de détérioration immédiate&#10;8&#9;Patient stable pour transfert non urgent&#10;"/>
+<udps>
+<FORMAT text="Numérique Longueur : 2&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la priorité d’affectation de la ressource préhospitalière attribuée, en lien avec la nature de la demande de services.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;1&#9;Risque immédiat de mortalité&#10;2&#9;Patient instable&#10;3&#9;Risque potentiel de détérioration clinique (risque de morbidité)&#10;4&#9;Risque de détérioration clinique au cours des heures suivantes&#10;5&#9;Patient stable pour transfert rapide&#10;6&#9;Patient stable avec rendez-vous&#10;7&#9;Situation clinique stable, sans risque identifié, comportant peu de risques de détérioration immédiate&#10;8&#9;Patient stable pour transfert non urgent"/>
+</udps>
+</property>
+<property>
+<code>Date/heure de la fin de l'affectation</code>
+<alias>119</alias>
+<length>14</length>
+<isNullable>False</isNullable>
+<description text=" FORMAT Date / heure   Longueur : 14  Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière a complété l’affectation et confirmé la fin de cette dernière. La ressource devient disponible pour répondre à une autre affectation.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;La fin d’une affectation peut survenir à tout moment entre la transmission de l’affectation et le départ vers le lieu de destination (voir diagramme de chronométrie à la page 2-5 du présent cadre normatif). Par conséquent, les jalons chronométriques subséquents deviennent automatiquement nuls.&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#9;&#10;L’élément 119 est &gt; que l’élément 106.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure   Longueur : 14  "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière a complété l’affectation et confirmé la fin de cette dernière. La ressource devient disponible pour répondre à une autre affectation.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;La fin d’une affectation peut survenir à tout moment entre la transmission de l’affectation et le départ vers le lieu de destination (voir diagramme de chronométrie à la page 2-5 du présent cadre normatif). Par conséquent, les jalons chronométriques subséquents deviennent automatiquement nuls.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#9;&#10;L’élément 119 est &gt; que l’élément 106.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Raison de la fin de l'affectation</code>
+<alias>214</alias>
+<length>2</length>
+<description text=" FORMAT Alphanumérique Longueur : 2&#10;&#10; DÉFINITION Champ permettant d’indiquer la raison de la fin de l’affectation.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;Liste des valeurs permises :&#10;&#10;01&#9;Refus de l’usager (refus au transport)&#10;02&#9;Usager transporté par toute personne ou service autre que l’ambulance&#10;03&#9;Décès constaté, patient transporté par fourgon&#10;04&#9;Pas d’usager sur les lieux&#10;05&#9;Affectation multiple et un seul patient sur les lieux&#10;06&#9;Déplacement annulé par le CCS avant l’arrivée sur les lieux sans autre affectation&#10;10&#9;Bris mécanique&#10;11&#9;Réaffectation&#10;12&#9;Affectation véhicule / plusieurs personnes sur lieux / refus de soins ou transport&#10;13&#9;Départ du lieu de destination à la fin de l’affectation&#10;14&#9;Annulation avant la mise en route"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 2&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la raison de la fin de l’affectation.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;&#10;01&#9;Refus de l’usager (refus au transport)&#10;02&#9;Usager transporté par toute personne ou service autre que l’ambulance&#10;03&#9;Décès constaté, patient transporté par fourgon&#10;04&#9;Pas d’usager sur les lieux&#10;05&#9;Affectation multiple et un seul patient sur les lieux&#10;06&#9;Déplacement annulé par le CCS avant l’arrivée sur les lieux sans autre affectation&#10;10&#9;Bris mécanique&#10;11&#9;Réaffectation&#10;12&#9;Affectation véhicule / plusieurs personnes sur lieux / refus de soins ou transport&#10;13&#9;Départ du lieu de destination à la fin de l’affectation&#10;14&#9;Annulation avant la mise en route"/>
+</udps>
+</property>
+<property>
+<code>Date/heure de la transmission de l'affectation</code>
+<alias>106</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles le répartiteur transmet l’affectation aux ressources préhospitalières (services ambulanciers et premiers répondants). &#10;&#10; ÉTAPE&#9; Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent à la date et à l'heure d'enregistrement de l'activité à la carte d'appel au CCS.&#10;&#10;Il peut arriver que la date et l’heure de la transmission de l’affectation soit la même que la date et l’heure de la confirmation.&#10;&#10; VALIDATION Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#10;L’élément 106 est &gt; que l’élément 104. L’élément 106 peut être nul si la raison de la fin de l’appel téléphonique (élément 215) est « appel annulé lors de la prise d’appel sans affectation d’une ressource ».&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9; &#9;&#10; TRANSMISSION Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14   "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles le répartiteur transmet l’affectation aux ressources préhospitalières (services ambulanciers et premiers répondants). &#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent à la date et à l'heure d'enregistrement de l'activité à la carte d'appel au CCS.&#10;&#10;Il peut arriver que la date et l’heure de la transmission de l’affectation soit la même que la date et l’heure de la confirmation.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9; &#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#10;L’élément 106 est &gt; que l’élément 104. L’élément 106 peut être nul si la raison de la fin de l’appel téléphonique (élément 215) est « appel annulé lors de la prise d’appel sans affectation d’une ressource ».&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#10;"/>
+<DOMAINEDEVALEURS text="&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/heure de la confirmation de l'affectation</code>
+<alias>107</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION  Champ permettant d’indiquer la date et l’heure auxquelles le répartiteur reçoit la confirmation de l’affectation de la part des ressources préhospitalières (ambulance et premiers répondants).&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION &#9;Cette information est obligatoire dans la mesure où il n’y pas annulation de l’appel et absence d’affectation.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Dans le cas d’une équipe ambulancière en horaire de faction, ces date et heure correspondent à la date et à l’heure où le deuxième technicien ambulancier paramédic confirme la réception de l’affectation.&#10;&#10;Il peut arriver que la date et l’heure de la confirmation de l’affectation soit la même que la date et l’heure de la transmission.&#10;&#10;&#10; VALIDATION &#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#9;&#10;L’élément 107 &gt; que l’élément 106.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DEDONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION &#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14   "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles le répartiteur reçoit la confirmation de l’affectation de la part des ressources préhospitalières (ambulance et premiers répondants).&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire dans la mesure où il n’y pas annulation de l’appel et absence d’affectation.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Dans le cas d’une équipe ambulancière en horaire de faction, ces date et heure correspondent à la date et à l’heure où le deuxième technicien ambulancier paramédic confirme la réception de l’affectation.&#10;&#10;Il peut arriver que la date et l’heure de la confirmation de l’affectation soit la même que la date et l’heure de la transmission.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#9;&#10;L’élément 107 &gt; que l’élément 106.&#10;&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Annulation de l'affectation?????</code>
+</property>
+<property>
+<code>Date/heure de la libération de l'équipement</code>
+<alias>118</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière récupère l’ensemble de son équipement, notamment la civière.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent au moment où la ressource ambulancière confirme que l’équipement est libéré.&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#9;&#10;L’élément 118 est &gt; que l’élément 117.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est tranmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14   "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière récupère l’ensemble de son équipement, notamment la civière.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent au moment où la ressource ambulancière confirme que l’équipement est libéré.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est tranmise à la banque commune de données.&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#9;&#10;L’élément 118 est &gt; que l’élément 117.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/heure du retour sur le territoire desservi par le CCS</code>
+<alias>120</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière retourne dans le territoire desservi par le CCS à la fin de l’affectation, le cas échéant.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Ce champ est facultatif lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ce champ s’applique dans le contexte où la ressource ambulancière a dû sortir du territoire du CCS pour répondre à une affectation.&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#10;L’élément 120 est &gt; que l’élément 119.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Feuille de route des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14   "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière retourne dans le territoire desservi par le CCS à la fin de l’affectation, le cas échéant.&#10;&#10;"/>
+<DESCRIPTIONCN text="Ce champ est facultatif lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ce champ s’applique dans le contexte où la ressource ambulancière a dû sortir du territoire du CCS pour répondre à une affectation.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Feuille de route des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#10;L’élément 120 est &gt; que l’élément 119.&#10;&#10;"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>STATUT RESSOURCE PRÉHOSPITALIÈRE-AFFECTATION RESSOURCE</code>
+<baseConcept>STATUT RESSOURCE PRÉHOSPITALIÈRE</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)-AFFECTATION RESSOURCE</code>
+<baseConcept>CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>RESSOURCE PRÉHOSPITALIÈRE-AFFECTATION RESSOURCE</code>
+<baseConcept>RESSOURCE PRÉHOSPITALIÈRE</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>QUART DE TRAVAIL</code>
+<properties>
+<property>
+<code>Code de quart de travail CCS</code>
+<alias>301</alias>
+<length>1</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur : 1 &#10;&#10; DÉFINITION Champ permettant d’indiquer le type d'horaire de travail du personnel du CCS : jour, soir, nuit.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Ce champ est facultatif lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#9;&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Système administratif du CCS.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;J&#9;08 h 00 à 16 h 00&#10;S&#9;16 h 00 à 24 h 00&#10;N&#9;00 h 00 à 08 h 00&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 1 &#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le type d'horaire de travail du personnel du CCS : jour, soir, nuit.&#10;&#10;"/>
+<DESCRIPTIONCN text="Ce champ est facultatif lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Système administratif du CCS.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="J&#9;08 h 00 à 16 h 00&#10;S&#9;16 h 00 à 24 h 00&#10;N&#9;00 h 00 à 08 h 00"/>
+</udps>
+</property>
+<property>
+<code>Numéro séquentiel du quart de travail</code>
+<alias>315</alias>
+<isNullable>False</isNullable>
+<description text=" FORMAT Alphanumérique Longueur : &#10;&#10; DÉFINITION Champ permettant d’indiquer un numéro séquentiel relié au quart de travail ambulancier.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION Cette information est générée de façon automatique par la RAO selon le format suivant :&#10;&#10;Cet élément est à préciser.&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : &#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer un numéro séquentiel relié au quart de travail ambulancier.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;&#10;&#10;"/>
+<PRECISIONS text="Cette information est générée de façon automatique par la RAO selon le format suivant :&#10;&#10;Cet élément est à préciser.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Autre motif expliquant l'ajout ou l'annulation d'un quart de travail ambulancier</code>
+<alias>300</alias>
+<length>200</length>
+<description text=" FORMAT Alphanumérique Longueur : 200&#10;&#10; DÉFINITION &#9;Champ permettant d’indiquer le motif de l’ajout d’un quart supplémentaire de travail aux horaires planifiés, ou encore le motif de l’annulation d’un quart planifié.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Ce champ est facultatif lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#9;&#10;&#10; VALIDATION&#9;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation inter éléments&#10;Cet élément est obligatoire si la valeur « autre » des éléments 308 ou 309 est sélectionnée.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 200&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le motif de l’ajout d’un quart supplémentaire de travail aux horaires planifiés, ou encore le motif de l’annulation d’un quart planifié.&#10;&#10;"/>
+<DESCRIPTIONCN text="Ce champ est facultatif lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Validation inter éléments&#10;Cet élément est obligatoire si la valeur « autre » des éléments 308 ou 309 est sélectionnée.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/Heure du début du quart pour la ressource ambulancière</code>
+<alias>305</alias>
+<length>16</length>
+<description text=" FORMAT Date / heure   Longueur : 16    Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure correspondant au début de chaque quart de travail pour la ressource ambulancière. Pour chaque état de quart de travail (planifié, réel, supplémentaire et annulé), il y aura transfert de cet élément.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Correspondance relationnelle&#10;L’élément 305 est &lt; que l’élément 304.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10;SOURCES DE DONNÉES EXTERNES RAO&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure   Longueur : 16    "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure correspondant au début de chaque quart de travail pour la ressource ambulancière. Pour chaque état de quart de travail (planifié, réel, supplémentaire et annulé), il y aura transfert de cet élément.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Correspondance relationnelle&#10;L’élément 305 est &lt; que l’élément 304.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="RAO&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;"/>
+</udps>
+</property>
+<property>
+<code>Date/Heure de la fin du quart pour la ressource ambulancière</code>
+<alias>304</alias>
+<length>14</length>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure correspondant à la fin du quart de travail de la ressource ambulancière. Pour chaque état de quart de travail (planifié, réel, supplémentaire et annulé), il y aura transfert de cet élément.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Correspondance relationnelle&#10;&#9;L’élément 304 est &gt; que l’élément 305.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES RAO&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES &#10;"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14  "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure correspondant à la fin du quart de travail de la ressource ambulancière. Pour chaque état de quart de travail (planifié, réel, supplémentaire et annulé), il y aura transfert de cet élément.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Correspondance relationnelle&#10;&#9;L’élément 304 est &gt; que l’élément 305.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES RAO&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES "/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure correspondant à la fin du quart de travail de la ressource ambulancière. Pour chaque état de quart de travail (planifié, réel, supplémentaire et annulé), il y aura transfert de cet élément.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Correspondance relationnelle&#10;&#9;L’élément 304 est &gt; que l’élément 305.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="RAO&#10;&#9;&#10; "/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+</udps>
+</property>
+<property>
+<code>Nombre d'employés par quart de travail par CCS</code>
+<alias>310</alias>
+<length>3</length>
+<description text=" FORMAT Numérique Longueur : 3&#10;&#10; DÉFINITION Champ permettant d’indiquer le nombre d’employés affectés aux opérations par quart de travail par CCS.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#9;&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Système administratif du CCS.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES &#10;Exemples de valeurs permises:&#10;&#10;6&#9;Employés / jour&#10;10&#9;Employés / soirée &#10;8 &#9;Employés / nuit&#10; &#10;"/>
+<udps>
+<FORMAT text="Numérique Longueur : 3&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le nombre d’employés affectés aux opérations par quart de travail par CCS.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;&#10; &#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Système administratif du CCS.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Exemples de valeurs permises:&#10;&#10;6&#9;Employés / jour&#10;10&#9;Employés / soirée &#10;8 &#9;Employés / nuit"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>CCS-QUART DE TRAVAIL</code>
+<baseConcept>CCS</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>ÉTAT QUART DE TRAVAIL-QUART DE TRAVAIL</code>
+<baseConcept>ÉTAT QUART DE TRAVAIL</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>MOTIF AJOUT QUART AMBULANCIER-QUART DE TRAVAIL</code>
+<baseConcept>MOTIF AJOUT QUART AMBULANCIER</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>0</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>MOTIF ANNULATION QUART AMBULANCIER-QUART DE TRAVAIL</code>
+<baseConcept>MOTIF ANNULATION QUART AMBULANCIER</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>0</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>TYPE DE QUART DE TRAVAIL-QUART DE TRAVAIL</code>
+<baseConcept>TYPE DE QUART DE TRAVAIL</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>0</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>EMPLOI</code>
+<properties>
+<property>
+<code>Code de titre d'emploi CCS</code>
+<alias>303</alias>
+<length>1</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur : 1&#10;&#10; DÉFINITION Champ permettant d’indiquer le titre d’un emploi rattaché aux opérations du CCS.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Système administratif du CCS.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES &#10;Titres d’emploi :&#10;1&#9;RMU&#10;2&#9;Commis à l’interétablissement&#10;3&#9;Répartiteur&#10;4&#9;Superviseur&#10;&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 1&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le titre d’un emploi rattaché aux opérations du CCS.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Système administratif du CCS.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Titres d’emploi :&#10;1&#9;RMU&#10;2&#9;Commis à l’interétablissement&#10;3&#9;Répartiteur&#10;4&#9;Superviseur"/>
+</udps>
+</property>
+<property>
+<code>Nombre d'employés par titre d'emploi par CCS</code>
+<alias>312</alias>
+<length>3</length>
+<description text=" FORMAT Numérique Longueur : 3&#10;&#10; DÉFINITION Champ permettant d’indiquer le nombre d’employés affectés aux opérations par titre d’emploi par CCS.&#10;&#10;Titres d’emploi :&#10; RMU;&#10; Commis à l’interétablissement;&#10; Répartiteur;&#10; Superviseur.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Système administratif du CCS.&#10;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;Nombre&#9;Titre&#10;5&#9;RMU&#10;3&#9;Commis à l’interétablissement&#10;4&#9;Répartiteur&#10;3&#9;Superviseur&#10;"/>
+<udps>
+<FORMAT text="Numérique Longueur : 3&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le nombre d’employés affectés aux opérations par titre d’emploi par CCS.&#10;&#10;Titres d’emploi :&#10; RMU;&#10; Commis à l’interétablissement;&#10; Répartiteur;&#10; Superviseur.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Système administratif du CCS.&#10;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Nombre&#9;Titre&#10;5&#9;RMU&#10;3&#9;Commis à l’interétablissement&#10;4&#9;Répartiteur&#10;3&#9;Superviseur"/>
+</udps>
+</property>
+<property>
+<code>Nombre d'équivalents temps complet par titre d'emploi par CCS ???</code>
+<alias>313</alias>
+<length>3</length>
+<description text=" FORMAT Alphanumérique Longueur : 3&#10;&#10; DÉFINITION Champ permettant d’indiquer le nombre d’équivalents temps complet par titre d’emploi rattachés aux opérations par CCS.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Système administratif du CCS.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#9;&#10;Exemple de valeur permise : 10 ETC/RMU.&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 3&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le nombre d’équivalents temps complet par titre d’emploi rattachés aux opérations par CCS.&#10;&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Système administratif du CCS.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Exemple de valeur permise : 10 ETC/RMU."/>
+</udps>
+</property>
+<property>
+<code>Nombre d'employés par statut d'emploi par CCS</code>
+<alias>311</alias>
+<length>3</length>
+<description text=" FORMAT Numérique Longueur : 3&#10;&#10; DÉFINITION Champ permettant d’indiquer le nombre d’employés affectés aux opérations par statut d’emploi par CCS.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION &#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Système administratif du CCS.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;&#10;10&#9;Temps plein&#10;15&#9;Temps partiel&#10;7&#9;Occasionnel&#10;"/>
+<udps>
+<FORMAT text="Numérique Longueur : 3&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le nombre d’employés affectés aux opérations par statut d’emploi par CCS.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Système administratif du CCS.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="10&#9;Temps plein&#10;15&#9;Temps partiel&#10;7&#9;Occasionnel"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>CCS-EMPLOI</code>
+<baseConcept>CCS</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>STATUT RESSOURCE PRÉHOSPITALIÈRE-EMPLOI</code>
+<baseConcept>STATUT RESSOURCE PRÉHOSPITALIÈRE</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>STATUT EMPLOI-EMPLOI</code>
+<baseConcept>STATUT EMPLOI</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>ZONE AMBULANCIÈRE </code>
+<properties>
+<property>
+<code>Code zone ambulancière </code>
+<alias>218, 219</alias>
+<length>5</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text="ÉLÉMENT 218 ZONE AMBULANCIÈRE DE DESTINATION&#10;&#10; FORMAT Alphanumérique Longueur : 5&#10;&#10; DÉFINITION Champ permettant d’identifier la zone ambulancière de destination de l’usager.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION&#9;Cette information est obligatoire.&#10;&#10; PRÉCISION&#9;&#10;&#10; VALIDATION&#9;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation inter éléments&#10;L’élément 218 doit correspondre à l’élément 206.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Référentiel territorial M34.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES Liste des valeurs permises :&#10;&#10;^Même domaine de valeurs que l'élément 219. Voir en bas.&#10;&#10;&#10;&#10;ÉLÉMENT 219 ZONE AMBULANCIÈRE DE PRISE EN CHARGE DE L'USAGER&#10;&#10; FORMAT Alphanumérique Longueur : 5&#10;&#10; DÉFINITION Champ permettant d’identifier la zone ambulancière de prise en charge de l’usager.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION&#9;Cette information est obligatoire.&#10;&#10; PRÉCISION&#9;&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation de valeur&#10;L’élément 219 doit correspondre à l’élément 207.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES&#9;Référentiel territorial M34.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES Liste des valeurs permises :&#10;&#10;000-HORS PROVINCE;&#10;001-HORS CANADA;&#10;005-NUNAVIK;&#10;070-TERRES-CRIES-DE-LA-BAIE-JAMES;&#10;101-1 RIMOUSKI;&#10;101-2 SAINT-FABIEN&#10;102-MONT-JOLI;&#10;103-MATANE;&#10;104-SAINTE-ANNE-DES-MONTS;&#10;105-GRANDE-VALLÉE;&#10;106-MONT-LOUIS;&#10;107-PERCÉ;&#10;108-GASPÉ;&#10;109-RIVIÈRE AU RENARD;&#10;110-GRANDE-RIVIÈRE;&#10;111-PASPEBIAC;&#10;112-NEW-RICHMOND;&#10;113-CARLETON;&#10;114-SAINT-ALEXIS;&#10;115-AMQUI;&#10;116-MURDOCHVILLE;&#10;117-POINTE-À-LA-CROIX;&#10;118-CAP-AUX-MEULES;&#10;119-SAYABEC;&#10;201-DOLBEAU;&#10;202-ROBERVAL;&#10;203-HÉBERTVILLE;&#10;204-ALMA;&#10;205-JONQUIÈRE;&#10;206-CHICOUTIMI;&#10;208-VILLE DE LA BAIE;&#10;211-NORMANDIN;&#10;212-LAC BOUCHETTE;&#10;213-CHIBOUGAMAU;&#10;216-CHICOUTIMI-NORD;&#10;218-RIVIÈRE-ÉTERNITÉ;&#10;219-PARC CHIBOUGAMAU;&#10;301-SAINT-SIMÉON;&#10;302-LA MALBAIE;&#10;303-BAIE-SAINT-PAUL;&#10;304-SAINTE-ANNE-DE-BEAUPRÉ;&#10;305-BEAUPORT;&#10;306-CHARLESBOURG;&#10;307-QUÉBEC;&#10;308-SAINTE-FOY;&#10;309-LORETTEVILLE;&#10;310-SAINT-RAYMOND;&#10;311-SAINT-MARC-DES-CARRIÈRES;&#10;312-DONNACONA;&#10;313-TROIS-PISTOLES;&#10;314-LAC DES AIGLES;&#10;315-CABANO;&#10;316-RIVIÈRE-DU-LOUP;&#10;317-SAINT-PASCAL;&#10;318-RIVIÈRE-BLEUE;&#10;319-SAINT-CYPRIEN;&#10;320-SAINT-PAMPHILE;&#10;321-LA POCATIÈRE;&#10;322-SAINT-FABIEN PANET;&#10;323-SAINT-JEAN PORT-JOLI;&#10;324-MONTMAGNY;&#10;325-SAINT-CHARLES;&#10;326-LÉVIS;&#10;327-SAINTE-MARIE;&#10;328-LAC ETCHEMIN;&#10;329-SAINTE-CLAIRE;&#10;330-LOTBINIÈRE;&#10;332-THETFORD-MINES; &#10;333-DISRAELI; &#10;334-LA GUADELOUPE;&#10;335-SAINT-GÉDÉON;&#10;336-SAINT-GEORGES;&#10;337-BEAUCEVILLE;&#10;339-SAINT-FLAVIEN;&#10;340-ARMAGH;&#10;341-DÉGELIS;&#10;342-PARC DES LAURENTIDES;&#10;343-ÏLE AUX COUDRES;&#10;344-SAINT-ALEXANDRE;&#10;346-SAINTE-CATHERINE;&#10;401-LA TUQUE;&#10;402-SAINT-TITE;&#10;403-GRAND-MÈRE;&#10;404-SHAWINIGAN;&#10;331-SAINT-SILVESTRE; &#10;405-SAINT-PAULIN;&#10;406-LOUISEVILLE;&#10;409-BATISCAN;&#10;410-PIERREVILLE;&#10;411-NICOLET;&#10;412-BÉCANCOUR;&#10;413-MANSEAU;&#10;414-DRUMMONDVILLE;&#10;415-VICTORIAVILLE;&#10;416-PLESSISVILLE;&#10;478-TROIS-RIVIÈRES;&#10;501-SHERBROOKE;&#10;502-WINDSOR;&#10;503-ASBESTOS;&#10;504-EAST-ANGUS;&#10;505-MAGOG;&#10;506-STANSTEAD;&#10;507-COATICOOK;&#10;508-LA PATRIE;&#10;509-RICHMOND;&#10;510-WEEDON;&#10;511-LAC MÉGANTIC;&#10;512-VALCOURT;&#10;513-EASTMAN;&#10;514-LAMBTON;&#10;600-1-MONTRÉAL (centre ouest);&#10;600-2-MONTRÉAL (nord) (fait référence à la zone 604 de la liste officielle des zones);&#10;600-3-MONTRÉAL (est);&#10;600-4-MONTRÉAL (ouest);&#10;600-5-MONTRÉAL (centre est);&#10;620-SAINT-EUSTACHE;&#10;621-OKA;&#10;621-A KANESATAKE&#10;622-LACHUTE;&#10;623-GRENVILLE;&#10;624-SAINTE-THÉRÈSE;&#10;625-TERREBONNE;&#10;626-SAINT-JÉRÔME;&#10;627-MIRABEL;&#10;628-SAINTE-ADÈLE;&#10;629-SAINTE-AGATHE-DES-MONTS;&#10;630-SAINT-JOVITE;&#10;631-SAINT-DONAT;&#10;632-LABELLE;&#10;633-VILLE-DES-LAURENTIDES;&#10;634-REPENTIGNY;&#10;635-BERTHIERVILLE;&#10;636-JOLIETTE;&#10;637-RAWDON;&#10;638-SAINT-GABRIEL;&#10;639-SAINT-JEAN-DE-MATHA;&#10;641-L'ANNONCIATION;&#10;642-FERME-NEUVE;&#10;643-MONT-LAURIER;&#10;660-RIGAUD;&#10;661-DORION;&#10;662-VALLEYFIELD;&#10;663-HUNTINGDON;&#10;664-ORMSTOWN;&#10;665-CHATEAUGUAY&#10;665-A KANHAWAKE;&#10;666-LAPRAIRIE;&#10;667-LACOLLE;&#10;668-SAINT-JEAN;&#10;669-LONGUEUIL OUEST;&#10;670-LONGUEUIL EST;&#10;671-SAINT-HUBERT;&#10;672-SAINT-BRUNO;&#10;673-VARENNES;&#10;674-BELOEIL;&#10;640-SAINT-MICHEL-DES-SAINTS; &#10;675-SOREL;&#10;676-SAINT-HYACINTHE; &#10;677-CHAMBLY;&#10;678-ACTON VALE; &#10;679-GRANBY;&#10;681-WATERLOO;&#10;683-COWANSVILLE;&#10;684-FARNHAM;&#10;685-BEDFORD;&#10;701-FORT COULONGE;&#10;702-SHAWVILLE;&#10;703-AYLMER;&#10;704-MASHAM;&#10;705-HULL;&#10;706-GATINEAU;&#10;707-BUCKINGHAM;&#10;708-PAPINEAUVILLE;&#10;709-SAINT-ANDRÉ-AVELLIN;&#10;710-GRACEFIELD;&#10;711-NOTRE-DAME-DU-LAUS;&#10;712-MANIWAKI;&#10;713-PARC DE LA VERENDRYE;&#10;801-TÉMISCAMING;&#10;802-VILLE-MARIE;&#10;803-ROUYN-NORANDA;&#10;804-LA SARRE;&#10;805-AMOS;&#10;806-VAL D'OR;&#10;807-SENNETERRE;&#10;808-LEBEL SUR QUEVILLON;&#10;809-MATAGAMI;&#10;810-MALARTIC;&#10;811-NOTRE-DAME-DU-NORD;&#10;812-PARC DE LA VERENDRYE;&#10;820-BELLETERRE;&#10;900-SACRÉ-CŒUR;&#10;901-LES ESCOUMINS;&#10;902-FORESTVILLE;&#10;903-BAIE-COMEAU;&#10;904-MANIC 5;&#10;905-BAIE-TRINITÉ;&#10;906-PORT CARTIER;&#10;907-SEPT-ÎLES;&#10;909-HAVRE SAINT-PIERRE;&#10;912-BLANC-SABLON;&#10;914-FERMONT;&#10;915-SHEFFERVILLE.&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 5&#10;&#10;"/>
+<DEFINITION text="ÉLÉMENT 218 ZONE AMBULANCIÈRE DE DESTINATION&#10;&#10;Champ permettant d’identifier la zone ambulancière de destination de l’usager.&#10;&#10;ÉLÉMENT 219 ZONE AMBULANCIÈRE DE PRISE EN CHARGE DE L'USAGER&#10;&#10;Champ permettant d’identifier la zone ambulancière de prise en charge de l’usager.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="ÉLÉMENT 218 ZONE AMBULANCIÈRE DE DESTINATION&#10;&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;ÉLÉMENT 219 ZONE AMBULANCIÈRE DE PRISE EN CHARGE DE L'USAGER&#10;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Référentiel territorial M34.&#10;&#9; &#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données."/>
+<VALIDATIONSINTERELEMENTS text="ÉLÉMENT 218 ZONE AMBULANCIÈRE DE DESTINATION&#10;&#10;L’élément 218 doit correspondre à l’élément 206.&#10;&#10;&#10;ÉLÉMENT 219 ZONE AMBULANCIÈRE DE PRISE EN CHARGE DE L'USAGER&#10;&#10;L’élément 219 doit correspondre à l’élément 207."/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;&#10;000-HORS PROVINCE;&#10;001-HORS CANADA;&#10;005-NUNAVIK;&#10;070-TERRES-CRIES-DE-LA-BAIE-JAMES;&#10;101-1 RIMOUSKI;&#10;101-2 SAINT-FABIEN&#10;102-MONT-JOLI;&#10;103-MATANE;&#10;104-SAINTE-ANNE-DES-MONTS;&#10;105-GRANDE-VALLÉE;&#10;106-MONT-LOUIS;&#10;107-PERCÉ;&#10;108-GASPÉ;&#10;109-RIVIÈRE AU RENARD;&#10;110-GRANDE-RIVIÈRE;&#10;111-PASPEBIAC;&#10;112-NEW-RICHMOND;&#10;113-CARLETON;&#10;114-SAINT-ALEXIS;&#10;115-AMQUI;&#10;116-MURDOCHVILLE;&#10;117-POINTE-À-LA-CROIX;&#10;118-CAP-AUX-MEULES;&#10;119-SAYABEC;&#10;201-DOLBEAU;&#10;202-ROBERVAL;&#10;203-HÉBERTVILLE;&#10;204-ALMA;&#10;205-JONQUIÈRE;&#10;206-CHICOUTIMI;&#10;208-VILLE DE LA BAIE;&#10;211-NORMANDIN;&#10;212-LAC BOUCHETTE;&#10;213-CHIBOUGAMAU;&#10;216-CHICOUTIMI-NORD;&#10;218-RIVIÈRE-ÉTERNITÉ;&#10;219-PARC CHIBOUGAMAU;&#10;301-SAINT-SIMÉON;&#10;302-LA MALBAIE;&#10;303-BAIE-SAINT-PAUL;&#10;304-SAINTE-ANNE-DE-BEAUPRÉ;&#10;305-BEAUPORT;&#10;306-CHARLESBOURG;&#10;307-QUÉBEC;&#10;308-SAINTE-FOY;&#10;309-LORETTEVILLE;&#10;310-SAINT-RAYMOND;&#10;311-SAINT-MARC-DES-CARRIÈRES;&#10;312-DONNACONA;&#10;313-TROIS-PISTOLES;&#10;314-LAC DES AIGLES;&#10;315-CABANO;&#10;316-RIVIÈRE-DU-LOUP;&#10;317-SAINT-PASCAL;&#10;318-RIVIÈRE-BLEUE;&#10;319-SAINT-CYPRIEN;&#10;320-SAINT-PAMPHILE;&#10;321-LA POCATIÈRE;&#10;322-SAINT-FABIEN PANET;&#10;323-SAINT-JEAN PORT-JOLI;&#10;324-MONTMAGNY;&#10;325-SAINT-CHARLES;&#10;326-LÉVIS;&#10;327-SAINTE-MARIE;&#10;328-LAC ETCHEMIN;&#10;329-SAINTE-CLAIRE;&#10;330-LOTBINIÈRE;&#10;332-THETFORD-MINES; &#10;333-DISRAELI; &#10;334-LA GUADELOUPE;&#10;335-SAINT-GÉDÉON;&#10;336-SAINT-GEORGES;&#10;337-BEAUCEVILLE;&#10;339-SAINT-FLAVIEN;&#10;340-ARMAGH;&#10;341-DÉGELIS;&#10;342-PARC DES LAURENTIDES;&#10;343-ÏLE AUX COUDRES;&#10;344-SAINT-ALEXANDRE;&#10;346-SAINTE-CATHERINE;&#10;401-LA TUQUE;&#10;402-SAINT-TITE;&#10;403-GRAND-MÈRE;&#10;404-SHAWINIGAN;&#10;331-SAINT-SILVESTRE; &#10;405-SAINT-PAULIN;&#10;406-LOUISEVILLE;&#10;409-BATISCAN;&#10;410-PIERREVILLE;&#10;411-NICOLET;&#10;412-BÉCANCOUR;&#10;413-MANSEAU;&#10;414-DRUMMONDVILLE;&#10;415-VICTORIAVILLE;&#10;416-PLESSISVILLE;&#10;478-TROIS-RIVIÈRES;&#10;501-SHERBROOKE;&#10;502-WINDSOR;&#10;503-ASBESTOS;&#10;504-EAST-ANGUS;&#10;505-MAGOG;&#10;506-STANSTEAD;&#10;507-COATICOOK;&#10;508-LA PATRIE;&#10;509-RICHMOND;&#10;510-WEEDON;&#10;511-LAC MÉGANTIC;&#10;512-VALCOURT;&#10;513-EASTMAN;&#10;514-LAMBTON;&#10;600-1-MONTRÉAL (centre ouest);&#10;600-2-MONTRÉAL (nord) (fait référence à la zone 604 de la liste officielle des zones);&#10;600-3-MONTRÉAL (est);&#10;600-4-MONTRÉAL (ouest);&#10;600-5-MONTRÉAL (centre est);&#10;620-SAINT-EUSTACHE;&#10;621-OKA;&#10;621-A KANESATAKE&#10;622-LACHUTE;&#10;623-GRENVILLE;&#10;624-SAINTE-THÉRÈSE;&#10;625-TERREBONNE;&#10;626-SAINT-JÉRÔME;&#10;627-MIRABEL;&#10;628-SAINTE-ADÈLE;&#10;629-SAINTE-AGATHE-DES-MONTS;&#10;630-SAINT-JOVITE;&#10;631-SAINT-DONAT;&#10;632-LABELLE;&#10;633-VILLE-DES-LAURENTIDES;&#10;634-REPENTIGNY;&#10;635-BERTHIERVILLE;&#10;636-JOLIETTE;&#10;637-RAWDON;&#10;638-SAINT-GABRIEL;&#10;639-SAINT-JEAN-DE-MATHA;&#10;641-L'ANNONCIATION;&#10;642-FERME-NEUVE;&#10;643-MONT-LAURIER;&#10;660-RIGAUD;&#10;661-DORION;&#10;662-VALLEYFIELD;&#10;663-HUNTINGDON;&#10;664-ORMSTOWN;&#10;665-CHATEAUGUAY&#10;665-A KANHAWAKE;&#10;666-LAPRAIRIE;&#10;667-LACOLLE;&#10;668-SAINT-JEAN;&#10;669-LONGUEUIL OUEST;&#10;670-LONGUEUIL EST;&#10;671-SAINT-HUBERT;&#10;672-SAINT-BRUNO;&#10;673-VARENNES;&#10;674-BELOEIL;&#10;640-SAINT-MICHEL-DES-SAINTS; &#10;675-SOREL;&#10;676-SAINT-HYACINTHE; &#10;677-CHAMBLY;&#10;678-ACTON VALE; &#10;679-GRANBY;&#10;681-WATERLOO;&#10;683-COWANSVILLE;&#10;684-FARNHAM;&#10;685-BEDFORD;&#10;701-FORT COULONGE;&#10;702-SHAWVILLE;&#10;703-AYLMER;&#10;704-MASHAM;&#10;705-HULL;&#10;706-GATINEAU;&#10;707-BUCKINGHAM;&#10;708-PAPINEAUVILLE;&#10;709-SAINT-ANDRÉ-AVELLIN;&#10;710-GRACEFIELD;&#10;711-NOTRE-DAME-DU-LAUS;&#10;712-MANIWAKI;&#10;713-PARC DE LA VERENDRYE;&#10;801-TÉMISCAMING;&#10;802-VILLE-MARIE;&#10;803-ROUYN-NORANDA;&#10;804-LA SARRE;&#10;805-AMOS;&#10;806-VAL D'OR;&#10;807-SENNETERRE;&#10;808-LEBEL SUR QUEVILLON;&#10;809-MATAGAMI;&#10;810-MALARTIC;&#10;811-NOTRE-DAME-DU-NORD;&#10;812-PARC DE LA VERENDRYE;&#10;820-BELLETERRE;&#10;900-SACRÉ-CŒUR;&#10;901-LES ESCOUMINS;&#10;902-FORESTVILLE;&#10;903-BAIE-COMEAU;&#10;904-MANIC 5;&#10;905-BAIE-TRINITÉ;&#10;906-PORT CARTIER;&#10;907-SEPT-ÎLES;&#10;909-HAVRE SAINT-PIERRE;&#10;912-BLANC-SABLON;&#10;914-FERMONT;&#10;915-SHEFFERVILLE.&#10;"/>
+</udps>
+</property>
+<property>
+<code>Nom zone ambulancière</code>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>RSS-ZONE AMBULANCIÈRE </code>
+<baseConcept>RSS</baseConcept>
+<baseMin>1</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>RSS</code>
+<properties>
+<property>
+<code>Code region sociosanitaire</code>
+<length>4</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text="On utilise un code numérique à quatre chiffres pour identifier de façon distincte les régions&#10;sociosanitaires. Les deux premiers chiffres correspondent à la province, et les deux derniers, à la&#10;région sociosanitaire. Ces codes sont les mêmes que ceux utilisés par les ministères provinciaux de la&#10;santé. Dans le cas des provinces où il n'existe pas de code numérique, un code à deux chiffres est&#10;attribué.&#10;&#10;&#10;&#10;source:&#10;http://dsp-psd.pwgsc.gc.ca/collection_2009/statcan/82-402-X/82-402-x2009001-fra.pdf"/>
+<udps>
+<DOMAINEDEVALEURS text="Québec&#10;2401 Région du Bas-Saint–Laurent&#10;2402 Région du Saguenay – Lac–Saint–Jean&#10;2403 Région de la Capitale–Nationale&#10;2404 Région de la Mauricie et du Centre–du–Québec&#10;2405 Région de l'Estrie&#10;2406 Région de Montréal&#10;2407 Région de l'Outaouais&#10;2408 Région de l'Abitibi–Témiscamingue&#10;2409 Région de la Côte–Nord&#10;2410 Région du Nord–du–Québec&#10;2411 Région de la Gaspésie – Îles–de–la–Madeleine&#10;2412 Région de la Chaudière-Appalaches&#10;2413 Région de Laval&#10;2414 Région de Lanaudière&#10;2415 Région des Laurentides&#10;2416 Région de la Montérégie&#10;2417 Région du Nunavik&#10;2418 Région des Terres–Cries–de–la–Baie–James"/>
+</udps>
+</property>
+<property>
+<code>Nom region sociosanitaie</code>
+<description text="Les noms des régions sociosanitaires correspondent aussi aux noms officiels utilisés par les&#10;provinces."/>
+<udps>
+<DOMAINEDEVALEURS text="Québec&#10;2401 Région du Bas-Saint–Laurent&#10;2402 Région du Saguenay – Lac–Saint–Jean&#10;2403 Région de la Capitale–Nationale&#10;2404 Région de la Mauricie et du Centre–du–Québec&#10;2405 Région de l'Estrie&#10;2406 Région de Montréal&#10;2407 Région de l'Outaouais&#10;2408 Région de l'Abitibi–Témiscamingue&#10;2409 Région de la Côte–Nord&#10;2410 Région du Nord–du–Québec&#10;2411 Région de la Gaspésie – Îles–de–la–Madeleine&#10;2412 Région de la Chaudière-Appalaches&#10;2413 Région de Laval&#10;2414 Région de Lanaudière&#10;2415 Région des Laurentides&#10;2416 Région de la Montérégie&#10;2417 Région du Nunavik&#10;2418 Région des Terres–Cries–de–la–Baie–James"/>
+</udps>
+</property>
+</properties>
+<foreigns/>
+</concept>
+<concept>
+<code>DESTINATION</code>
+<properties>
+<property>
+<code>Date/heure de l'arrivée au lieu de destination</code>
+<alias>117</alias>
+<length>14</length>
+<isNullable>False</isNullable>
+<description text=" FORMAT Date / heure  Longueur : 14   Gabarit : AAAAMMJJHHMMSS&#10;&#10; DÉFINITION Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière arrive au lieu de destination.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent au moment où la ressource ambulancière signale que le véhicule est immobilisé. Le lieu de destination peut être un établissement du réseau sociosanitaire, une résidence privée, un établissement carcéral ou un aéroport. Le lieu de destination peut également se trouver dans une région hors Québec ou hors Canada.&#10;&#10;VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation interéléments&#10;Correspondance relationnelle&#10;L’élément 117 est &gt; que l’élément 116.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9; &#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#10;"/>
+<udps>
+<FORMAT text="Date / heure  Longueur : 14   "/>
+<GABARIT text="AAAAMMJJHHMMSS&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer la date et l’heure auxquelles la ressource ambulancière arrive au lieu de destination.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;&#10;"/>
+<PRECISIONS text="Les heures sont comprises entre 00:00:00 et 23:59:59.&#10;&#10;Ces date et heure correspondent au moment où la ressource ambulancière signale que le véhicule est immobilisé. Le lieu de destination peut être un établissement du réseau sociosanitaire, une résidence privée, un établissement carcéral ou un aéroport. Le lieu de destination peut également se trouver dans une région hors Québec ou hors Canada.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9; &#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;"/>
+<VALIDATIONSINTERELEMENTS text="Correspondance relationnelle&#10;L’élément 117 est &gt; que l’élément 116.&#10;&#10;"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>LIEU-DESTINATION</code>
+<baseConcept>LIEU</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>1</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>MUNICIPALITÉ-DESTINATION</code>
+<baseConcept>MUNICIPALITÉ</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>ÉTABLISSEMENT</code>
+<description text="Définition: Entité juridique dotée de capacités et responsabilités légales, qui détient un permis du ministre de la Santé et des Services sociaux pour gérer des services correspondant aux cinq grandes missions définies dans la loi.  Référence:  http://wpp01.msss.gouv.qc.ca/appl/m02/  - Etablissement Il s'agit d'une entité légale dont l'existence est définie par une lettre patente délivrée par l'Inspecteur Général des institutions financières. De plus, un permis lui est délivré par le MSSS. Ce dernier mentionne les installations opérées par l'établissement ainsi que les missions et capacités attribuées. (Entité juridique dotée de capacités et responsabilités légales, qui détient un permis du ministre de la Santé et des Services sociaux pour gérer des services correspondant aux cinq grandes missions définies dans la loi.)  Distinction entre établissement et installation La distinction entre les entités «établissement» et «installation» est la conséquence de considérations pratiques. En fait, les deux entités ne peuvent exister séparément l'une de l'autre. En effet, une entité ayant uniquement une existence légale (établissement) ne peut fonctionner si elle ne possède pas au moins une unité concrète (installation) de production de biens ou de services. À l'inverse, une unité de production ne peut exister que si elle est régie par une entité ayant une existence juridique et dotée de responsabilités légales. Alors qu'un établissement peut gérer ou être responsable de plusieurs installations (parfois situées sur des territoires différents), à l'inverse, une installation doit dépendre d'un et un seul établissement.Dans le répertoire, la distinction entre ces deux types d'entités facilite la recherche de l'utilisateur selon son besoin. Ainsi, les préoccupations administratives (achats, ventes, plaintes, réclamations, données financières ou statistiques, etc.) porteront sur l'entité «établissement», alors que celles relatives à la dispensation des services (quels services? où peut-on les obtenir?) feront appel à l'entité «installation».   Au niveau de la gouvernance, l'établissement est au coeur du palier local.  Sur le plan de la gouvernance, le système de santé et de services sociaux sinscrit à lintérieur dun cadre de gestion axé sur les résultats selon une perspective de renforcement de limputabilité entre chacun de ses trois paliers de gestion : le central, le régional et le local. Au palier local, les réseaux locaux de services de santé et de services sociaux regroupent lensemble des partenaires, dont font partie les médecins de famille, afin de partager collectivement une responsabilité envers la population dun territoire. Au coeur du réseau local de services, le centre de santé et de services sociaux (CSSS) est lassise dune offre de service intégrée et il assure laccessibilité, la prise en charge, le suivi et la coordination des services destinés à cette population. Le modèle repose sur loffre, à proximité du milieu de vie, dune large gamme de services de première ligne, incluant les services de santé publique, et sur la mise en place de mécanismes dorientation et de suivi pour assurer laccès aux services de deuxième et de troisième lignes (services spécialisés et surspécialisés). Ainsi, les différents intervenants offrant des services de santé et des services sociaux à cette population sont en mesure de répondre à lensemble de ses besoins et de faciliter son cheminement dans le système, plus particulièrement celui des personnes vulnérables. http://www.msss.gouv.qc.ca/sujets/organisation/ssss_enbref/image_zoom.php?show=ZTk5ODkyNjY1YTdkMjVlMmE3NmE1YTA1MTAxNTVjOWQuZ2lmP3dpZHRoPSI3ODEiIGhlaWdodD0iMzUwIg%3D%3D"/>
+<properties>
+<property>
+<code>Numéro de permis ODS</code>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+</property>
+<property>
+<code>Nom légal Établissement</code>
+</property>
+<property>
+<code>Nom abrégé Établissement</code>
+</property>
+<property>
+<code>Statut Établissement</code>
+<description text="Les statuts possible sont: - Établissement public - Établissement privé"/>
+</property>
+<property>
+<code>Mode financement ODS</code>
+<physicalName>RCAI_DOmod-finnc-orgns-dispn-servcQC01</physicalName>
+<description text="Les établissements peuvent être financés sous huit modes différents : - à budget - conventionné général - à taux forfaitaire - non conventionné - conventionné à % - conventionné spécifique - forfaitaire spécifique - non conventionné - entente régionale de service"/>
+</property>
+<property>
+<code>Désignation ministérielle</code>
+<description text="Nom sous lequel un établissement est généralement connu de sa clientèle."/>
+</property>
+<property>
+<code>Date délivrance permis</code>
+<description text="La &quot;Date de délivrance&quot; indique la date où le permis a été délivré à l'établissement."/>
+</property>
+<property>
+<code>Date de début de validité</code>
+<description text="La &quot;Date de début de validité&quot; indique la date à partir de laquelle le permis est valide."/>
+</property>
+<property>
+<code>Date de fin de validité</code>
+<description text="La &quot;Date de fin de validité&quot; indique la date à partir de laquelle le permis n'est plus valide."/>
+</property>
+<property>
+<code>Remarque d'information (Permis)</code>
+</property>
+<property>
+<code>Territoire C.L.S.C</code>
+</property>
+<property>
+<code>M.R.C</code>
+</property>
+<property>
+<code>Circ. Électorale provinciale</code>
+</property>
+<property>
+<code>Territoire R.L.S desservi</code>
+</property>
+<property>
+<code>Type permis (à valider)</code>
+<description text="Le &quot;type de permis&quot; indique si le permis est &quot;permanent&quot; ou &quot;temporaire&quot;. "/>
+</property>
+<property>
+<code>Remarques permis (à valider)</code>
+<description text="La remarque permet d'inscrire une ou plusieurs remarques sur un permis."/>
+</property>
+<property>
+<code>Numéro (MSSS)</code>
+<isNullable>False</isNullable>
+</property>
+<property>
+<code>identifiant type d'établissement</code>
+<isNullable>False</isNullable>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>MUNICIPALITÉ-ÉTABLISSEMENT</code>
+<baseConcept>MUNICIPALITÉ</baseConcept>
+<baseMin>1</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>INSTALLATION</code>
+<description text="Définition: Lieu physique où sont dispensés des soins de santé et de services sociaux à la population du Québec, dans le cadre d'une ou plusieurs missions.  Référence: http://wpp01.msss.gouv.qc.ca/appl/m02/  - Installation Etant donné que les établissements sont des entités légales (virtuelles), ils opèrent des installations. L'installation est l'endroit physique où les opérations se déroulent, les usagers reçoivent les services dans l'installation. Chaque installation est nécessairement rattachée à un établissement. Une installation peut-être composée de plusieurs bâtiments. (Lieu physique où sont dispensés des soins de santé et de services sociaux à la population du Québec, dans le cadre d'une ou plusieurs missions. ) "/>
+<properties>
+<property>
+<code>Numéro au permis</code>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+</property>
+<property>
+<code>Nom légal installation</code>
+</property>
+<property>
+<code>Nom abrégé installation</code>
+</property>
+<property>
+<code>Surspécialité installation</code>
+</property>
+<property>
+<code>Territoire C.L.S.C</code>
+</property>
+<property>
+<code>Circ. Électorale provinciale</code>
+</property>
+<property>
+<code>Numéro de permis ODS</code>
+<isNullable>False</isNullable>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>ÉTABLISSEMENT-INSTALLATION</code>
+<baseConcept>ÉTABLISSEMENT</baseConcept>
+<baseMin>1</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>AUTRES ORGANISMES</code>
+<properties/>
+<foreigns/>
+</concept>
+<concept>
+<code>ASSIGNATION VÉHICULE</code>
+<properties/>
+<foreigns>
+<foreign>
+<code>VÉHICULE-ASSIGNATION VÉHICULE</code>
+<baseConcept>VÉHICULE</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+<foreign>
+<code>STATUT RESSOURCE PRÉHOSPITALIÈRE-ASSIGNATION VÉHICULE</code>
+<baseConcept>STATUT RESSOURCE PRÉHOSPITALIÈRE</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>STATUT EMPLOI</code>
+<properties>
+<property>
+<code>Code statut d'emploi CCS</code>
+<alias>302</alias>
+<length>2</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur: 2&#10;&#10; DÉFINITION Champ permettant d’indiquer le statut d’emploi des divers postes du CCS.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION&#9;&#10;&#10; VALIDATION Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Système administratif du CCS.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;&#9;&#9;&#9;&#9;&#9;&#10;1&#9;Temps plein&#10;2&#9;Temps partiel&#10;3&#9;Occasionnel&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur: 2&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le statut d’emploi des divers postes du CCS.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Système administratif du CCS.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="1&#9;Temps plein&#10;2&#9;Temps partiel&#10;3&#9;Occasionnel"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>EMPLOI-STATUT EMPLOI</code>
+<baseConcept>EMPLOI</baseConcept>
+<baseMin>1</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>ÉTAT QUART DE TRAVAIL</code>
+<properties>
+<property>
+<code>Code état du quart de travail</code>
+<alias>307</alias>
+<length>1</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur : 1&#10;&#10; DÉFINITION Champ permettant d’indiquer l’état du quart de travail de la ressource ambulancière : planifié, réel, supplémentaire ou annulé.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR&#9;Le MSSS, les Agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES&#9;RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#9;&#10;&#10;P&#9;Planifié&#10;R&#9;Réel&#10;S&#9;Supplémentaire&#10;A&#9;Annulé&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 1&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer l’état du quart de travail de la ressource ambulancière : planifié, réel, supplémentaire ou annulé.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les Agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;"/>
+<DOMAINEDEVALEURS text="P&#9;Planifié&#10;R&#9;Réel&#10;S&#9;Supplémentaire&#10;A&#9;Annulé"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>QUART DE TRAVAIL-ÉTAT QUART DE TRAVAIL</code>
+<baseConcept>QUART DE TRAVAIL</baseConcept>
+<baseMin>1</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+<concept>
+<code>MOTIF AJOUT QUART AMBULANCIER</code>
+<properties>
+<property>
+<code>Motif expliquant l'ajout d'un quart ambulancier</code>
+<alias>308</alias>
+<length>1</length>
+<description text=" FORMAT Alphanumérique&#9; Longueur : 1&#10;&#10; DÉFINITION Champ permettant d’indiquer le motif de l’ajout d’un quart de travail supplémentaire aux horaires planifiés. &#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION&#9;&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#9;&#10;Liste des valeurs permises&#10;&#10;1&#9;Événement spécial&#10;2&#9;Transport sur une longue distance&#10;3&#9;Volume d’appels&#10;4&#9;Remplacement maladie&#10;5&#9;Autre&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique&#9; Longueur : 1&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le motif de l’ajout d’un quart de travail supplémentaire aux horaires planifiés. &#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises&#10;&#10;1&#9;Événement spécial&#10;2&#9;Transport sur une longue distance&#10;3&#9;Volume d’appels&#10;4&#9;Remplacement maladie&#10;5&#9;Autre"/>
+</udps>
+</property>
+</properties>
+<foreigns/>
+</concept>
+<concept>
+<code>MOTIF ANNULATION QUART AMBULANCIER</code>
+<properties>
+<property>
+<code>Motif expliquant l'annulation d'un quart ambulancier</code>
+<alias>309</alias>
+<length>2</length>
+<description text=" FORMAT Alphanumérique Longueur : 2&#10;&#10; DÉFINITION Champ permettant d’indiquer le motif de l’annulation d’un quart de travail ambulancier prévu aux horaires planifiés. &#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION&#9;&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10;SOURCES DE DONNÉES EXTERNES RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#9;&#10;Liste des valeurs permises&#10;&#10;1&#9;Seulement un technicien ambulancier&#10;2&#9;Pas de camion disponible&#10;3&#9;Autre"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur : 2&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le motif de l’annulation d’un quart de travail ambulancier prévu aux horaires planifiés. &#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises&#10;&#10;1&#9;Seulement un technicien ambulancier&#10;2&#9;Pas de camion disponible&#10;3&#9;Autre"/>
+</udps>
+</property>
+</properties>
+<foreigns/>
+</concept>
+<concept>
+<code>TYPE DE QUART DE TRAVAIL</code>
+<properties>
+<property>
+<code>Type de quart de travail de la ressource ambulancière</code>
+<alias>317</alias>
+<length>2</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur: 2&#10;&#10; DÉFINITION Champ permettant d’indiquer le type d'horaire de travail de la ressource ambulancière.&#10;&#10;Horaire à l’heure :&#10;On entend par horaire à l’heure les horaires de type 8, 9, 10, 11 et 12 heures.&#10;&#10;Horaire 7/14 :&#10;Consiste en une période de faction de cent soixante-huit (168) heures et une période de récupération de cent soixante-huit (168) heures, le tout à l’intérieur d’une période de quatorze (14) jours civils.&#10;&#10;Horaire 5/14 :&#10;Horaire de travail consistant en cinq (5) jours (24 heures par jour) disponibles sur une période de quatorze (14) jours civils consécutifs.&#10;&#10; ÉTAPE&#9;Étape ultérieure&#10;&#10; DESCRIPTION &#9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10; PRÉCISION&#9;&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;&#10; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES RAO&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;&#10;10&#9;8 heures&#10;11&#9;9 heures&#10;12&#9;10 heures&#10;13&#9;11 heures&#10;14&#9;12 heures&#10;20&#9;Horaire de faction 7/14&#10;30&#9;Horaire de faction 5/14&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur: 2&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le type d'horaire de travail de la ressource ambulancière.&#10;&#10;Horaire à l’heure :&#10;On entend par horaire à l’heure les horaires de type 8, 9, 10, 11 et 12 heures.&#10;&#10;Horaire 7/14 :&#10;Consiste en une période de faction de cent soixante-huit (168) heures et une période de récupération de cent soixante-huit (168) heures, le tout à l’intérieur d’une période de quatorze (14) jours civils.&#10;&#10;Horaire 5/14 :&#10;Horaire de travail consistant en cinq (5) jours (24 heures par jour) disponibles sur une période de quatorze (14) jours civils consécutifs.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#10;&#10;"/>
+<PRECISIONS text="&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Valdation de format automatique au transfert.&#10;&#10;Validation sur la valeur&#10;L’élément ne peut prendre que les valeurs permises.&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="RAO&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="10&#9;8 heures&#10;11&#9;9 heures&#10;12&#9;10 heures&#10;13&#9;11 heures&#10;14&#9;12 heures&#10;20&#9;Horaire de faction 7/14&#10;30&#9;Horaire de faction 5/14"/>
+</udps>
+</property>
+</properties>
+<foreigns/>
+</concept>
+<concept>
+<code>RESSOURCE PRÉHOSPITALIÈRE</code>
+<properties>
+<property>
+<code>Type de ressource préhospitalière</code>
+<alias>318</alias>
+<length>2</length>
+<isNullable>False</isNullable>
+<isUnique>True</isUnique>
+<description text=" FORMAT Alphanumérique Longueur: 2&#10;&#10; DÉFINITION Champ permettant d’indiquer le type de ressource préhospitalière.&#10;&#10; ÉTAPE&#9;Première étape&#10;&#10; DESCRIPTION Cette information est obligatoire.&#10;&#10; PRÉCISION&#10;&#10; VALIDATION&#9;&#10;Validation sur l’élément&#10;Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10; REQUIS PAR&#9;Le MSSS, les agences de santé et les CCS.&#10;&#10; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#10;&#9;&#10; TRANSMISSION&#9;Cette information est transmise à la banque commune de données.&#10;&#10; VALEURS PERMISES&#9;&#10;Liste des valeurs permises :&#10;&#10;10&#9;Ressources ambulancières&#10;20&#9;Premiers répondants&#10;"/>
+<udps>
+<FORMAT text="Alphanumérique Longueur: 2&#10;&#10;"/>
+<DEFINITION text="Champ permettant d’indiquer le type de ressource préhospitalière.&#10;&#10;"/>
+<DESCRIPTIONCN text="Cette information est obligatoire.&#10;&#10;&#10;"/>
+<VALIDATIONSSURELEMENT text="Validation de présence automatique au transfert.&#10;Validation de format automatique au transfert.&#10;&#10;"/>
+<REQUISPAR text="Le MSSS, les agences de santé et les CCS.&#10;&#10;"/>
+<SOURCEDEDONNEESEXTERNES text="Carte d’appel des RAO.&#10;&#9;&#10;"/>
+<TRANSMISSION text="Cette information est transmise à la banque commune de données.&#10;&#10;"/>
+<DOMAINEDEVALEURS text="Liste des valeurs permises :&#10;&#10;10&#9;Ressources ambulancières&#10;20&#9;Premiers répondants"/>
+</udps>
+</property>
+</properties>
+<foreigns>
+<foreign>
+<code>STATUT RESSOURCE PRÉHOSPITALIÈRE-RESSOURCE PRÉHOSPITALIÈRE</code>
+<baseConcept>STATUT RESSOURCE PRÉHOSPITALIÈRE</baseConcept>
+<baseMin>0</baseMin>
+<baseMax>N</baseMax>
+<refMin>1</refMin>
+<refMax>1</refMax>
+</foreign>
+</foreigns>
+</concept>
+</concepts>
+</model>
+</models>
+</domain>
+</domains>
