@@ -20,6 +20,24 @@ import logging
 #Import Database class
 from proto.metaDb.models import *  
 
+
+def toInteger(s , iDefault = None):
+    """
+    Conversion a entero,  utilizada antes de cargar la Db 
+    """
+    try:
+        iResult = int(s)
+        return iResult 
+    except ValueError:
+        return iDefault
+
+def toBoolean(s):
+    """
+    Conversion a boolean,  utilizada antes de cargar la Db 
+    """
+    return ( s.lower()[0] in ("y", "t", "o", "s", "1") ) 
+
+
 class importXML():
     def __init__(self):
         self.__filename = ""
@@ -100,17 +118,30 @@ class importXML():
         self.__logger.info("Ecriture dans la base de donnee...")
 
         #Listas 
-        fdsDomain = [field.name for field in Domain._meta.fields]
-        
-        fdsModel= [field.name for field in Model._meta.fields]
-        fdcModel = [("idModel", "modelIx"),("idref","modelRef") ]
-        
-        fdsConcept= [field.name for field in Concept._meta.fields]
-        fdsProperty= [field.name for field in Property._meta.fields]
-        fdsNeighbor= [field.name for field in Relationship._meta.fields]
+#        fdsDomain = [field.name for field in Domain._meta.fields]
+#        fdsModel= [field.name for field in Model._meta.fields]
+#        fdsConcept= [field.name for field in Concept._meta.fields]
+#        fdsProperty= [field.name for field in Property._meta.fields]
+#        fdsForeign= [field.name for field in Relationship._meta.fields]
 
-        #Temp var 
+        fdsLinkModel= [field.name for field in MetaLinkModel._meta.fields]
+        fdsLink = [field.name for field in MetaLink._meta.fields]
+        fdsUdpDefinition = [field.name for field in UdpDefinition._meta.fields]
         field = None
+
+        # Los elementos superXXX son referencias de tipo caracter,
+        fdsDomain = ( 'code', 'category', 'description',  'origin', 'superDomain' )
+
+        fdsModel= ( 'code', 'category', 'description',  'modelPrefix', 'superModel' )
+        intModel= ( 'idModel', 'idRef' )
+        
+        fdsConcept= ( 'code', 'category', 'description',  'superConcept')
+        
+        fdsProperty = ( 'code', 'category', 'description',  'baseType', 'defaultValue', 'superProperty')
+        booProperty = ( 'isNullable', 'isRequired', 'isSensitive', 'isEssential', 'isUnique', 'isForeign')
+        intProperty = ( 'length', 'decLength', 'conceptPosition', )
+        
+        fdsForeign= ( 'code', 'category', 'description', 'baseMin', 'baseMax', 'refMin', 'refMax', 'superProperty', 'baseConcept')
         
         # We populate the database
 #       try: 
@@ -123,11 +154,20 @@ class importXML():
                 for child in xDomain:
                     if child.tag in fdsDomain:
                         setattr( lDomain, child.tag, child.text ) 
-                    else: 
-                        pass 
                         
                 lDomain.save()
                 self.__logger.info("Domain..."  + lDomain.code)
+
+                xUdpDefinitions = xDomain.getiterator("udpDefinition")
+                for xUdpDefinition in xUdpDefinitions:
+                    dUdpDefinition = UdpDefinition()
+                    dUdpDefinition.domain = lDomain
+
+                    for child in xUdpDefinition:
+                        if child.tag in fdsUdpDefinition:
+                            setattr( dUdpDefinition, child.tag, child.text ) 
+
+                    dUdpDefinition.save()
 
                 
                 xModels = xDomain.getiterator("model")
@@ -137,7 +177,17 @@ class importXML():
 
                     for child in xModel:
                         if child.tag in fdsModel:
-                            setattr( dModel, child.tag, child.text ) 
+                            setattr( dModel, child.tag, child.text )
+                             
+                        if child.tag in intModel:
+                            iValue = toInteger(child.text , 0)
+                            setattr( dModel, child.tag, iValue ) 
+
+                    for sKey in xModel.attrib:
+                        if sKey in intModel:
+                            iValue = toInteger(xModel.get(sKey) , 0)
+                            setattr( dModel, sKey, iValue ) 
+                            
                     dModel.save()
                     self.__logger.info("Model..."  + dModel.code)
 
@@ -147,8 +197,12 @@ class importXML():
                         concept.model = dModel
                         
                         for child in xConcept:
-                            if child.tag in fdsConcept:
-                                setattr( concept, child.tag, child.text ) 
+                            if (child.tag in fdsConcept):
+                                if (child.text is not None):
+                                    setattr( concept, child.tag, child.text )
+                                elif  ( child.tag == 'description' ):
+                                    setattr( concept, child.tag, child.get('text'))
+                                     
                         concept.save()
                         self.__logger.info("Concept..."  + concept.code)
 
@@ -157,21 +211,77 @@ class importXML():
                             lProperty = Property()
                             lProperty.concept = concept
 
+                            # Inicializa el diccionaccionario para las UDPS 
+                            udps = []
+
                             for child in xProperty:
                                 if child.tag in fdsProperty:
-                                    setattr( lProperty, child.tag, child.text )
+                                    if (child.text is not None):
+                                        setattr( lProperty, child.tag, child.text )
+                                    elif  ( child.tag == 'description' ):
+                                        setattr( lProperty, child.tag, child.get('text'))
+                                elif child.tag in intProperty:
+                                    iValue = toInteger(child.text , 0)
+                                    setattr( lProperty, child.tag, iValue )
+                                elif child.tag in booProperty:
+                                    bValue = toBoolean(child.text )
+                                    setattr( lProperty, child.tag, bValue )
+                                elif child.tag == 'udps':
+                                    for xUdp in child:
+                                        udps.append( (xUdp.tag, xUdp.text) )
+                                else:
+                                    udps.append( (child.tag, child.text) )
+                                        
                             lProperty.save()
 
-                        xNeighbors = xConcept.getiterator("foreign")
-                        for xNeighbor in xNeighbors:
-                            foreign = Relationship()
-                            foreign.concept = concept
-                            
-                            for child in xNeighbor:
-                                if child.tag in fdsNeighbor:
-                                    setattr( foreign, child.tag, child.text )
-                            foreign.save()
+                            #DGT:  saveUdps ( MetaObj, Udps ) 
+                            if len( udps ) > 0:
+                                for key, value  in udps:
+                                    dUdp = Udp()
+                                    dUdp.metaObj = lProperty.metaobj_ptr
+                                    dUdp.code = key
+                                    dUdp.value = value
+                                    dUdp.save()
 
+
+                        xForeigns = xConcept.getiterator("dForeign")
+                        for xForeign in xForeigns:
+                            dForeign = Relationship()
+                            dForeign.concept = concept
+
+                            for child in xForeign:
+                                if child.tag in fdsForeign:
+                                    setattr( dForeign, child.tag, child.text)
+
+                            for sKey in xForeign.attrib:
+                                if sKey in fdsForeign:
+                                    setattr( dForeign, sKey, xForeign.get(sKey) )
+                                    
+                            dForeign.save()
+
+                xLinkModels = xDomain.getiterator("linkModel")
+                for xLinkModel in xLinkModels:
+                    dLinkModel = MetaLinkModel()
+                    dLinkModel.domain = lDomain
+
+                    for child in xLinkModel:
+                        if child.tag in fdsLinkModel:
+                            setattr( dLinkModel, child.tag, child.text ) 
+                            
+                    dLinkModel.save()
+
+                    xLinks = xLinkModel.getiterator("dForeign")
+                    for xLink in xLinks:
+                        dLink = MetaLink()
+                        dLink.metaLinkModel = dLinkModel
+
+                        for child in xLink:
+                            if child.tag in fdsLink:
+                                setattr( dLink, child.tag, child.text)
+
+                        dLink.save()
+
+                    
 
 #        except KeyError, e:
 #            #Logging critical

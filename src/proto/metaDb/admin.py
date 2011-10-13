@@ -24,18 +24,19 @@ admin.site.register(Concept, Concept_Admin)
 
 admin.site.register(Relationship)
 admin.site.register(Property)
-admin.site.register(PropertyChoice)
-admin.site.register(UserDefinedProperty)
-admin.site.register(MetaLink)
-admin.site.register(NavigationLink)
-admin.site.register(EntryPoints)
-admin.site.register(Menu)
-admin.site.register(ModelGraphic)
+admin.site.register(Udp)
+
+#admin.site.register(MetaLink)
+#admin.site.register(PropertyChoice)
+#admin.site.register(NavigationLink)
+#admin.site.register(EntryPoints)
+#admin.site.register(Menu)
+#admin.site.register(ModelGraphic)
 #admin.site.register(Traduction)
 
 
 class MetaObjAdmin(admin.ModelAdmin):
-    list_display =( 'code', 'objType', 'description'  )
+    list_display =( 'code', 'objType', 'description', 'category'  )
     readonly_fields = ('objType', )
     app_name = 'Meta'
 
