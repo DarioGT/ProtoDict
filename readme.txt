@@ -5,10 +5,8 @@ Projecto Django para visualizar el diccionario.
 
 ** Pendiente 
 	
-	Manejo de columnas excluidas, 
-	y correspondencia de nombres XML Db 
-	
-	Carga completa y manejo de UDP 
+	Buscar librerias ExtJs para Django 
+	Buscar donde se procesa el InLine 
 	
 	Cambiar el InLine por una tabla simple con 
 	una columa de modificacion y otra de seleccion (hipervinculo sobre la llave), 
@@ -19,7 +17,7 @@ Projecto Django para visualizar el diccionario.
 	
 	Panel de vinculos con manejo de la fila seleccionada. 
 	
+**  Generacion de modelos a partir de la Db  
 	
-	
-	  
+		  
  

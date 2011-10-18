@@ -1,16 +1,15 @@
 # Django settings for PROTO project.
-import os.path
-PPATH = os.path.dirname(__file__).replace('\\','/')
+import os.path, sys 
+PPATH = os.path.abspath( os.path.join( os.path.dirname(__file__), os.pardir )).replace('\\','/')
+
+if ('/src' in PPATH): 
+    PPATH = os.path.abspath(os.path.join( PPATH, os.pardir )).replace('\\','/')
+         
 
 # PAra encontrar los globales 
-import sys
-PPATHBASE = os.path.abspath(os.path.join( PPATH, os.pardir )).replace('\\','/')
-sys.path.append(PPATHBASE )
+PPATHLIB = os.path.abspath( PPATH + '/../ProtoLib'  ).replace('\\','/')
+sys.path.append(PPATHLIB)
 
-
-# Si esta en source es dos niveles mas abajo 
-PPATHBASE = os.path.abspath(os.path.join( PPATH, os.pardir ))
-PPATHBASE = os.path.abspath(os.path.join( PPATHBASE, os.pardir ))
 
 # Django settings for modelibra project.
 DEBUG = True
@@ -25,7 +24,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': PPATHBASE + '/db/protoMeta.db',
+        'NAME': PPATH + '/db/protoMeta.db',
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -94,9 +93,9 @@ DAJAXICE_MEDIA_PREFIX="dajaxice"
 USE_DJANGO_JQUERY = True
 
 # Additional locations of static files
-PPATHSTATIC = os.path.abspath(os.path.join( PPATHBASE, os.pardir ))
 STATICFILES_DIRS = (
-    PPATHSTATIC + '/ProtoLib/globale/admin/media', 
+    PPATHLIB + '/globale/admin/media',
+    PPATHLIB + '/static',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -107,7 +106,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -131,7 +130,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("globale.auth.context_processors.auth",
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+#    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'globale.auth.middleware.AuthenticationMiddleware',
 )
@@ -149,8 +148,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dajaxice',
-    'dajax',
+#    'dajaxice',
+#    'dajax',
 
     'globale.auth',
     'globale.admin',

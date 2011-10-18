@@ -2,7 +2,7 @@
 # for project : "Modelibra.py" >
 
 from globale import admin
-from models import * 
+from models import *  
 
 #---------------
 
