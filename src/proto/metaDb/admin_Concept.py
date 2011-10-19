@@ -17,7 +17,10 @@ class RelationshipInline(globale.admin.TabularInline):
 
 class Concept_Admin(globale.admin.ModelAdmin):
     app_name = 'Proto'
-    list_display =( 'code', 'description', 'category', 'superConcept', 'model' )
+    list_display =( 'model', 'code', 'category', 'description',  'superConcept', 'alias', 'physicalName', )
+    list_filter = ( 'model', 'superConcept', )
+    search_fields = ( 'code', 'category', 'description',  'superConcept', 'alias', 'physicalName')
+
     fieldsets = (
         (None, {
             'fields': [('code', 'description')]

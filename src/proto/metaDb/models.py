@@ -9,6 +9,24 @@ from django.utils.encoding import force_unicode
 #datamodel name="Relational Data Model" idmodel="1" idref="0">
 
 
+fdsDomain = ( 'code', 'category', 'description',  'origin', 'superDomain', 'alias', 'physicalName' )
+
+fdsModel= ( 'code', 'category', 'description',  'modelPrefix', 'superModel', 'alias', 'physicalName' )
+intModel= ( 'idModel', 'idRef' )
+
+fdsConcept= ( 'model', 'code', 'category', 'description',  'superConcept', 'alias', 'physicalName')
+
+fdsProperty = ( 'concept', 'code', 'category', 'description',  'baseType', 'defaultValue', 'superProperty', 'alias', 'physicalName')
+booProperty = ( 'isNullable', 'isRequired', 'isSensitive', 'isEssential', 'isUnique', 'isForeign')
+intProperty = ( 'length', 'decLength', 'conceptPosition', )
+
+fdsForeign= ( 'code', 'category', 'description', 'baseMin', 'baseMax', 'refMin', 'refMax', 'superProperty', 'baseConcept', 'alias', 'physicalName')
+
+fdsLinkModel= ['code', 'source', 'destination']
+fdsLink = ['code', 'alias', 'destinationText', 'sourceCol', 'destinationCol']
+fdsUdpDefinition = ['code', 'baseType', 'alias', 'description']
+
+
 def strNotNull(  sValue ):
     if (sValue is None): 
         return "_"
@@ -21,7 +39,7 @@ class MetaObj(models.Model):
     category = models.CharField(max_length=50, blank = True, null = True )
     alias = models.CharField(blank = True, null = True, max_length=50)
     physicalName = models.CharField(blank = True, null = True, max_length=200)
-    description = models.CharField( blank = True, null = True, max_length=200)
+    description = models.TextField( blank = True, null = True, max_length=200)
 
     def __unicode__(self):
         return self.code 
@@ -76,8 +94,8 @@ class Property(MetaObj):
     length = models.IntegerField(blank = True, null = True)
     decLength = models.IntegerField(blank = True, null = True)
 
-    isNullable = models.BooleanField( )
-    isRequired = models.BooleanField( )
+    isNullable = models.BooleanField()
+    isRequired = models.BooleanField()
     isSensitive = models.BooleanField()
     isEssential = models.BooleanField()
     isUnique = models.BooleanField()
@@ -99,6 +117,11 @@ class Property(MetaObj):
 #   superProperty = models.ForeignKey('Property', blank = True, null = True)
     superProperty= models.CharField( blank = True, null = True, max_length=50)
 
+    def model_concept(self):
+        return self.concept.model
+    
+    model_concept.short_description = 'model'
+
     def save(self, *args, **kwargs ):
         self.objType = "Property"
         super(Property, self).save(*args, **kwargs) # Call the "real" save() method.
@@ -106,7 +129,7 @@ class Property(MetaObj):
     def __unicode__(self):
         sConcept = strNotNull(self.concept.code)
         sProperty = strNotNull(self.code)
-        return sConcept + '.' + sProperty    
+        return self.concept.model.code + '.' + sConcept + '.' + sProperty    
 
 
 class Relationship(MetaObj):
@@ -142,16 +165,17 @@ class UdpDefinition(models.Model):
     code = models.CharField(max_length=50)
     baseType = models.CharField(blank = True, null = True, max_length=50)
     alias = models.CharField(blank = True, null = True, max_length=50)
-    description = models.CharField(blank = True, null = True, max_length=200)
+    description = models.TextField(blank = True, null = True, max_length=200)
     def __unicode__(self):
         return self.code
 
 class Udp(models.Model):
     code = models.CharField(max_length=50)
-    value = models.CharField(blank = True, null = True, max_length=50)
+    value = models.TextField(blank = True, null = True, max_length=200)
     metaObj = models.ForeignKey('MetaObj')
+    
     def __unicode__(self):
-        return (strNotNull(self.code) + '.' + strNotNull(self.value))
+        return (strNotNull(self.metaObj.code) + '.' + strNotNull(self.code))
 
 #    Esto deberia ser la tabla de titulos de UPS ( un maesrto ) 
 #    udpTarget = models.CharField(verbose_name=u'udpTarget', blank = True, null = True, max_length=50)
@@ -166,7 +190,7 @@ class MetaLinkModel(models.Model):
     domain = models.ForeignKey('Domain')
 
     def __unicode__(self):
-        return self.name 
+        return self.code 
 
 class MetaLink(models.Model):
     code = models.CharField(max_length=50)

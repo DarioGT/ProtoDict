@@ -1,12 +1,14 @@
 from models import *
 
 import globale.admin          
+
+
  
 class ModelInline(globale.admin.TabularInline):
     model = Model
     fk_name = 'domain'
     extra = 1
-    fields = ('code', 'description', 'category', 'superModel', 'domain')
+    fields =  fdsModel  #('code', 'description', 'category', 'superModel', 'domain')
 
 
 class DomainAdmin(globale.admin.ModelAdmin):

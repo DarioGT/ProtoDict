@@ -3,7 +3,7 @@
 
 from globale import admin
 from models import *  
-
+import globale.admin
 #---------------
 
 from admin_Domain import DomainAdmin 
@@ -21,12 +21,51 @@ from admin_Concept import Concept_Admin
 admin.site.register(Concept, Concept_Admin)
 
 #---------------
+#DGT: Invocacion de llave a 2 niveles  
+#    list_filter y search_fields permiten  __lookup syntax, 
+#    list_display obliga la definicion ya sea en el modelo o como funcion    
 
-admin.site.register(Relationship)
-admin.site.register(Property)
-admin.site.register(Udp)
+class PropertyAdmin(globale.admin.ModelAdmin):
+    app_name = 'Proto'
+    list_display =( 'model_concept', 'concept', 'code',  'description',  'baseType','superProperty', 'alias', 'physicalName')
+    list_filter = ( 'concept__model', )
+    search_fields = ( 'code', 'superProperty', 'alias', 'physicalName')
 
-#admin.site.register(MetaLink)
+
+admin.site.register(Property, PropertyAdmin)
+
+#---------------  
+
+class RelationshipAdmin(globale.admin.ModelAdmin):
+    app_name = 'Proto'
+    list_display =( 'concept', 'baseConcept', 'code',  'description', 'alias')
+    list_filter = ( 'concept', )
+    search_fields = ( 'baseConcept', 'code',  'description', 'alias')
+
+
+admin.site.register(Relationship, RelationshipAdmin)
+
+
+
+class UdpAdmin(globale.admin.ModelAdmin):
+    app_name = 'Proto'
+    list_display =( 'metaObj', 'code', 'value')
+#   list_filter = ( 'metaObj', )
+    search_fields = ( 'code', 'value')
+
+
+admin.site.register(Udp, UdpAdmin)
+
+
+class MetaLinkAdmin(globale.admin.ModelAdmin):
+    app_name = 'Proto'
+    list_display =( 'metaLinkModel' , 'code', 'alias', 'destinationText', 'sourceCol', 'destinationCol')
+    list_filter = ( 'metaLinkModel' , )
+    search_fields = ( 'code', 'alias', 'destinationText', 'sourceCol', 'destinationCol')
+
+
+admin.site.register(MetaLink, MetaLinkAdmin)
+
 #admin.site.register(PropertyChoice)
 #admin.site.register(NavigationLink)
 #admin.site.register(EntryPoints)
