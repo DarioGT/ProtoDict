@@ -2,6 +2,8 @@
 #
 import sys
 
+from django.db import models
+
 from django.contrib.auth.models import User
 from django import forms
              
@@ -14,9 +16,6 @@ from django.template.loader import get_template
 from protoExtJs import protoGrid, utils 
 from protoExtJs.forms import ExtJsForm, getExtJsModelForm
 
-def getProtoGrid():
-    return protoGrid.ProtoGridFactory("Concept")        # generic from model fields
-
 
 # Create your views here.
 def protoGridDefinition(request):
@@ -24,7 +23,14 @@ def protoGridDefinition(request):
     #(r'^apps/(?P<app>[^/]+)/(?P<view>[^/]+)$', 'core.appdispatcher.dispatch' ), --> apps/app/views.py/view
     #(r'^apps/(?P<app>[^/]+)/?$', 'core.appdispatcher.dispatch' ),               --> apps/app/views.py/default
     
-    grid = getProtoGrid()
+    
+    modelName = "Concept"
+    for m in models.get_models():
+        if m._meta.object_name.lower() == modelName.lower():
+            model = m
+            break
+
+    grid = protoGrid.ProtoGridFactory( model )        # generic from model fields
 
     
     # if you have an EditableModelGrid then you can use POST data to update your instances.
@@ -46,16 +52,16 @@ def protoGridDefinition(request):
                 #.message
                 return utils.JsonError(str(msg))
 
-    users = User.objects.all()
+    pRows = model.objects.all()
     start = request.POST.get('start', 0)
     limit = request.POST.get('limit', 5)
     sort = request.POST.get('sort', 'id')
     sort_dir = request.POST.get('dir', 'ASC')
     json = grid.to_grid(
-                            users, 
+                            pRows, 
                             start = start, 
                             limit =  limit, 
-                            totalcount = users.count(), 
+                            totalcount = pRows.count(), 
                             sort_field = sort, 
                             sort_direction = sort_dir
                             )

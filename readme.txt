@@ -1,12 +1,9 @@
 9/26/2011 10:18:00 PM
 
-Manejo de Meta para unificar la importacion de Modelibra y OMS,. Se basa en Django para el manejo del ORM
-Projecto Django para visualizar el diccionario.  
-
 ** Pendiente 
 	
 	Buscar librerias ExtJs para Django 
-	Buscar donde se procesa el InLine 
+	Buscar donde se procesa el InLine ( girlla de valores ) para ejecutarlo en extjs 
 	
 	Cambiar el InLine por una tabla simple con 
 	una columa de modificacion y otra de seleccion (hipervinculo sobre la llave), 
@@ -19,5 +16,10 @@ Projecto Django para visualizar el diccionario.
 	
 **  Generacion de modelos a partir de la Db  
 	
+
+
+Manejo de Meta para unificar la importacion de Modelibra y OMS,. Se basa en Django para el manejo del ORM
+Projecto Django para visualizar el diccionario.  
+
 		  
  
