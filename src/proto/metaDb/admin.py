@@ -26,7 +26,8 @@ admin.site.register(Concept, Concept_Admin)
 #    list_display obliga la definicion ya sea en el modelo o como funcion    
 
 class PropertyAdmin(globale.admin.ModelAdmin):
-    app_name = 'Proto'
+    app_name = 'Dictionnaire de donnees'
+    verbose_name_plural = 'Elements de donnees' 
     list_display =( 'model_concept', 'concept', 'code',  'description',  'baseType','superProperty', 'alias', 'physicalName')
     list_filter = ( 'concept__model', )
     search_fields = ( 'code', 'superProperty', 'alias', 'physicalName')
@@ -37,7 +38,8 @@ admin.site.register(Property, PropertyAdmin)
 #---------------  
 
 class RelationshipAdmin(globale.admin.ModelAdmin):
-    app_name = 'Proto'
+    app_name = 'Dictionnaire de donnees'
+    verbose_name_plural = 'Associations' 
     list_display =( 'concept', 'baseConcept', 'code',  'description', 'alias')
     list_filter = ( 'concept', )
     search_fields = ( 'baseConcept', 'code',  'description', 'alias')
@@ -48,9 +50,9 @@ admin.site.register(Relationship, RelationshipAdmin)
 
 
 class UdpAdmin(globale.admin.ModelAdmin):
-    app_name = 'Proto'
-    list_display =( 'metaObj', 'code', 'value')
-#   list_filter = ( 'metaObj', )
+    app_name = 'Dictionnaire de donnees'
+    list_display =( 'metaObj', 'code',)
+    list_filter = ( 'code', )
     search_fields = ( 'code', 'value')
 
 
@@ -58,13 +60,17 @@ admin.site.register(Udp, UdpAdmin)
 
 
 class MetaLinkAdmin(globale.admin.ModelAdmin):
-    app_name = 'Proto'
+    app_name = 'Dictionnaire de donnees'
+    verbose_name_plural = 'Modeles de liens' 
     list_display =( 'metaLinkModel' , 'code', 'alias', 'destinationText', 'sourceCol', 'destinationCol')
     list_filter = ( 'metaLinkModel' , )
     search_fields = ( 'code', 'alias', 'destinationText', 'sourceCol', 'destinationCol')
 
 
 admin.site.register(MetaLink, MetaLinkAdmin)
+
+
+#admin.site.register(UdpDefinition)
 
 #admin.site.register(PropertyChoice)
 #admin.site.register(NavigationLink)
@@ -91,5 +97,5 @@ class MetaObjAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return True
                 
-admin.site.register(MetaObj, MetaObjAdmin)
+#admin.site.register(MetaObj, MetaObjAdmin)
 

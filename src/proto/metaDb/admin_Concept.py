@@ -16,17 +16,14 @@ class RelationshipInline(globale.admin.TabularInline):
 
 
 class Concept_Admin(globale.admin.ModelAdmin):
-    app_name = 'Proto'
-    list_display =( 'model', 'code', 'category', 'description',  'superConcept', 'alias', 'physicalName', )
+    app_name = 'Dictionnaire de donnees'
+    list_display =( 'model', 'code',  'description',  'superConcept', 'physicalName', )
     list_filter = ( 'model', 'superConcept', )
-    search_fields = ( 'code', 'category', 'description',  'superConcept', 'alias', 'physicalName')
+    search_fields = ( 'code', 'description',  'superConcept', 'physicalName')
 
     fieldsets = (
         (None, {
-            'fields': [('code', 'description')]
-        }),
-        ('Specifiques', {
-            'fields': [('category', 'superConcept', 'model'),]
+            'fields': [('code', 'description', 'superConcept', 'physicalName', 'model')]
         }),
     )
     inlines = [

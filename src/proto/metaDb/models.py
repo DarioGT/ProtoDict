@@ -34,7 +34,7 @@ def strNotNull(  sValue ):
 
 class MetaObj(models.Model):
     #OBJTYPE  = (('Domain', 'Domain'),('Model', 'Model'),('Concept', 'Concept'),('Property', 'Porperty'),('?', 'Unknown'),)
-    code = models.CharField(blank = True, null = True, max_length=200 )
+    code = models.CharField(verbose_name=u'Nom',blank = True, null = True, max_length=200 )
     objType = models.CharField(max_length=50)
     category = models.CharField(max_length=50, blank = True, null = True )
     alias = models.CharField(blank = True, null = True, max_length=50)
@@ -57,6 +57,9 @@ class Domain(MetaObj):
     def __unicode__(self):
         return self.code 
 
+    class Meta:
+        verbose_name = 'Domaine'
+
 
 #DGT: Como manejar la seleccion de opciones dependiendo del padre, implementar el manejo de discretas 
 class Model(MetaObj):
@@ -64,7 +67,7 @@ class Model(MetaObj):
     modelPrefix = models.CharField(verbose_name=u'modelPrefix', blank = True, null = True, max_length=50)
     idModel = models.CharField(verbose_name=u'Ix', blank = True, null = True, max_length=50)
     idRef = models.CharField(verbose_name=u'IxRef', blank = True, null = True, max_length=50)
-    domain = models.ForeignKey('Domain')
+    domain = models.ForeignKey('Domain', verbose_name=u'Domaine')
     
 #   superModel = models.ForeignKey('Model', blank = True, null = True)
     superModel = models.CharField( blank = True, null = True, max_length=50)
@@ -80,7 +83,7 @@ class Concept(MetaObj):
     model = models.ForeignKey('Model')
     
 #   superConcept = models.ForeignKey('Concept', blank = True, null = True)
-    superConcept = models.CharField( blank = True, null = True, max_length=50)
+    superConcept = models.CharField( verbose_name=u'Super table',blank = True, null = True, max_length=50)
     def __unicode__(self):
         return self.code 
 
@@ -88,6 +91,8 @@ class Concept(MetaObj):
         self.objType = "Concept"
         super(Concept, self).save(*args, **kwargs) # Call the "real" save() method.
 
+    class Meta:
+        verbose_name = 'Entite'
 
 class Property(MetaObj):
     baseType = models.CharField(blank = True, null = True, max_length=50)
@@ -131,6 +136,9 @@ class Property(MetaObj):
         sProperty = strNotNull(self.code)
         return self.concept.model.code + '.' + sConcept + '.' + sProperty    
 
+    class Meta:
+        verbose_name = 'Elements de donnees'
+
 
 class Relationship(MetaObj):
     """
@@ -159,6 +167,9 @@ class Relationship(MetaObj):
 
     def __unicode__(self):
         return self.code
+
+    class Meta:
+        verbose_name = 'Associations'
 
 
 class UdpDefinition(models.Model):
@@ -202,5 +213,7 @@ class MetaLink(models.Model):
     metaLinkModel = models.ForeignKey('MetaLinkModel')
 
     def __unicode__(self):
-        return self.name 
+        return self.code 
 
+    class Meta:
+        verbose_name = 'Modeles de liens'

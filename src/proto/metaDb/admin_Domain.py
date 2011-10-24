@@ -8,20 +8,15 @@ class ModelInline(globale.admin.TabularInline):
     model = Model
     fk_name = 'domain'
     extra = 1
-    fields =  fdsModel  #('code', 'description', 'category', 'superModel', 'domain')
+    fields =  ('code', 'description', 'superModel', 'domain')
 
 
 class DomainAdmin(globale.admin.ModelAdmin):
-    app_name = 'Proto'
-    list_display =( 'code', 'description', 'category'  )
+    app_name = 'Dictionnaire de donnees'
+    list_display =( 'code', 'description', )
     fieldsets = (
         (None, {
-            'fields': [('code', 'description')]
-        }),
-        ('Specifiques', {
-            'fields': [('category', 'origin'), 
-                       ('superDomain')],
-            'classes': ['collapse']
+            'fields': [('code', 'description','origin', 'superDomain',)]
         }),
     )
     inlines = [
