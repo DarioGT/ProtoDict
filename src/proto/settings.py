@@ -89,13 +89,14 @@ STATIC_URL = '/static/'
 # DGT: Al cambiar esto deja de funcionar (alguna relacion con STATIC_URL? )
 ADMIN_MEDIA_PREFIX = '/static/'
 
-DAJAXICE_MEDIA_PREFIX="dajaxice"
+#DAJAXICE_MEDIA_PREFIX="dajaxice"
 USE_DJANGO_JQUERY = True
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    PPATHLIB + '/globale/admin/media',
     PPATHLIB + '/static',
+    PPATHLIB + '/globale/admin/media',
+#    'D:/data/ExtJs/ext-4.0.2a',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
