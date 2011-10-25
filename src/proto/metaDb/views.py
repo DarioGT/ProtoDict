@@ -17,6 +17,9 @@ from protoExtJs import protoGrid, utils
 from protoExtJs.forms import ExtJsForm, getExtJsModelForm
 
 def getDjangoModel( modelName ):
+#    No se puede llamar directamten por q no tengo la app 
+#    model = models.get_models( appNAme, modelName )
+    
     # Encuentra el modelo 
     for m in models.get_models():
         if m._meta.object_name.lower() == modelName.lower():
@@ -24,7 +27,6 @@ def getDjangoModel( modelName ):
             break
 
     return model 
-
 
 
 # Create your views here.
