@@ -40,7 +40,7 @@ def protoGridDefinition(request):
     model = getDjangoModel(modelName)
 
     # Define la grilla con base en el modelo 
-    grid = protoGrid.ProtoGridFactory( model )        # generic from model fields
+    grid = protoGrid.ProtoGridFactory( model )        
 
     
     # if you have an EditableModelGrid then you can use POST data to update your instances.
@@ -55,6 +55,7 @@ def protoGridDefinition(request):
             User.objects.filter(id__in = dels).delete()
             return utils.JsonSuccess()
             # delete selected rows
+            
         if request.POST.get('update', '')!='':    
             # update rows data (update+inserts)
             if 1: #try:
@@ -68,7 +69,7 @@ def protoGridDefinition(request):
 
 
     # Obtiene las filas del modelo 
-    pRows = model.objects.all()
+    pRows = model.objects.order_by('id')
     
     # parametros de trabajo 
     start = request.POST.get('start', 0)
