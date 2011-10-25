@@ -16,6 +16,16 @@ from django.template.loader import get_template
 from protoExtJs import protoGrid, utils 
 from protoExtJs.forms import ExtJsForm, getExtJsModelForm
 
+def getDjangoModel( modelName ):
+    # Encuentra el modelo 
+    for m in models.get_models():
+        if m._meta.object_name.lower() == modelName.lower():
+            model = m
+            break
+
+    return model 
+
+
 
 # Create your views here.
 def protoGridDefinition(request):
@@ -23,20 +33,22 @@ def protoGridDefinition(request):
     #(r'^apps/(?P<app>[^/]+)/(?P<view>[^/]+)$', 'core.appdispatcher.dispatch' ), --> apps/app/views.py/view
     #(r'^apps/(?P<app>[^/]+)/?$', 'core.appdispatcher.dispatch' ),               --> apps/app/views.py/default
     
-    
-    modelName = "Concept"
-    for m in models.get_models():
-        if m._meta.object_name.lower() == modelName.lower():
-            model = m
-            break
 
+    modelName, value  = request.GET.items()[0]
+    model = getDjangoModel(modelName)
+
+    # Define la grilla con base en el modelo 
     grid = protoGrid.ProtoGridFactory( model )        # generic from model fields
 
     
     # if you have an EditableModelGrid then you can use POST data to update your instances.
     if request.method == 'POST':
+
         # handle save of grid data !
         if request.POST.get('delete', '')!='':
+
+            modelName = request.GET.items()[0]
+
             dels = request.POST['delete'].split(',')
             User.objects.filter(id__in = dels).delete()
             return utils.JsonSuccess()
@@ -52,9 +64,13 @@ def protoGridDefinition(request):
                 #.message
                 return utils.JsonError(str(msg))
 
+
+    # Obtiene las filas del modelo 
     pRows = model.objects.all()
+    
+    # parametros de trabajo 
     start = request.POST.get('start', 0)
-    limit = request.POST.get('limit', 5)
+    limit = request.POST.get('limit', 20)
     sort = request.POST.get('sort', 'id')
     sort_dir = request.POST.get('dir', 'ASC')
     json = grid.to_grid(
