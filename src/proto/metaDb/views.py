@@ -16,15 +16,16 @@ from django.template.loader import get_template
 from protoExtJs import protoGrid, utils 
 from protoExtJs.forms import ExtJsForm, getExtJsModelForm
 
-def getDjangoModel( modelName ):
-#    No se puede llamar directamten por q no tengo la app 
-#    model = models.get_models( appNAme, modelName )
+def getDjangoModel(  appCode, modelName ):
+
+#   llama directamente  
+    model = models.get_model( appCode, modelName )
     
     # Encuentra el modelo 
-    for m in models.get_models():
-        if m._meta.object_name.lower() == modelName.lower():
-            model = m
-            break
+#    for m in models.get_models():
+#        if m._meta.object_name.lower() == modelName.lower():
+#            model = m
+#            break
 
     return model 
 
@@ -36,15 +37,20 @@ def protoGridDefinition(request):
     #(r'^apps/(?P<app>[^/]+)/?$', 'core.appdispatcher.dispatch' ),               --> apps/app/views.py/default
     
 
-    modelName, value  = request.GET.items()[0]
-    model = getDjangoModel(modelName)
+#    modelName, value  = request.GET.items()[0]
 
     # Define la grilla con base en el modelo 
-    grid = protoGrid.ProtoGridFactory( model )        
 
     
     # if you have an EditableModelGrid then you can use POST data to update your instances.
     if request.method == 'POST':
+
+        protoFilter = request.POST.get('protoFilter')
+        protoApp  = request.POST.get('protoApp')
+        protoConcept = request.POST.get('protoConcept')
+
+        model = getDjangoModel(protoApp,  protoConcept)
+        grid = protoGrid.ProtoGridFactory( model )        
 
         # handle save of grid data !
         if request.POST.get('delete', '')!='':
@@ -68,14 +74,22 @@ def protoGridDefinition(request):
                 return utils.JsonError(str(msg))
 
 
-    # Obtiene las filas del modelo 
-    pRows = model.objects.order_by('id')
     
-    # parametros de trabajo 
+    # parametros de trabajo  ( vienen en baseparam ) 
     start = request.POST.get('start', 0)
     limit = request.POST.get('limit', 20)
     sort = request.POST.get('sort', 'id')
     sort_dir = request.POST.get('dir', 'ASC')
+
+    # Convierte el filtro en un diccionario 
+    try: 
+        protoStmt = eval( protoFilter )
+    except:
+        protoStmt = {'pk':0}
+
+    # Obtiene las filas del modelo 
+    pRows = model.objects.filter(**protoStmt ).order_by('id')
+    
     json = grid.to_grid(
                             pRows, 
                             start = start, 
@@ -101,18 +115,7 @@ def protoGridDefinition(request):
 #        fields_conf['is_superuser'] = {'width':50, 'header':'root', 'align':'center', 'renderer':"function(val, attr) {attr.css = (val)?'icon-accept':'icon-delete'; }"}
 #
 #        
-## this is the same as above
-#class CustomGridUsers(BaseCustomGridUsers, grids.ModelGrid):
-#    pass
-#        
-## the same but editable !
-#class CustomEditableGridUsers(BaseCustomGridUsers, grids.EditableModelGrid):
-#    pass
-#    
-##
 ## Simple contact form example
-##
-#
 #class ContactForm(forms.Form):
 #    name = forms.CharField(label='your name')
 #    phone = forms.CharField(label='phone number', required = False)
@@ -148,8 +151,6 @@ def protoGridDefinition(request):
 #        
 ##
 ## Generic ModelForm Example
-##
-#
 #class UserForm(forms.ModelForm):
 #    class Meta:
 #        exclude = ['groups', 'user_permissions', 'password']
@@ -159,8 +160,7 @@ def protoGridDefinition(request):
 #        if self.instance:
 #            self.fields['pk'] = forms.CharField(initial = self.instance.pk, widget=forms.widgets.HiddenInput)
 #            
-#ExtJsForm.addto(UserForm)
-#
+
 #@publish
 #def user_edit(request, path = None):
 #    if request.method == 'POST':
@@ -224,4 +224,3 @@ def protoGridDefinition(request):
 #        #self.get_field('last_datetime').update({'width':150})
 #    class Meta:
 #        exclude = ['date','datetime']
-#        
