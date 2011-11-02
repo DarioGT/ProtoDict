@@ -9,22 +9,22 @@ from django.utils.encoding import force_unicode
 #datamodel name="Relational Data Model" idmodel="1" idref="0">
 
 
-fdsDomain = ( 'code', 'category', 'description',  'origin', 'superDomain', 'alias', 'physicalName' )
-
-fdsModel= ( 'code', 'category', 'description',  'modelPrefix', 'superModel', 'alias', 'physicalName' )
-intModel= ( 'idModel', 'idRef' )
-
-fdsConcept= ( 'model', 'code', 'category', 'description',  'superConcept', 'alias', 'physicalName')
-
-fdsProperty = ( 'concept', 'code', 'category', 'description',  'baseType', 'defaultValue', 'superProperty', 'alias', 'physicalName')
-booProperty = ( 'isNullable', 'isRequired', 'isSensitive', 'isEssential', 'isUnique', 'isForeign')
-intProperty = ( 'length', 'decLength', 'conceptPosition', )
-
-fdsForeign= ( 'code', 'category', 'description', 'baseMin', 'baseMax', 'refMin', 'refMax', 'superProperty', 'baseConcept', 'alias', 'physicalName')
-
-fdsLinkModel= ['code', 'source', 'destination']
-fdsLink = ['code', 'alias', 'destinationText', 'sourceCol', 'destinationCol']
-fdsUdpDefinition = ['code', 'baseType', 'alias', 'description']
+#fdsDomain = ( 'code', 'category', 'description',  'origin', 'superDomain', 'alias', 'physicalName' )
+#
+#fdsModel= ( 'code', 'category', 'description',  'modelPrefix', 'superModel', 'alias', 'physicalName' )
+#intModel= ( 'idModel', 'idRef' )
+#
+#fdsConcept= ( 'model', 'code', 'category', 'description',  'superConcept', 'alias', 'physicalName')
+#
+#fdsProperty = ( 'concept', 'code', 'category', 'description',  'baseType', 'defaultValue', 'superProperty', 'alias', 'physicalName')
+#booProperty = ( 'isNullable', 'isRequired', 'isSensitive', 'isEssential', 'isUnique', 'isForeign')
+#intProperty = ( 'length', 'decLength', 'conceptPosition', )
+#
+#fdsForeign= ( 'code', 'category', 'description', 'baseMin', 'baseMax', 'refMin', 'refMax', 'superProperty', 'baseConcept', 'alias', 'physicalName')
+#
+#fdsLinkModel= ['code', 'source', 'destination']
+#fdsLink = ['code', 'alias', 'destinationText', 'sourceCol', 'destinationCol']
+#fdsUdpDefinition = ['code', 'baseType', 'alias', 'description']
 
 
 def strNotNull(  sValue ):

@@ -1,0 +1,39 @@
+{
+    'succes': True,
+    'totalCount': 58,
+    'rows': [{
+        'category': '', 'metaobj_ptr': u 'Model', 'id': u '217'
+    }],
+    'metaData': {
+        'sortInfo': {
+            'field': 'id',
+            'direction': 'ASC'
+        },
+        'fields': [{
+            'header': 'id',
+            'name': 'id',
+            'tooltip': u 'ID',
+            'id': 'id'
+        }, {
+            'header': 'superConcept',
+            'name': 'superConcept',
+            'tooltip': u 'Super table'
+        }],
+
+        ,'protoTabs':[
+             {'T1': ['Col1','Col2']}, 
+             {'T2': ['Col3','Col2']},
+             ]    
+        ,'protoDetails': {
+             'Concpet1': 'Id = %Id', 
+             'Concept2': 'Id = %Id'
+         } 
+
+        'successProperty': 'success',
+        'totalProperty': 'totalCount',
+        'idProperty': 'id',
+
+
+        'root': 'rows'
+    }
+}
