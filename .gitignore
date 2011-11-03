@@ -86,3 +86,4 @@ RCSLOG
 SCCS
 _$*
 *.db
+db/metaDb.mdb

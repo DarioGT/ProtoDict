@@ -1,5 +1,5 @@
 # This is an auto-generated model module by CeRTAE OMS PlugIn
-# for project : "Modelibra" >
+# for project : "Modelibra" > 
 # You'll have to do the following manually to clean this up:
 #     * Rearrange models' order
 
@@ -8,23 +8,6 @@ from django.utils.encoding import force_unicode
 
 #datamodel name="Relational Data Model" idmodel="1" idref="0">
 
-
-#fdsDomain = ( 'code', 'category', 'description',  'origin', 'superDomain', 'alias', 'physicalName' )
-#
-#fdsModel= ( 'code', 'category', 'description',  'modelPrefix', 'superModel', 'alias', 'physicalName' )
-#intModel= ( 'idModel', 'idRef' )
-#
-#fdsConcept= ( 'model', 'code', 'category', 'description',  'superConcept', 'alias', 'physicalName')
-#
-#fdsProperty = ( 'concept', 'code', 'category', 'description',  'baseType', 'defaultValue', 'superProperty', 'alias', 'physicalName')
-#booProperty = ( 'isNullable', 'isRequired', 'isSensitive', 'isEssential', 'isUnique', 'isForeign')
-#intProperty = ( 'length', 'decLength', 'conceptPosition', )
-#
-#fdsForeign= ( 'code', 'category', 'description', 'baseMin', 'baseMax', 'refMin', 'refMax', 'superProperty', 'baseConcept', 'alias', 'physicalName')
-#
-#fdsLinkModel= ['code', 'source', 'destination']
-#fdsLink = ['code', 'alias', 'destinationText', 'sourceCol', 'destinationCol']
-#fdsUdpDefinition = ['code', 'baseType', 'alias', 'description']
 
 
 def strNotNull(  sValue ):
@@ -182,7 +165,7 @@ class UdpDefinition(models.Model):
 
 class Udp(models.Model):
     code = models.CharField(max_length=50)
-    value = models.TextField(blank = True, null = True, max_length=200)
+    valueUdp = models.TextField(blank = True, null = True, max_length=200)
     metaObj = models.ForeignKey('MetaObj')
     
     def __unicode__(self):
@@ -217,3 +200,22 @@ class MetaLink(models.Model):
 
     class Meta:
         verbose_name = 'Modeles de liens'
+
+
+#fdsDomain = ( 'code', 'category', 'description',  'origin', 'superDomain', 'alias', 'physicalName' )
+#
+#fdsModel= ( 'code', 'category', 'description',  'modelPrefix', 'superModel', 'alias', 'physicalName' )
+#intModel= ( 'idModel', 'idRef' )
+#
+#fdsConcept= ( 'model', 'code', 'category', 'description',  'superConcept', 'alias', 'physicalName')
+#
+#fdsProperty = ( 'concept', 'code', 'category', 'description',  'baseType', 'defaultValue', 'superProperty', 'alias', 'physicalName')
+#booProperty = ( 'isNullable', 'isRequired', 'isSensitive', 'isEssential', 'isUnique', 'isForeign')
+#intProperty = ( 'length', 'decLength', 'conceptPosition', )
+#
+#fdsForeign= ( 'code', 'category', 'description', 'baseMin', 'baseMax', 'refMin', 'refMax', 'superProperty', 'baseConcept', 'alias', 'physicalName')
+#
+#fdsLinkModel= ['code', 'source', 'destination']
+#fdsLink = ['code', 'alias', 'destinationText', 'sourceCol', 'destinationCol']
+#fdsUdpDefinition = ['code', 'baseType', 'alias', 'description']
+
