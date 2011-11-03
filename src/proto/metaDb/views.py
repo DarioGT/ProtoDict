@@ -40,9 +40,10 @@ def protoGridDefinition(request):
     # if you have an EditableModelGrid then you can use POST data to update your instances.
     if request.method == 'POST':
 
-        protoFilter = request.POST.get('protoFilter')
-        protoApp  = request.POST.get('protoApp')
-        protoConcept = request.POST.get('protoConcept')
+        protoFilter = request.POST.get('protoFilter', '')
+        protoFilterBase = request.POST.get('protoFilterBase', '')
+        protoApp  = request.POST.get('protoApp', '')
+        protoConcept = request.POST.get('protoConcept', '')
 
         model = getDjangoModel(protoApp,  protoConcept)
         grid = protoGrid.ProtoGridFactory( model )        
@@ -77,19 +78,31 @@ def protoGridDefinition(request):
         sort_dir = request.POST.get('dir', 'ASC')
     
         # Convierte el filtro en un diccionario 
-        try: 
-            protoStmt = eval( protoFilter )
-        except:
-            protoStmt = {'pk':0}
+        if (len (protoFilter) > 0 ):
+            try: protoStmt = eval( protoFilter )
+            except: protoStmt = {'pk':0}
+        else: 
+            protoStmt = {}
+
+        # El filtro base viene en la configuracion MD 
+        if (len (protoFilterBase) > 0 ):
+            try: protoStmtBase = eval( protoFilterBase )
+            except: protoStmtBase = {'pk':0}
+        else: 
+            protoStmtBase = {}
     
         # Obtiene las filas del modelo 
-        pRows = model.objects.filter(**protoStmt ).order_by('id')
+#        pRowsCount = model.objects.filter(**protoStmt ).count()
+#        pRows = model.objects.filter(**protoStmt ).order_by('id')[start: limit]
+
+        pRows = model.objects.filter(**protoStmt ).filter(**protoStmtBase ).order_by('id')
+        pRowsCount = pRows.count()
         
         json = grid.to_grid(
                                 pRows, 
                                 start = start, 
                                 limit =  limit, 
-                                totalcount = pRows.count(), 
+                                totalcount = pRowsCount, 
                                 sort_field = sort, 
                                 sort_direction = sort_dir
                                 )
