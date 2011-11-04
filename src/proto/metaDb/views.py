@@ -44,9 +44,12 @@ def protoGridDefinition(request):
         protoFilterBase = request.POST.get('protoFilterBase', '')
         protoApp  = request.POST.get('protoApp', '')
         protoConcept = request.POST.get('protoConcept', '')
+        
+#        TODO: Independizar el llamado de la meta y de los datos 
+#        protoModelLoad = request.POST.get('protoConcept', '1')
 
         model = getDjangoModel(protoApp,  protoConcept)
-        grid = protoGrid.ProtoGridFactory( model )        
+        grid = protoGrid.ProtoGridFactory( model  )        
 
         # handle save of grid data !
         if request.POST.get('delete', '')!='':

@@ -70,7 +70,7 @@ admin.site.register(Relationship, RelationshipAdmin)
 
 class UdpAdmin(globale.admin.ModelAdmin):
     app_name = 'Dictionnaire de donnees'
-    list_display =( 'metaObj', 'code',)
+    list_display =( 'metaObj', 'code', 'objType' )
     list_filter = ( 'code', )
     search_fields = ( 'code', 'valueUdp')
 

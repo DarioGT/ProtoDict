@@ -167,7 +167,10 @@ class Udp(models.Model):
     code = models.CharField(max_length=50)
     valueUdp = models.TextField(blank = True, null = True, max_length=200)
     metaObj = models.ForeignKey('MetaObj')
-    
+
+    def objType(self):
+        return self.metaObj.objType
+
     def __unicode__(self):
         return (strNotNull(self.metaObj.code) + '.' + strNotNull(self.code))
 
