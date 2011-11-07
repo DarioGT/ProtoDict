@@ -25,11 +25,6 @@ admin.site.register(Concept, Concept_Admin)
 #    list_filter y search_fields permiten  __lookup syntax, 
 #    list_display obliga la definicion ya sea en el modelo o como funcion    
 
-class UpdInline(globale.admin.TabularInline):
-    model = Udp 
-    fk_name = 'metaObj'
-    extra = 1
-    fields = ('code', 'valueUdp')
 
 class PropertyAdmin(globale.admin.ModelAdmin):
     app_name = 'Dictionnaire de donnees'

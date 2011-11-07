@@ -3,8 +3,6 @@
 #        exclude = []
 #        order = ['id', 'username', 'email', 'is_staff', 'is_active', 'is_superuser', 'last_login', 'date_joined']
 #        fields_conf = {}
-#        fields_conf['id'] = {'hidden':True, 'width':30, 'align':'center'}
-#        fields_conf['date_joined'] = {'type':'date', 'header':u'date_joined', 'width':90,  'dateFormat':'d/m/Y', 'renderer':"new Ext.util.Format.dateRenderer('d/m/Y')", 'align':'center'}
 #        fields_conf['is_staff'] = {'width':50, 'header':'staff', 'align':'center', 'renderer':"function(val, attr) {attr.css = (val)?'icon-accept':'icon-delete'; }"}
 #        fields_conf['is_active'] = {'width':50, 'header':'active', 'align':'center', 'renderer':"function(val, attr) {attr.css = (val)?'icon-accept':'icon-delete'; }"}
 #        fields_conf['is_superuser'] = {'width':50, 'header':'root', 'align':'center', 'renderer':"function(val, attr) {attr.css = (val)?'icon-accept':'icon-delete'; }"}

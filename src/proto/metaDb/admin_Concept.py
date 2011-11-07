@@ -27,6 +27,7 @@ class Concept_Admin(globale.admin.ModelAdmin):
         }),
     )
     inlines = [
+        UpdInline,
         PropertyInline,
         RelationshipInline,
         ]

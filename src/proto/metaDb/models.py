@@ -6,6 +6,8 @@
 from django.db import models
 from django.utils.encoding import force_unicode
 
+from globale import admin
+
 #datamodel name="Relational Data Model" idmodel="1" idref="0">
 
 
@@ -90,7 +92,6 @@ class Property(MetaObj):
     isForeign = models.BooleanField()
     foreignConcept = models.CharField(max_length=200,blank = True, null = True)
 
-    conceptPosition = models.IntegerField( blank = True, null = True)
     defaultValue = models.CharField( blank = True, null = True, max_length=50)
 
     #DGT: La derivacion deberia ser una referencia pero en la carga no es posible hacer la referencia se requiere un campo texto 
@@ -166,6 +167,7 @@ class UdpDefinition(models.Model):
 class Udp(models.Model):
     code = models.CharField(max_length=50)
     valueUdp = models.TextField(blank = True, null = True, max_length=200)
+    indexUdp = models.IntegerField(blank = True, null = True)
     metaObj = models.ForeignKey('MetaObj')
 
     def objType(self):
@@ -178,6 +180,12 @@ class Udp(models.Model):
 #    udpTarget = models.CharField(verbose_name=u'udpTarget', blank = True, null = True, max_length=50)
 #    udpType = models.CharField(verbose_name=u'udpType', blank = True, null = True, max_length=50)
 #    udpRule = models.CharField(verbose_name=u'udpRule', blank = True, null = True, max_length=50)
+
+class UpdInline(admin.TabularInline):
+    model = Udp 
+    fk_name = 'metaObj'
+    extra = 1
+    fields = ('code', 'valueUdp')
 
 
 class MetaLinkModel(models.Model):
