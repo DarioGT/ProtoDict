@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.views.generic.simple import direct_to_template
 
 # Uncomment the next two lines to enable the admin:
 import globale.admin
@@ -8,19 +9,16 @@ from proto.metaDb.views import protoGridDefinition
 
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'modelibra.views.home', name='home'),
-    # url(r'^modelibra/', include('modelibra.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('globale.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
     url(r'^admin/protoExtjsGridDefinition/?$', protoGridDefinition ),
     url(r'^admin/', include(globale.admin.site.urls)) ,
+
+    url(r'^protoExt$', direct_to_template, { 'template': 'protoExt.html' }),
+    url(r'^protoExt/', include('protoExt.urls')),
+
+
+)
 
 
 #    (r'^apps/(?P<app>[^/]+)/(?P<view>[^/]+)/?(?P<path>.+)?$', 'core.appdispatcher.dispatch' ),
 #    (r'^apps/(?P<app>[^/]+)/?$', 'core.appdispatcher.dispatch' ),
-)
-

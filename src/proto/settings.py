@@ -96,7 +96,7 @@ USE_DJANGO_JQUERY = True
 STATICFILES_DIRS = (
     PPATHLIB + '/static',
     PPATHLIB + '/globale/admin/media',
-#    'D:/data/ExtJs/ext-4.0.2a',
+    'D:/data/ExtJs',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -139,6 +139,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'proto.urls'
 
 TEMPLATE_DIRS = (
+    PPATH + '/templates',                 
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
