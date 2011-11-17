@@ -77,7 +77,7 @@ def view(request):
 
 
 
-def menu(request):
+def protoGetMenuData(request):
     context = [{
                     'text':'Dictionaire de donnes',
                     'expanded':True,

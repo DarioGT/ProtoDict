@@ -17,13 +17,13 @@ class RelationshipInline(globale.admin.TabularInline):
 
 class Concept_Admin(globale.admin.ModelAdmin):
     app_name = 'Dictionnaire de donnees'
-    list_display =( 'model', 'code',  'description',  'superConcept', 'physicalName', )
+    list_display =( 'model', 'code',  'description',  'superConcept', )
     list_filter = ( 'model', 'superConcept', )
-    search_fields = ( 'code', 'description',  'superConcept', 'physicalName')
+    search_fields = ( 'code', 'description',  'superConcept')
 
     fieldsets = (
         (None, {
-            'fields': [('code', 'description', 'superConcept', 'physicalName', 'model')]
+            'fields': [('code', 'description', 'superConcept', 'model')]
         }),
     )
     inlines = [

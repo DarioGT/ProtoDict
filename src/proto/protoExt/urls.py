@@ -7,6 +7,6 @@ urlpatterns = patterns('',
 #    url('update.action/$', update, name='update'),
 #    url('delete.action/$', delete, name='delete'),
 
-    url('menu/$', menu),
+    url('protoGetMenuData/$', protoGetMenuData ), 
 
 )

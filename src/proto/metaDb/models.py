@@ -65,7 +65,7 @@ class Model(MetaObj):
         return self.code 
 
 class Concept(MetaObj):
-    model = models.ForeignKey('Model')
+    model = models.ForeignKey('Model', verbose_name=u'Nom du modele')
     
 #   superConcept = models.ForeignKey('Concept', blank = True, null = True)
     superConcept = models.CharField( verbose_name=u'Super table',blank = True, null = True, max_length=50)
@@ -80,7 +80,7 @@ class Concept(MetaObj):
         verbose_name = 'Entite'
 
 class Property(MetaObj):
-    baseType = models.CharField(blank = True, null = True, max_length=50)
+    baseType = models.CharField(verbose_name=u'Type de Base', blank = True, null = True, max_length=50)
     length = models.IntegerField(blank = True, null = True)
     decLength = models.IntegerField(blank = True, null = True)
 
@@ -104,7 +104,7 @@ class Property(MetaObj):
 
     concept = models.ForeignKey('Concept')
 #   superProperty = models.ForeignKey('Property', blank = True, null = True)
-    superProperty= models.CharField( blank = True, null = True, max_length=50)
+    superProperty= models.CharField( blank = True, null = True, max_length=50, verbose_name=u'Propriete pere')
 
     def model_concept(self):
         return self.concept.model

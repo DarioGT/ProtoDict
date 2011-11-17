@@ -29,9 +29,9 @@ admin.site.register(Concept, Concept_Admin)
 class PropertyAdmin(globale.admin.ModelAdmin):
     app_name = 'Dictionnaire de donnees'
     verbose_name_plural = 'Elements de donnees' 
-    list_display =( 'model_concept', 'concept', 'code',  'description',  'baseType','superProperty', 'alias', 'physicalName')
+    list_display =( 'model_concept', 'concept', 'code',  'description',  'baseType','superProperty', 'alias')
     list_filter = ( 'concept__model', )
-    search_fields = ( 'code', 'superProperty', 'alias', 'physicalName') 
+    search_fields = ( 'code', 'superProperty', 'alias') 
     fieldsets = (
         (None, {
             'fields': [
