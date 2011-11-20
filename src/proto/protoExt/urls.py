@@ -8,5 +8,6 @@ urlpatterns = patterns('',
 #    url('delete.action/$', delete, name='delete'),
 
     url('protoGetMenuData/$', protoGetMenuData ), 
+    url('protoGetConceptModel/$', protoGetConceptModel ), 
 
 )

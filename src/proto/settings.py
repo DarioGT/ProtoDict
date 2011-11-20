@@ -96,7 +96,8 @@ USE_DJANGO_JQUERY = True
 STATICFILES_DIRS = (
     PPATHLIB + '/static',
     PPATHLIB + '/globale/admin/media',
-    'D:/data/ExtJs',
+    '/u/data/ExtJs',
+    #'D:/data/ExtJs',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

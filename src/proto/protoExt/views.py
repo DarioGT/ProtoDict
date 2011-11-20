@@ -88,3 +88,62 @@ def protoGetMenuData(request):
                 }]
 
     return HttpResponse(json.dumps(context), mimetype="application/json")
+
+
+
+def protoGetConceptModel(request):
+
+    context = {
+            "success": True,
+            "metaData": {
+                "conceptName": "Contact",
+                "shortTitle": "Contact",
+                "description": "Contact",
+                "sortInfo": {
+                    "field": "id",
+                    "direction": "ASC"
+                },
+                "idProperty": "id",
+                "fields": [{
+                    "dataIndex": "id",
+                    "header": "id",
+                    "hidden": True,
+                    "width": 160,
+                    "type": "string",
+                    "allowBlank": False,
+                    "allowFilter": False,
+                    "sortable": False,
+                    "editPolicy": 0,
+                    "defaultValue": "",
+                    "baseConcept": "",
+                }, {
+                    "header": "code",
+                    "allowFilter": False,
+                    "sortable": False,
+                    "dataIndex": "code",
+                }, {
+                    "header": "description",
+                    "sortable": False,
+                    "dataIndex": "description",
+                    "width": 160, 
+                    "flex": 1, 
+                }],
+                "protoDetails": [{
+                    "conceptDetail": "Model", 
+                    "masterFilter": "id",
+                    "detailFilter": "domain__id"
+                    },{
+                    "conceptDetail": "UDP", 
+                    "masterFilter": "id",
+                    "detailFilter": "domain__id"
+                    }],
+                "protoViews":[{
+                    "viewTitle": "Esentials", 
+                    "visibleProp": ["code","description"]
+                    },{
+                    "viewTitle": "All", 
+                    "visibleProp": ["id" "code","description"]
+                    }] 
+            }
+        }
+    return HttpResponse(json.dumps(context), mimetype="application/json")
