@@ -117,3 +117,50 @@
 #        #self.get_field('last_datetime').update({'width':150})
 #    class Meta:
 #        exclude = ['date','datetime']
+
+
+
+#def create(request):
+#    list = []
+#    if request.POST:
+#        data = json.loads(request.POST.keys()[0])
+#        contact = Contact.objects.latest('id')
+##       contact.id = contact.id + 1
+#        contact.name = data['data']['name']
+#        contact.phone = data['data']['phone']
+#        contact.email = data['data']['email']
+#        contact.save()
+#        list.append(model_to_dict(contact, fields=[field.name for field in contact._meta.fields]))
+#    context = {
+#        'total': list.__len__(),
+#        'data': list,
+#        'success': True
+#    }
+#    return HttpResponse(json.dumps(context), mimetype="application/json")
+#
+#def update(request):
+#    json_data = json.loads(request.POST.keys()[0])
+#    contact = get_object_or_404(Contact, pk=json_data['data']['id'])
+#    contact.email = json_data['data']['email']
+#    contact.name = json_data['data']['name']
+#    contact.phone = json_data['data']['phone']
+#    contact.save()
+#    list = []
+#    list.append(model_to_dict(contact, fields=[field.name for field in contact._meta.fields]))
+#    context = {
+#        'total': list.__len__(),
+#        'data': list,
+#        'success': True
+#    }
+#    return HttpResponse(json.dumps(context), mimetype="application/json")
+#
+#def delete(request):
+#    json_data = json.loads(request.POST.keys()[0])
+#    contact = get_object_or_404(Contact, pk=json_data['data']['id'])
+#    contact.delete()
+#    context = {
+#        'success': True
+#    }
+#    return HttpResponse(json.dumps(context), mimetype="application/json")
+
+
