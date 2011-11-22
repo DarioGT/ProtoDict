@@ -36,11 +36,11 @@ def protoGetConceptModel(request):
                 "conceptName": "Contact",
                 "shortTitle": "Contact",
                 "description": "Contact",
+                "idProperty": "id",
                 "sortInfo": {
                     "field": "id",
                     "direction": "ASC"
                 },
-                "idProperty": "id",
                 "fields": [{
                     "dataIndex": "id",
                     "type": "string",

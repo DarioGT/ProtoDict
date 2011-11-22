@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^protoExt$', direct_to_template, { 'template': 'protoExt.html' }),
     url(r'^protoExt/', include('protoExt.urls')),
 
+    url(r'^prueba1$', direct_to_template, { 'template': 'prueba.html' }),
+    url(r'^prueba2$', direct_to_template, { 'template': 'prueba.html' }),
 
 )
 

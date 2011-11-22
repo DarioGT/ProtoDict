@@ -69,23 +69,75 @@ def protoGetPCI(request):
 
 def protoGetList(request):
 #   Vista simple para cargar la informacion, 
-#   Buscar el modelo dinamicamente y cargar la info correspondiente    
     
-    page = int(request.GET.get('page', 0))
-    start = int(request.GET.get('start', 0))
-    limit = int(request.GET.get('limit', 0))
+    if request.method == 'GET':
 
-#    total_contacts = Contact.objects.all().count()
-    total_contacts = 0
-#    contacts = Contact.objects.all()[start:limit*page]
-    list = []
-#    for contact in contacts:
-#        list.append(model_to_dict(contact, fields=[field.name for field in contact._meta.fields]))
-    context = {
-        'total': total_contacts,
-        'data': list,
-        'success': True
-    }
-    return HttpResponse(json.dumps(context), mimetype="application/json")
+#       protoApp  = request.POST.get('protoApp', '')
+        protoConcept = request.GET.get('protoConcept', '')
+        protoFilter = request.GET.get('protoFilter', '')
+        protoFilterBase = request.GET.get('protoFilterBase', '')
+        
+#       page = int(request.GET.get('page', 0))
+        start = int(request.GET.get('start', 0))
+        limit = int(request.GET.get('limit', 100))
 
+        sort = request.GET.get('sort', 'id')
+        sort_dir = request.GET.get('dir', 'ASC')
+
+    else:
+
+#       protoApp  = request.POST.get('protoApp', '')
+        protoConcept = request.POST.get('protoConcept', '')
+        protoFilter = request.POST.get('protoFilter', '')
+        protoFilterBase = request.POST.get('protoFilterBase', '')
+        
+#       page = int(request.GET.get('page', 0))
+        start = int(request.POST.get('start', 0))
+        limit = int(request.POST.get('limit', 100))
+
+        sort = request.POST.get('sort', 'id')
+        sort_dir = request.POST.get('dir', 'ASC')
+
+        
+        
+#   Carga la info
+    model = getDjangoModel(protoConcept)
+    
+#   Convierte el filtro en un diccionario 
+    if (len (protoFilter) > 0 ):
+        try: protoStmt = eval( protoFilter )
+        except: protoStmt = {'pk':0}
+    else: 
+        protoStmt = {}
+
+#   El filtro base viene en la configuracion MD 
+    if (len (protoFilterBase) > 0 ):
+        try: protoStmtBase = eval( protoFilterBase )
+        except: protoStmtBase = {'pk':0}
+    else: 
+        protoStmtBase = {}
+
+#   Obtiene las filas del modelo 
+    pRows = model.objects.filter(**protoStmt ).filter(**protoStmtBase ).order_by('id')[start: limit]
+    pRowsCount = pRows.count()
+
+
+    pList = []
+    for reg in pRows:
+        pList.append(model_to_dict(reg, fields=[field.name for field in reg._meta.fields]))
+
+    pList = [{'id':1,'first':"Fred",'last':"Flintstone",'email':"fred@flintstone.com"},
+          {'id':2,'first':"Wilma",'last':"Flintstone",'email':"wilma@flintstone.com"},
+          {'id':3,'first':"Pebbles",'last':"Flintstone",'email':"pebbles@flintstone.com"},
+          {'id':4,'first':"Barney",'last':"Rubble",'email':"barney@rubble.com"},
+          {'id':5,'first':"Betty",'last':"Rubble",'email':"betty@rubble.com"},
+          {'id':6,'first':"BamBam",'last':"Rubble",'email':"bambam@rubble.com"}]
+
+    context = json.dumps({
+            "success": True,
+            'totalCount': pRowsCount,
+            'rows': pList,
+            })
+    
+    return HttpResponse(context, mimetype="application/json")
 

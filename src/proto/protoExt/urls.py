@@ -6,7 +6,7 @@ from protoConcept import protoGetPCI, protoGetList
 
 
 urlpatterns = patterns('', 
-    url('protoList.action/$', protoGetList, name='list'),
+    url('protoList/$', protoGetList ),
 #    url('create.action/$', create, name='create'),
 #    url('update.action/$', update, name='update'),
 #    url('delete.action/$', delete, name='delete'),
