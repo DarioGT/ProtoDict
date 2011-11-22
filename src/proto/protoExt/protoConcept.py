@@ -48,7 +48,7 @@ def protoGetPCI(request):
     if request.method == 'GET':
 
 #       protoApp  = request.POST.get('protoApp', '')
-        protoConcept = request.GET.get('protoConcept', '')
+        protoConcept = request.GET.get('protoConcept', '') 
         
         model = getDjangoModel(protoConcept)
         grid = protoGrid.ProtoGridFactory( model  )        
@@ -126,13 +126,8 @@ def protoGetList(request):
     for reg in pRows:
         pList.append(model_to_dict(reg, fields=[field.name for field in reg._meta.fields]))
 
-    pList = [{'id':1,'first':"Fred",'last':"Flintstone",'email':"fred@flintstone.com"},
-          {'id':2,'first':"Wilma",'last':"Flintstone",'email':"wilma@flintstone.com"},
-          {'id':3,'first':"Pebbles",'last':"Flintstone",'email':"pebbles@flintstone.com"},
-          {'id':4,'first':"Barney",'last':"Rubble",'email':"barney@rubble.com"},
-          {'id':5,'first':"Betty",'last':"Rubble",'email':"betty@rubble.com"},
-          {'id':6,'first':"BamBam",'last':"Rubble",'email':"bambam@rubble.com"}]
-
+#    pList = [{'id':1,'first':"Fred",'last':"Flintstone",'email':"fred@flintstone.com"},{'id':2,'first':"Wilma",'last':"Flintstone",'email':"wilma@flintstone.com"},{'id':3,'first':"Pebbles",'last':"Flintstone",'email':"pebbles@flintstone.com"},{'id':4,'first':"Barney",'last':"Rubble",'email':"barney@rubble.com"},{'id':5,'first':"Betty",'last':"Rubble",'email':"betty@rubble.com"},{'id':6,'first':"BamBam",'last':"Rubble",'email':"bambam@rubble.com"}]
+    
     context = json.dumps({
             "success": True,
             'totalCount': pRowsCount,

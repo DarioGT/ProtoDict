@@ -87,6 +87,44 @@ def protoGetConceptModel(request):
                     }] 
             }
         }
+    
+    
+    context = {
+        "success": True,
+        "totalCount": 55,
+        "rows": [{
+            "email": "fred@flintstone.com",
+            "last": "Flintstone",
+            "id": 1,
+            "first": "Fred"
+        }, {
+            "email": "wilma@flintstone.com",
+            "last": "Flintstone",
+            "id": 2,
+            "first": "Wilma"
+        }, {
+            "email": "pebbles@flintstone.com",
+            "last": "Flintstone",
+            "id": 3,
+            "first": "Pebbles"
+        }, {
+            "email": "barney@rubble.com",
+            "last": "Rubble",
+            "id": 4,
+            "first": "Barney"
+        }, {
+            "email": "betty@rubble.com",
+            "last": "Rubble",
+            "id": 5,
+            "first": "Betty"
+        }, {
+            "email": "bambam@rubble.com",
+            "last": "Rubble",
+            "id": 6,
+            "first": "BamBam"
+        }],
+    }
+    
     return HttpResponse(json.dumps(context), mimetype="application/json")
 
 
