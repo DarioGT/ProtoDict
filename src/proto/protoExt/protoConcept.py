@@ -59,6 +59,7 @@ def protoGetPCI(request):
         json = grid.to_grid(
                 pRows, 
                 totalcount = pRowsCount, 
+                protoConcept = protoConcept, 
                 )
     
         resp = utils.JsonResponse(json)
