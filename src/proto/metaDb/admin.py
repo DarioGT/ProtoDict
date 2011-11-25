@@ -66,20 +66,38 @@ class UdpAdmin(globale.admin.ModelAdmin):
     list_display =( 'metaObj', 'code', 'objType' )
     list_filter = ( 'code', )
     search_fields = ( 'code', 'valueUdp')
-    index = 1
+    index = 1   
 
 
 admin.site.register(Udp, UdpAdmin)
 
 
 class MetaLinkAdmin(globale.admin.ModelAdmin):
-    verbose_name_plural = 'Modeles de liens' 
+    verbose_name_plural = 'Modeles de liens Detail' 
     list_display =( 'metaLinkModel' , 'code', 'alias', 'destinationText', 'sourceCol', 'destinationCol')
     list_filter = ( 'metaLinkModel' , )
     search_fields = ( 'code', 'alias', 'destinationText', 'sourceCol', 'destinationCol')
 
+    protoExt = {}
+    protoExt[ 'app_name' ] = 'Liens'
+    protoExt[ 'menuIndex' ] = 2
+
 
 admin.site.register(MetaLink, MetaLinkAdmin)
+
+
+class MetaLinkModelAdmin(globale.admin.ModelAdmin):
+    verbose_name_plural = 'Modeles de liens' 
+#    list_display =( 'metaLinkModel' , 'code', 'alias', 'destinationText', 'sourceCol', 'destinationCol')
+#    list_filter = ( 'metaLinkModel' , )
+#    search_fields = ( 'code', 'alias', 'destinationText', 'sourceCol', 'destinationCol')
+
+    protoExt = {}
+    protoExt[ 'app_name' ] = 'Liens'
+    protoExt[ 'menuIndex' ] = 1
+    
+
+admin.site.register(MetaLinkModel, MetaLinkModelAdmin)
 
 
 #admin.site.register(UdpDefinition)
