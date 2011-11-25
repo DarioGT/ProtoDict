@@ -183,3 +183,14 @@ LOGGING = {
         },
     }
 }
+
+
+
+MENU_APP = {'auth' : { 'hidden': True, },  
+            'admin': { 'hidden': True, },
+            'metaDb' : { 'hidden': False, 
+                               'title': 'Dictionnaire des donnes', 
+                               'expanded':True, }
+            } 
+    
+    

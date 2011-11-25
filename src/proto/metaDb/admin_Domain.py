@@ -22,3 +22,4 @@ class DomainAdmin(globale.admin.ModelAdmin):
     inlines = [
         ModelInline,
         ]
+    index = 0

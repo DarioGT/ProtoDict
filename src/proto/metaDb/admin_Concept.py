@@ -16,7 +16,6 @@ class RelationshipInline(globale.admin.TabularInline):
 
 
 class Concept_Admin(globale.admin.ModelAdmin):
-    app_name = 'Dictionnaire de donnees'
     list_display =( 'model', 'code',  'description',  'superConcept', )
     list_filter = ( 'model', 'superConcept', )
     search_fields = ( 'code', 'description',  'superConcept')
@@ -31,5 +30,11 @@ class Concept_Admin(globale.admin.ModelAdmin):
         PropertyInline,
         RelationshipInline,
         ]
+    
+    menuIndex = 100
 
+    protoExt = {}
+    protoExt[ 'description' ] = 'Esta es la description del concpeto concepto'
+    protoExt[ 'menuIndex' ] = 100
+    protoExt[ 'app_name' ] = 'Dictionnaire de donnees'
     

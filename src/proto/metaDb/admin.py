@@ -36,7 +36,8 @@ class PropertyAdmin(globale.admin.ModelAdmin):
         (None, {
             'fields': [
             ( 'concept', 'code', 'baseType', 'length', 'decLength',  
-              'isNullable', 'isRequired', 'isSensitive', 'isEssential' 
+              'isNullable', 'isRequired', 
+#              'isSensitive', 'isEssential' 
               )
                        ]
         }),
@@ -68,6 +69,7 @@ class UdpAdmin(globale.admin.ModelAdmin):
     list_display =( 'metaObj', 'code', 'objType' )
     list_filter = ( 'code', )
     search_fields = ( 'code', 'valueUdp')
+    index = 1
 
 
 admin.site.register(Udp, UdpAdmin)

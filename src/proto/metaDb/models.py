@@ -26,14 +26,25 @@ class MetaObj(models.Model):
     physicalName = models.CharField(blank = True, null = True, max_length=200)
     description = models.TextField( blank = True, null = True, max_length=200)
 
+    code.help_text = 'Codigo o Identificador principal del objeto'
+    code.allowFilter = True
+    description.sortable = False 
+
     def __unicode__(self):
         return self.code 
+
+    class Meta:
+        verbose_name = 'User Define Properties' 
 
    
 class Domain(MetaObj):
     #DOMAINTYPE=(('Analyses',(('MCD','Modeleconceptualdedonnes'),('MLD','Modellogique'),('MPD','Modelphisique'),)),('Interface',(('MSI','Modeledespecificaciond''interface'),('MSR','Modeledespecificacionderapports'),)),('unknown','Unknown'),)
     origin = models.CharField(verbose_name=u'origin', blank = True, null = True, max_length=50)
     superDomain = models.ForeignKey('Domain', blank = True, null = True)
+
+    protoExt = {}
+    protoExt[ 'description' ] = 'Esta es la description del concpeto concepto'
+
 
     def save(self, *args, **kwargs ):
         self.objType = "Domain"
@@ -79,6 +90,10 @@ class Concept(MetaObj):
     class Meta:
         verbose_name = 'Entite'
 
+    protoExt = {}
+    protoExt[ 'description' ] = 'Esta es la description del concpeto concepto'
+
+
 class Property(MetaObj):
     baseType = models.CharField(verbose_name=u'Type de Base', blank = True, null = True, max_length=50)
     length = models.IntegerField(blank = True, null = True)
@@ -86,8 +101,6 @@ class Property(MetaObj):
 
     isNullable = models.BooleanField()
     isRequired = models.BooleanField()
-    isSensitive = models.BooleanField()
-    isEssential = models.BooleanField()
     isUnique = models.BooleanField()
     isForeign = models.BooleanField()
     foreignConcept = models.CharField(max_length=200,blank = True, null = True)
@@ -97,14 +110,24 @@ class Property(MetaObj):
     #DGT: La derivacion deberia ser una referencia pero en la carga no es posible hacer la referencia se requiere un campo texto 
     # pero el mantenimiento deberia ser con la referencia, podria guardarse en discretas y un procedimiento posterior 
     # agregaria las referencias reales 
-    derivationType = models.CharField( blank = True, null = True, max_length=50)
-    derivationRule = models.CharField( blank = True, null = True, max_length=50)
-    derivationConcept = models.CharField(max_length=200,blank = True, null = True)
-    derivationProperty = models.CharField(max_length=200,blank = True, null = True)
+
+#    derivationType = models.CharField( blank = True, null = True, max_length=50)
+#    derivationRule = models.CharField( blank = True, null = True, max_length=50)
+#    derivationConcept = models.CharField(max_length=200,blank = True, null = True)
+#    derivationProperty = models.CharField(max_length=200,blank = True, null = True)
 
     concept = models.ForeignKey('Concept')
 #   superProperty = models.ForeignKey('Property', blank = True, null = True)
     superProperty= models.CharField( blank = True, null = True, max_length=50, verbose_name=u'Propriete pere')
+    
+    concept.query_code = 'concept__code'
+     
+    concept.protoExt = {} 
+    concept.protoExt[ 'query_code' ] = 'concept__code' 
+
+    protoExt = {}
+    protoExt[ 'description' ] = 'Esta es la description del concpeto concepto'
+
 
     def model_concept(self):
         return self.concept.model
