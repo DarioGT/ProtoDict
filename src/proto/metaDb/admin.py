@@ -27,7 +27,6 @@ admin.site.register(Concept, Concept_Admin)
 
 
 class PropertyAdmin(globale.admin.ModelAdmin):
-    app_name = 'Dictionnaire de donnees'
     verbose_name_plural = 'Elements de donnees' 
     list_display =( 'model_concept', 'concept', 'code',  'description',  'baseType','superProperty', 'alias')
     list_filter = ( 'concept__model', )
@@ -53,7 +52,6 @@ admin.site.register(Property, PropertyAdmin)
 #---------------  
 
 class RelationshipAdmin(globale.admin.ModelAdmin):
-    app_name = 'Dictionnaire de donnees'
     verbose_name_plural = 'Associations' 
     list_display =( 'concept', 'baseConcept', 'code',  'description', 'alias')
     list_filter = ( 'concept', )
@@ -65,7 +63,6 @@ admin.site.register(Relationship, RelationshipAdmin)
 
 
 class UdpAdmin(globale.admin.ModelAdmin):
-    app_name = 'Dictionnaire de donnees'
     list_display =( 'metaObj', 'code', 'objType' )
     list_filter = ( 'code', )
     search_fields = ( 'code', 'valueUdp')
@@ -76,7 +73,6 @@ admin.site.register(Udp, UdpAdmin)
 
 
 class MetaLinkAdmin(globale.admin.ModelAdmin):
-    app_name = 'Dictionnaire de donnees'
     verbose_name_plural = 'Modeles de liens' 
     list_display =( 'metaLinkModel' , 'code', 'alias', 'destinationText', 'sourceCol', 'destinationCol')
     list_filter = ( 'metaLinkModel' , )

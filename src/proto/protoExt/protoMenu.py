@@ -6,18 +6,18 @@
 from globale.admin.sites import  site
 
 from django.conf import settings
-from django.utils.text import capfirst
 
 from django.http import HttpResponse
 import django.utils.simplejson as json
 
 
-def getMenuApp( name   ):
+def getProtoExt( objBase   ):
     try: 
-        menuApp = settings.MENU_APP[ name ]
+        protoExt = objBase.protoExt 
     except: 
-        menuApp = {} 
-    return menuApp 
+        protoExt = {} 
+    return protoExt 
+
 
 def protoGetMenuData(request):
     """
@@ -26,21 +26,29 @@ def protoGetMenuData(request):
     """
     
     app_dict = {}
-    ixApp = 0 
-    ixMod = 0
+    ixApp = 1 
+    ixMod = 1
      
 #   user = request.user
     for model, model_admin in site._registry.items():
-        app_label = model._meta.app_label
 
-        menuApp = getMenuApp( app_label)
+        protoAdmin = getProtoExt ( model_admin )
+        protoModel = getProtoExt ( model )
+
+        app_label = model._meta.app_label
+        app_label = protoAdmin.get('app_name', app_label )
+
+        menuApp = settings.MENU_APP.get( app_label, {} ) 
+
         if menuApp.get('hidden', False ): 
             continue 
+
+        ixModAux = protoModel.get('menuIndex', protoAdmin.get( 'menuIndex', ixMod) )
 
         model_dict = {
             'id': model._meta.object_name,
             'text': model._meta.verbose_name.title() ,
-            'index': ixMod,
+            'index': ixModAux ,
             'leaf': True,
         }
         if app_label in app_dict:
@@ -48,13 +56,14 @@ def protoGetMenuData(request):
 
         else:
             app_dict[app_label] = {
-                'text': menuApp.get('title', app_label.title())  ,
+                'text': menuApp.get('title', app_label )  ,
                 'expanded': menuApp.get('expanded', True) ,
-                'index': menuApp.get('index', ixApp ),
+                'index': menuApp.get('menuIndex', ixApp ),
                 'children': [model_dict],
             }
 
-        ixApp += 1 
+            ixApp += 1
+             
         ixMod += 1 
 
     # Sort the apps alphabetically.
@@ -65,20 +74,6 @@ def protoGetMenuData(request):
     for app in app_list:
         app['children'].sort(key=lambda x: x['index'])
 
-    context = app_list 
-#    {
-#        'app_list': app_list,
-#    }
+    context = json.dumps( app_list ) 
 
-    
-#    context = [{
-#                    'text':'Dictionaire de donnes',
-#                    'expanded':True,
-#                    'children':[
-#                        { 'id': 'Concept' , 'text':'Elements des donnes', 'leaf':True },
-#                        { 'id': 'Property' , 'text':'Proprietes',  'leaf':True },
-#                    ]
-#                }]
-
-    return HttpResponse(json.dumps(context), mimetype="application/json")
-
+    return HttpResponse( context, mimetype="application/json")

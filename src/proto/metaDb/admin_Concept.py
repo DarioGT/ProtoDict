@@ -31,10 +31,8 @@ class Concept_Admin(globale.admin.ModelAdmin):
         RelationshipInline,
         ]
     
-    menuIndex = 100
 
     protoExt = {}
     protoExt[ 'description' ] = 'Esta es la description del concpeto concepto'
-    protoExt[ 'menuIndex' ] = 100
-    protoExt[ 'app_name' ] = 'Dictionnaire de donnees'
+    protoExt[ 'menuIndex' ] = 0
     
