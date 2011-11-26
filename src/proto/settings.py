@@ -151,10 +151,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-#    'dajaxice',
-#    'dajax',
-
-    'globale.auth',
+#   'globale.auth',
     'globale.admin',
     'proto.metaDb'
     # Uncomment the next line to enable admin documentation:
@@ -185,12 +182,10 @@ LOGGING = {
 }
 
 
-
-MENU_APP = {'auth' : { 'hidden': True, },  
-            'admin': { 'hidden': True, },
-            'metaDb' : { 'hidden': False, 
-                               'title': 'Dictionnaire des donnes', 
-                               'expanded':True, }
-            } 
-    
-    
+# Variables prototipeur
+PROTO_APP = {}
+PROTO_APP['app_menu'] = {
+    'auth' : { 'hidden': True, },  
+    'admin': { 'hidden': True, },
+    'metaDb' : { 'hidden': False, 'title': 'Dictionnaire des donnes', 'expanded':True, }
+    } 

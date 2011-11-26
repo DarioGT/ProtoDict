@@ -15,6 +15,7 @@ from django.template import  Context
 from django.template import  RequestContext
 from django.template.loader import get_template 
 from django.utils.translation import gettext as __
+
 from protoExtJs import protoGrid, utils 
 from protoExtJs.forms import ExtJsForm, getExtJsModelForm
 
@@ -23,31 +24,22 @@ from protoExtJs.forms import ExtJsForm, getExtJsModelForm
 from django.core import serializers
 import django.utils.simplejson as json
 
-def getDjangoModel(  modelName ):
-
-#   llama directamente  
-#    model = models.get_model( appCode, modelName )
-    
-    # Encuentra el modelo ( sin la app ) 
-    for m in models.get_models():
-        if m._meta.object_name.lower() == modelName.lower():
-            model = m
-            break
-
+def getDjangoModel( modelName ):
+#   Obtiene el modelo 
+    if modelName.count('.') == 1: 
+        model = models.get_model( *modelName.split('.') )
+    elif modelName.count('.') == 0:
+        for m in models.get_models():
+            if m._meta.object_name.lower() == modelName.lower():
+                model = m
+                break
     return model 
 
 
 # Create your views here.
 def protoGetPCI(request):
-    # used like this in the main urls.py :
-    #(r'^apps/(?P<app>[^/]+)/(?P<view>[^/]+)$', 'core.appdispatcher.dispatch' ), --> apps/app/views.py/view
-    #(r'^apps/(?P<app>[^/]+)/?$', 'core.appdispatcher.dispatch' ),               --> apps/app/views.py/default
-    
 
-    # if you have an EditableModelGrid then you can use POST data to update your instances.
     if request.method == 'GET':
-
-#       protoApp  = request.POST.get('protoApp', '')
         protoConcept = request.GET.get('protoConcept', '') 
         
         model = getDjangoModel(protoConcept)
@@ -71,23 +63,8 @@ def protoGetPCI(request):
 def protoGetList(request):
 #   Vista simple para cargar la informacion, 
     
-    if request.method == 'GET':
+    if request.method == 'POST':
 
-#       protoApp  = request.POST.get('protoApp', '')
-        protoConcept = request.GET.get('protoConcept', '')
-        protoFilter = request.GET.get('protoFilter', '')
-        protoFilterBase = request.GET.get('protoFilterBase', '')
-        
-#       page = int(request.GET.get('page', 0))
-        start = int(request.GET.get('start', 0))
-        limit = int(request.GET.get('limit', 100))
-
-        sort = request.GET.get('sort', 'id')
-        sort_dir = request.GET.get('dir', 'ASC')
-
-    else:
-
-#       protoApp  = request.POST.get('protoApp', '')
         protoConcept = request.POST.get('protoConcept', '')
         protoFilter = request.POST.get('protoFilter', '')
         protoFilterBase = request.POST.get('protoFilterBase', '')

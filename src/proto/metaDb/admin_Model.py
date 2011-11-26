@@ -15,7 +15,7 @@ intModel= ( 'idModel', 'idRef' )
 class Model_Admin(globale.admin.ModelAdmin):
     app_name = 'Dictionnaire de donnees'
     verbose_name_plural = 'Modeles' 
-    list_display =( 'code', 'description','superModel', 'domain', 'physicalName')
+    list_display =( 'id', 'code', 'description','superModel', 'domain', 'physicalName')
     list_filter =(  'domain', 'superModel', )
     search_fields =('code', 'description', 'superModel', 'physicalName' )
     
@@ -28,3 +28,9 @@ class Model_Admin(globale.admin.ModelAdmin):
         ConceptInline,
         ]
     
+    protoExt = {}
+    protoExt[ 'protoDetails' ] = [{
+            "conceptDetail": "Concept", 
+            "masterField": "id",
+            "detailField": "model__id"
+            },]

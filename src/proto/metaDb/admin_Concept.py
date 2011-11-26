@@ -34,5 +34,5 @@ class Concept_Admin(globale.admin.ModelAdmin):
 
     protoExt = {}
     protoExt[ 'description' ] = 'Esta es la description del concpeto concepto'
-    protoExt[ 'menuIndex' ] = 0
+    protoExt[ 'menu_index' ] = 0
     

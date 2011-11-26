@@ -6,8 +6,8 @@ from models import *
 import globale.admin
 #---------------
 
-from admin_Domain import DomainAdmin 
-admin.site.register(Domain, DomainAdmin)
+#from admin_Domain import DomainAdmin 
+#admin.site.register(Domain, DomainAdmin)
 
 
 #---------------
@@ -80,7 +80,7 @@ class MetaLinkAdmin(globale.admin.ModelAdmin):
 
     protoExt = {}
     protoExt[ 'app_name' ] = 'Liens'
-    protoExt[ 'menuIndex' ] = 2
+    protoExt[ 'menu_index' ] = 2
 
 
 admin.site.register(MetaLink, MetaLinkAdmin)
@@ -94,7 +94,7 @@ class MetaLinkModelAdmin(globale.admin.ModelAdmin):
 
     protoExt = {}
     protoExt[ 'app_name' ] = 'Liens'
-    protoExt[ 'menuIndex' ] = 1
+    protoExt[ 'menu_index' ] = 1
     
 
 admin.site.register(MetaLinkModel, MetaLinkModelAdmin)

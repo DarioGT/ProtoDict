@@ -28,7 +28,15 @@ class MetaObj(models.Model):
 
     code.help_text = 'Codigo o Identificador principal del objeto'
     code.allowFilter = True
+    
     description.sortable = False 
+    description.protoExt = {}
+    description.protoExt[ 'flex' ] = 1
+
+    code.protoExt = {}
+    code.protoExt[ 'width' ] = 200
+
+
 
     def __unicode__(self):
         return self.code 
@@ -41,10 +49,6 @@ class Domain(MetaObj):
     #DOMAINTYPE=(('Analyses',(('MCD','Modeleconceptualdedonnes'),('MLD','Modellogique'),('MPD','Modelphisique'),)),('Interface',(('MSI','Modeledespecificaciond''interface'),('MSR','Modeledespecificacionderapports'),)),('unknown','Unknown'),)
     origin = models.CharField(verbose_name=u'origin', blank = True, null = True, max_length=50)
     superDomain = models.ForeignKey('Domain', blank = True, null = True)
-
-    protoExt = {}
-    protoExt[ 'description' ] = 'Esta es la description del concpeto concepto'
-
 
     def save(self, *args, **kwargs ):
         self.objType = "Domain"
@@ -74,6 +78,10 @@ class Model(MetaObj):
     
     def __unicode__(self):
         return self.code 
+
+    protoExt = {}
+    protoExt[ 'description' ] = 'Esta es la description del concpeto concepto'
+
 
 class Concept(MetaObj):
     model = models.ForeignKey('Model', verbose_name=u'Nom du modele')

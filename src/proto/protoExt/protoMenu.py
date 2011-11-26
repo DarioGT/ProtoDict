@@ -10,13 +10,11 @@ from django.conf import settings
 from django.http import HttpResponse
 import django.utils.simplejson as json
 
-
-def getProtoExt( objBase   ):
-    try: 
-        protoExt = objBase.protoExt 
-    except: 
-        protoExt = {} 
-    return protoExt 
+## Obtiene la coleccion ProtoExt de cualquier objeto 
+#def getProtoExt( objBase   ):
+#    try: protoExt = objBase.protoExt 
+#    except: protoExt = {} 
+#    return protoExt 
 
 
 def protoGetMenuData(request):
@@ -32,33 +30,35 @@ def protoGetMenuData(request):
 #   user = request.user
     for model, model_admin in site._registry.items():
 
-        protoAdmin = getProtoExt ( model_admin )
-        protoModel = getProtoExt ( model )
+        protoModel = getattr(model, 'protoExt', {})
+        protoAdmin = getattr(model_admin, 'protoExt', {}) 
 
-        app_label = model._meta.app_label
-        app_label = protoAdmin.get('app_name', app_label )
+        appCode = model._meta.app_label
+        menuLabel = protoAdmin.get('app_name', appCode )
 
-        menuApp = settings.MENU_APP.get( app_label, {} ) 
-
-        if menuApp.get('hidden', False ): 
+#       Obtiene el menu de settigs.PROTO_APP          
+        try: menuDefinition = settings.PROTO_APP.get( 'app_menu', {}).get( menuLabel, {} ) 
+        except: menuDefinition = {}
+            
+        if menuDefinition.get('hidden', False ): 
             continue 
 
-        ixModAux = protoModel.get('menuIndex', protoAdmin.get( 'menuIndex', ixMod) )
+        ixModAux = protoModel.get('menu_index', protoAdmin.get( 'menu_index', ixMod) )
 
         model_dict = {
-            'id': model._meta.object_name,
+            'id': appCode + '.' + model._meta.object_name,
             'text': model._meta.verbose_name.title() ,
             'index': ixModAux ,
             'leaf': True,
         }
-        if app_label in app_dict:
-            app_dict[app_label]['children'].append(model_dict)
+        if menuLabel in app_dict:
+            app_dict[menuLabel]['children'].append(model_dict)
 
         else:
-            app_dict[app_label] = {
-                'text': menuApp.get('title', app_label )  ,
-                'expanded': menuApp.get('expanded', True) ,
-                'index': menuApp.get('menuIndex', ixApp ),
+            app_dict[menuLabel] = {
+                'text': menuDefinition.get('title', menuLabel )  ,
+                'expanded': menuDefinition.get('expanded', True) ,
+                'index': menuDefinition.get('menu_index', ixApp ),
                 'children': [model_dict],
             }
 
