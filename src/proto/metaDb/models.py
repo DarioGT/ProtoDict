@@ -42,7 +42,7 @@ class MetaObj(models.Model):
         return self.code 
 
     class Meta:
-        verbose_name = 'User Define Properties' 
+        verbose_name = 'MetaObj' 
 
    
 class Domain(MetaObj):

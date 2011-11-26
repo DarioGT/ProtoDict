@@ -1,6 +1,7 @@
-#Sun Nov 20 18:29:57 EST 2011
+#Sat Nov 26 10:07:30 EST 2011
 eclipse.preferences.version=1
 encoding//src/proto/protoExt/protoConcept.py=utf-8
 encoding//src/proto/protoExt/protoMenu.py=utf-8
 encoding//src/proto/protoExt/views.py=utf-8
+encoding//src/proto/settings.py=utf-8
 encoding//src/xml2db/main.py=utf-8

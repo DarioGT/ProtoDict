@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Django settings for PROTO project.
 import os.path, sys 
 PPATH = os.path.abspath( os.path.join( os.path.dirname(__file__), os.pardir )).replace('\\','/')
@@ -187,5 +189,5 @@ PROTO_APP = {}
 PROTO_APP['app_menu'] = {
     'auth' : { 'hidden': True, },  
     'admin': { 'hidden': True, },
-    'metaDb' : { 'hidden': False, 'title': 'Dictionnaire des donnes', 'expanded':True, }
+    'metaDb' : { 'hidden': False, 'title': 'Dictionnairé des donn&eacute;es', 'expanded':True, }
     } 

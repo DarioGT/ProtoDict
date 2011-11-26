@@ -6,8 +6,8 @@ from models import *
 import globale.admin
 #---------------
 
-#from admin_Domain import DomainAdmin 
-#admin.site.register(Domain, DomainAdmin)
+from admin_Domain import DomainAdmin 
+admin.site.register(Domain, DomainAdmin)
 
 
 #---------------
@@ -99,8 +99,7 @@ class MetaLinkModelAdmin(globale.admin.ModelAdmin):
 
 admin.site.register(MetaLinkModel, MetaLinkModelAdmin)
 
-
-#admin.site.register(UdpDefinition)
+admin.site.register(UdpDefinition)
 
 #admin.site.register(PropertyChoice)
 #admin.site.register(NavigationLink)
@@ -111,9 +110,9 @@ admin.site.register(MetaLinkModel, MetaLinkModelAdmin)
 
 
 class MetaObjAdmin(admin.ModelAdmin):
-    list_display =( 'code', 'objType', 'description', 'category'  )
+    list_display =( 'id', 'code', 'objType', 'description', 'category'  )
     readonly_fields = ('objType', )
-    app_name = 'Meta'
+#    app_name = 'Meta'
 
     #Add = False  
     def has_add_permission(self, request):
@@ -127,5 +126,5 @@ class MetaObjAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return True
                 
-#admin.site.register(MetaObj, MetaObjAdmin)
+admin.site.register(MetaObj, MetaObjAdmin)
 

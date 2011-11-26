@@ -72,6 +72,7 @@ def protoGetList(request):
 #       page = int(request.GET.get('page', 0))
         start = int(request.POST.get('start', 0))
         limit = int(request.POST.get('limit', 100))
+        page = int(request.POST.get('page', 1))
 
         sort = request.POST.get('sort', 'id')
         sort_dir = request.POST.get('dir', 'ASC')
@@ -96,8 +97,8 @@ def protoGetList(request):
         protoStmtBase = {}
 
 #   Obtiene las filas del modelo 
-    pRows = model.objects.filter(**protoStmt ).filter(**protoStmtBase ).order_by('id')[start: limit]
-    pRowsCount = pRows.count()
+    pRowsCount = model.objects.filter(**protoStmt ).filter(**protoStmtBase ).count()
+    pRows = model.objects.filter(**protoStmt ).filter(**protoStmtBase ).order_by('id')[start: page*limit ]
 
 
     pList = []
