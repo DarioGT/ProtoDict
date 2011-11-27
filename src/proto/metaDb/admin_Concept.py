@@ -35,4 +35,9 @@ class Concept_Admin(globale.admin.ModelAdmin):
     protoExt = {}
     protoExt[ 'description' ] = 'Esta es la description del concpeto concepto'
     protoExt[ 'menu_index' ] = 0
+    protoExt[ 'protoDetails' ] = [
+        {'menuText': 'Elements De Donnees', 'conceptDetail': 'metaDb.Property', 'detailField': 'concept__pk', 'masterField': 'pk'}, 
+        {'menuText': 'Associations', 'conceptDetail': 'metaDb.Relationship', 'detailField': 'concept__pk', 'masterField': 'pk'}, 
+        {'menuText': 'Udp', 'conceptDetail': 'metaDb.Udp', 'detailField': 'metaObj__pk', 'masterField': 'pk'}, 
+        ]
     

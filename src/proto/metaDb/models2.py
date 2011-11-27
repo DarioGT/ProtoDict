@@ -54,3 +54,22 @@ class EntryPoints(models.Model):
     def __unicode__(self):
         return self.caption
 
+
+
+
+# Prueba para generar los MasterDetail 
+
+class Tabla1(models.Model):
+    code1 = models.CharField(blank = True, null = True, max_length=200 )
+
+class Tabla11(models.Model):
+    code1 = models.CharField(blank = True, null = True, max_length=200 )
+    tabla1a = models.ForeignKey('Tabla1', related_name= 'prueba1a')
+    tabla1b = models.ForeignKey('Tabla1', related_name= 'prueba1b')
+    tabla1c = models.ForeignKey('Tabla1', related_name= '+')
+    
+
+class Tabla12(models.Model):
+    code1 = models.CharField(blank = True, null = True, max_length=200 )
+    tabla1a = models.ForeignKey('Tabla1')
+

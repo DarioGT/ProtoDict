@@ -6,9 +6,9 @@ from models import *
 import globale.admin
 #---------------
 
-from admin_Domain import DomainAdmin 
-admin.site.register(Domain, DomainAdmin)
 
+#from admin_Domain import DomainAdmin 
+#admin.site.register(Domain, DomainAdmin)
 
 #---------------
 
@@ -45,6 +45,12 @@ class PropertyAdmin(globale.admin.ModelAdmin):
     inlines = [
         UpdInline,
         ]
+
+    protoExt = {}
+    protoExt[ 'protoDetails' ] = [
+        {'menuText': 'Udp', 'conceptDetail': 'metaDb.Udp', 'detailField': 'metaObj__pk', 'masterField': 'pk'}, 
+        ]
+
 
 
 admin.site.register(Property, PropertyAdmin)
@@ -98,8 +104,8 @@ class MetaLinkModelAdmin(globale.admin.ModelAdmin):
     
 
 admin.site.register(MetaLinkModel, MetaLinkModelAdmin)
-
 admin.site.register(UdpDefinition)
+
 
 #admin.site.register(PropertyChoice)
 #admin.site.register(NavigationLink)
@@ -109,22 +115,22 @@ admin.site.register(UdpDefinition)
 #admin.site.register(Traduction)
 
 
-class MetaObjAdmin(admin.ModelAdmin):
-    list_display =( 'id', 'code', 'objType', 'description', 'category'  )
-    readonly_fields = ('objType', )
-#    app_name = 'Meta'
 
-    #Add = False  
-    def has_add_permission(self, request):
-        return False
-
-    #Delete = False 
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    #Update = False 
-    def has_change_permission(self, request, obj=None):
-        return True
-                
-admin.site.register(MetaObj, MetaObjAdmin)
-
+#class MetaObjAdmin(admin.ModelAdmin):
+#    list_display =( 'id', 'code', 'objType', 'description', 'category'  )
+#    readonly_fields = ('objType', )
+##    app_name = 'Meta'
+#
+#    #Add = False  
+#    def has_add_permission(self, request):
+#        return False
+#
+#    #Delete = False 
+#    def has_delete_permission(self, request, obj=None):
+#        return False
+#
+#    #Update = False 
+#    def has_change_permission(self, request, obj=None):
+#        return True
+#                
+#admin.site.register(MetaObj, MetaObjAdmin)

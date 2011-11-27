@@ -19,6 +19,8 @@ from django.utils.translation import gettext as __
 from protoExtJs import protoGrid, utils 
 from protoExtJs.forms import ExtJsForm, getExtJsModelForm
 
+from django.conf import settings
+
 
 
 from django.core import serializers

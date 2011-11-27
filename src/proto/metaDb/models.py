@@ -17,6 +17,8 @@ def strNotNull(  sValue ):
         return "_"
     else: return sValue 
 
+
+
 class MetaObj(models.Model):
     #OBJTYPE  = (('Domain', 'Domain'),('Model', 'Model'),('Concept', 'Concept'),('Property', 'Porperty'),('?', 'Unknown'),)
     code = models.CharField(verbose_name=u'Nom',blank = True, null = True, max_length=200 )
